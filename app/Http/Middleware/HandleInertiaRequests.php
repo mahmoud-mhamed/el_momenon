@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Classes\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -36,7 +38,16 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            //
+            'toastr' => $request->session()->get('toastr'),
+            'lang' => [
+                'current' => app()->getLocale(),
+            ],
+            'menu' => Auth::guard('web')->check() ? (new Menu())->getMenu() : null,
+            'asset_url' => asset(''),
+            'auth' => Auth::check() ? [
+                'user' => Auth::user(),
+                'abilities' => $request->user()?->getAbilities()?->pluck('name')->toArray(),
+            ] : null,
         ]);
     }
 }

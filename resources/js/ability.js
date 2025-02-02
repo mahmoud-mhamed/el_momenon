@@ -1,0 +1,1 @@
+export const Ability = {"M_USERS_INDEX":"m_users_index"}

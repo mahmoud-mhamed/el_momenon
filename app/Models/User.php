@@ -2,25 +2,48 @@
 
 namespace App\Models;
 
+
+use App\Models\Builders\UserBuilder;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\IsActiveEnum;
+use App\Traits\BelongsToCompanyTrait;
+use App\Traits\EnumCastAppendAttributeTrait;
+use App\Traits\FileUploadTrait;
+use App\Traits\LogsTrait;
+use App\Traits\ModelDateTextTrait;
+use App\Traits\MorphModelTriggerTrait;
+use App\Traits\PaginatableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Silber\Bouncer\Database\HasRolesAndAbilities;
+/**
+ * @property string name
+ * @property string email
+ * @property string avatar
+ * @property bool is_active
+ * @property-read string avatar_url
+ * @property-read string is_active_text
+ */
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use HasRolesAndAbilities;
 
+    //from base model
+    use PaginatableTrait, EnumCastAppendAttributeTrait,
+        SoftDeletes, ModelDateTextTrait, MorphModelTriggerTrait;
+    use BelongsToCompanyTrait;
+    use LogsTrait;
+    use FileUploadTrait;
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'email', 'password', 'is_active', 'avatar',
     ];
 
     /**
@@ -32,7 +55,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    protected array $fileupload = [
+        'avatar'=>[
+            'default_asset'=>'images/avatar.jpg'
+        ],
+    ];
     /**
      * Get the attributes that should be cast.
      *
@@ -43,6 +70,24 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => IsActiveEnum::class,
         ];
+    }
+
+    /**
+     * @return UserBuilder
+     */
+    public static function query(): UserBuilder
+    {
+        return parent::query();
+    }
+
+    /**
+     * @param $query
+     * @return UserBuilder
+     */
+    public function newEloquentBuilder($query): UserBuilder
+    {
+        return new UserBuilder($query);
     }
 }
