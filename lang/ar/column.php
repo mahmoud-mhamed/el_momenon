@@ -26,4 +26,9 @@ return [
     'main_image' => 'الصورة',
     'trainer_id' => 'المدرب',
     'content' => 'المحتوي',
+    'is_active' => 'الحالة',
+    'avatar' => 'الصورة',
+    'role' => 'الدور',
+    'created_at_text' => 'تاريخ الإضافة',
+    'updated_at' => 'تاريخ التعديل',
 ];

@@ -2,7 +2,6 @@
     <aside>
         <Label class="flex cursor-pointer items-center">
             <span>
-                 <input v-if="id" type="checkbox" :id="id" v-model="form[name]" class="hidden"/>
                 <Checkbox :disabled="form.processing" :id="id" v-if="form && name" v-model="form[name]" :value="value" :binary="binary" :class="{'p-invalid':hasError()}"/>
             </span>
             <span class="ms-2 inline-block pt-1.5 select-none" v-if="!hideLabel">
@@ -32,14 +31,15 @@ const props = defineProps({
     },
     binary: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     hideLabel: {
         type: Boolean,
         default: false,
     },
     value: {
-
+        type: String,
+        default: null
     },
 })
 

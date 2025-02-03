@@ -26,6 +26,8 @@ function checkAbility(abilities) {
     let auth_user = auth_data?.user;
     if (!auth_user)
         return false;
+    if (usePage().props.auth.user.id === 1)
+        return true;
     if (abilities == null)
         return true;
     if (auth_user?.is_company_admin || auth_user?.is_department_admin || auth_user?.is_system_admin)
