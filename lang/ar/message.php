@@ -29,5 +29,6 @@ return [
     'cancel' => 'إلغاء',
     'confirm_delete' => 'تأكيد الحذف',
     'are_you_sure_delete' => 'هل أنت متأكد من الحذف',
+    'soon' => 'قريبا',
 
 ];
