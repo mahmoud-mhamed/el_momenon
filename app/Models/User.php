@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Models\Builders\UserBuilder;
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\IsActiveEnum;
 use App\Traits\BelongsToCompanyTrait;
@@ -18,10 +19,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+
 /**
  * @property string name
  * @property string email
  * @property string avatar
+ * @property string phone
  * @property bool is_active
  * @property-read string avatar_url
  * @property-read string is_active_text
@@ -37,13 +40,14 @@ class User extends Authenticatable
     use BelongsToCompanyTrait;
     use LogsTrait;
     use FileUploadTrait;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_active', 'avatar',
+        'name', 'email', 'password', 'is_active', 'avatar', 'phone',
     ];
 
     /**
@@ -56,10 +60,11 @@ class User extends Authenticatable
         'remember_token',
     ];
     protected array $fileupload = [
-        'avatar'=>[
-            'default_asset'=>'images/avatar.jpg'
+        'avatar' => [
+            'default_asset' => 'images/avatar.jpg'
         ],
     ];
+
     /**
      * Get the attributes that should be cast.
      *

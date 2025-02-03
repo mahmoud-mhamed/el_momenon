@@ -46,6 +46,11 @@ const showDialogCreate = ref(false);
                     <ElText v-if="!row.data.roles[0]"/>
                 </template>
             </Column>
+            <Column :header="$t('column.phone')">
+                <template #body="row">
+                    <ElText :value="row.data.phone"/>
+                </template>
+            </Column>
             <Column field="roles" :header="$t('column.is_active')">
                 <template #body="row">
                     <SvgTrueFalse :value="row.data.is_active"/>

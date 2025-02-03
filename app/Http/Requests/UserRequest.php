@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Rules\AvatarRule;
 use App\Rules\EmailRule;
 use App\Rules\PasswordRule;
+use App\Rules\PhoneNumberRule;
 use App\Rules\SmallTextRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -27,6 +28,11 @@ class UserRequest extends FormRequest
                 'required',
                 Rule::unique(User::class, 'email')->whereNull('deleted_at')->ignore($request->user?->id),
                 new EmailRule()
+            ],
+            'phone' => [
+                'nullable',
+                Rule::unique(User::class, 'phone')->whereNull('deleted_at')->ignore($request->user?->id),
+                new PhoneNumberRule()
             ],
             'password' => [$is_create ? 'required' : 'nullable', new PasswordRule()],
             'avatar' => [

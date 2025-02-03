@@ -17,7 +17,7 @@ class PhoneNumberRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $validator = preg_match("/^(009665|9665|\+9665|05|5)([503649187])(\d{7})$/", $value);
+        $validator = preg_match("/^(010|011|012|015)\d{8}$/", $value);
 
         if (!$validator) {
             $fail( __('validation.phone'));

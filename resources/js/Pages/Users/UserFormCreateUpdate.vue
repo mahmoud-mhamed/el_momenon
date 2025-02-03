@@ -7,6 +7,7 @@
 
             <el-floating-input :form="el_form" required name="name"/>
             <el-floating-input :form="el_form" required type="email" name="email"/>
+            <el-floating-input :form="el_form" name="phone"/>
             <el-floating-password :form="el_form" :required="is_create" name="password"/>
 
             <el-floating-dropdown :form="el_form" name="role" :required="1"
@@ -50,6 +51,7 @@ const el_form = useForm({
     avatar_url: el_row?.avatar_url??null,
     name: el_row?.name,
     email: el_row?.email ?? null,
+    phone: el_row?.phone ?? null,
     password: el_row?.password ?? null,
     role: el_row?.role_name ?? null,
     is_active: is_create ? true : el_row?.is_active,
