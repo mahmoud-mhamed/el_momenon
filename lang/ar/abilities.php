@@ -35,4 +35,8 @@ return [
     Abilities::M_ROLES_INDEX_EXPORT->value => $export,
 
 
+    Abilities::M_CURRENCIES_INDEX->value => $index,
+    Abilities::M_CURRENCIES_STORE->value => $create,
+    Abilities::M_CURRENCIES_EDIT->value => $update,
+    Abilities::M_CURRENCIES_DELETE->value => $delete,
 ];

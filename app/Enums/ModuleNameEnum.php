@@ -9,5 +9,6 @@ enum ModuleNameEnum: string
     use EnumOptionsTrait;
     case USERS='users';
     case ROLES='roles';
+    case CURRENCIES='currencies';
 
 }

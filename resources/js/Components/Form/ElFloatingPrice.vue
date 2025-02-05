@@ -1,32 +1,17 @@
 <template>
 
-    <aside>
-
+    <aside class="relative">
         <FloatLabel>
-
             <InputNumber
                 :disabled="processing || form.processing"
-                v-if="form && name"
                 :class="{'p-invalid':hasError()}"
                 v-model="form[name]"
                 mode="decimal"
-                :suffix="' ' + $t('message.sar')"
+                :suffix="' ' + (currency?.code??'')"
                 fluid
                 showButtons
                 buttonLayout="horizontal"
                 v-bind="$attrs"
-            />
-
-            <InputNumber
-                v-else
-                :value="modelValue"
-                @input="updateValue"
-                :class="{'p-invalid':hasError()}"
-                inputId="currency-us"
-                mode="currency"
-                currency="SAR"
-                locale="en-US"
-                fluid
             />
 
             <label>
@@ -72,6 +57,10 @@ const props = defineProps({
     processing: {
         type: Boolean,
         default: false
+    },
+    currency: {
+        type: Object,
+        default: null
     },
 })
 

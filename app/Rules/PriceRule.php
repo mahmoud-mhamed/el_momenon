@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Validator;
 
-class SmallTextRule implements ValidationRule
+class PriceRule implements ValidationRule
 {
     /**
      * Run the validation rule.
@@ -16,7 +16,7 @@ class SmallTextRule implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $validate = Validator::make([$attribute => $value], [
-            $attribute => "min:1|max:100",
+            $attribute => "numeric",
         ]);
 
         if ($validate->fails()) {

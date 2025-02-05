@@ -45,7 +45,10 @@
 .p-badge {
     line-height: 2.2;
 }
-
+.button-classes{
+    @apply border inline-block leading-none disabled:opacity-20 disabled:cursor-progress py-2 px-8
+    rounded transition-all duration-300 text-sm font-bold whitespace-nowrap h-[33px];
+}
 .p-badge-under_construction {
     @apply bg-gray-400 text-white
 }

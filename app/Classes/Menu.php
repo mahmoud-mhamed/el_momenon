@@ -25,6 +25,11 @@ class Menu
             ];
 
 
+        if (BouncerService::checkAbility(Abilities::M_CURRENCIES_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::CURRENCIES->value), 'icon' => 'pi-dollar',
+                'href' => \route('dashboard.currency.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.currency.')
+            ];
 
         return $response;
     }

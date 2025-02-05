@@ -32,4 +32,7 @@ return [
     'created_at_text' => 'تاريخ الإضافة',
     'updated_at' => 'تاريخ التعديل',
     'phone' => 'رقم الجوال',
+    'code' => 'الكود',
+    'equal_value' => 'القيمة المساوية',
+    'is_default' => 'الإفتراضي',
 ];

@@ -1,1 +1,1 @@
-export const Enum = {"IsActiveEnum":{"ACTIVE":1,"NOT_ACTIVE":0},"ModuleNameEnum":{"USERS":"users","ROLES":"roles"}}
+export const Enum = {"IsActiveEnum":{"ACTIVE":1,"NOT_ACTIVE":0},"ModuleNameEnum":{"USERS":"users","ROLES":"roles","CURRENCIES":"currencies"}}

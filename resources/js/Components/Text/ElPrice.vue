@@ -2,13 +2,12 @@
 
     <label class="whitespace-nowrap">
 
-        <span v-if="value && value!=0">
+        <span v-if="value && value!==0">
 
             {{ numberFormat(value) }}
 
-            <sub v-if="subValue || true" class="text-sm font-normal">{{ $t('message.sar') }}</sub>
+            <sub v-if="currency && currency?.code" class="text-sm font-normal">{{ currency?.code }}</sub>
 
-            <label v-else>{{ $t('message.sar') }}</label>
 
         </span>
 
@@ -22,7 +21,7 @@
 
 const props = defineProps({
     value: [String, Number],
-    subValue: {type: Boolean, default: true}
+    currency: {type: Object, default: null}
 });
 
 function numberFormat(number) {

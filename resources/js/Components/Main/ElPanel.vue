@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div>
-                <div class="flex gap-2">
+                <div class="flex items-center gap-1">
                     <slot name="actions"/>
                 </div>
             </div>

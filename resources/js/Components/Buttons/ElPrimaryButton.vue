@@ -1,7 +1,6 @@
 <template>
-    <component :is="href?(isA?'a':'Link'):'button'"
-               class="bg-primary-500 inline-block leading-none disabled:opacity-20 disabled:cursor-progress text-white py-3 px-8
-     rounded hover:bg-primary-400 transition-all duration-300 text-sm font-bold" v-bind="$attrs" :href="href" style="white-space: nowrap;">
+    <component :is="href?(isA?'a':'Link'):'button'"  v-bind="$attrs" :href="href"
+               class="bg-primary-500 border-secondary-500 hover:bg-primary-400 text-white button-classes">
         <span v-if="text" v-text="text"/>
         <slot v-else/>
     </component>

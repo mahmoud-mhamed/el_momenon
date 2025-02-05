@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Actions;
 Route::group([
     'middleware' => ['guest'],
 ], function () {
@@ -29,8 +29,6 @@ Route::group([
 
 
     Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-//        Route::get('/edit-auth', \App\Actions\HomeAction::class)->name('view-edit-auth');
-
         Route::get('/', \App\Actions\User\UserIndexAction::class)->name('index');
         Route::post('/', \App\Actions\User\UserStoreAction::class)->name('store');
         Route::post('/{user}', \App\Actions\User\UserUpdateAction::class)->name('update');
@@ -43,5 +41,12 @@ Route::group([
             Route::get('/', [\App\Actions\User\UserProfileAction::class, 'viewMainData'])->name('main_data');
             Route::get('/edit', [\App\Actions\User\UserProfileAction::class, 'viewEdit'])->name('edit');
         });
+    });
+
+    Route::group(['prefix' => 'currency', 'as' => 'currency.'], function () {
+        Route::get('/', \App\Actions\Currency\CurrencyIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Currency\CurrencyStoreAction::class)->name('store');
+        Route::post('/{currency}', \App\Actions\Currency\CurrencyUpdateAction::class)->name('update');
+        Route::delete('/{currency}', \App\Actions\Currency\CurrencyDeleteAction::class)->name('delete');
     });
 });
