@@ -28,6 +28,12 @@ enum Abilities: string
     case M_CURRENCIES_EDIT = 'm_currencies_edit';
     case M_CURRENCIES_DELETE = 'm_currencies_delete';
 
+    // suppliers
+    case M_SUPPLIER_INDEX = 'm_supplier_index';
+    case M_SUPPLIER_STORE = 'm_supplier_store';
+    case M_SUPPLIER_EDIT = 'm_supplier_edit';
+    case M_SUPPLIER_DELETE = 'm_supplier_delete';
+
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
         ['key' => self::M_USERS_INDEX_EXPORT, 'module' => ModuleNameEnum::USERS],
@@ -48,6 +54,11 @@ enum Abilities: string
         ['key' => self::M_CURRENCIES_STORE, 'module' => ModuleNameEnum::CURRENCIES],
         ['key' => self::M_CURRENCIES_DELETE, 'module' => ModuleNameEnum::CURRENCIES],
 
+
+        ['key' => self::M_SUPPLIER_INDEX, 'module' => ModuleNameEnum::SUPPLIER],
+        ['key' => self::M_SUPPLIER_EDIT, 'module' => ModuleNameEnum::SUPPLIER],
+        ['key' => self::M_SUPPLIER_STORE, 'module' => ModuleNameEnum::SUPPLIER],
+        ['key' => self::M_SUPPLIER_DELETE, 'module' => ModuleNameEnum::SUPPLIER],
 
     ];
 

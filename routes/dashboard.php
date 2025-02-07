@@ -49,4 +49,10 @@ Route::group([
         Route::post('/{currency}', \App\Actions\Currency\CurrencyUpdateAction::class)->name('update');
         Route::delete('/{currency}', \App\Actions\Currency\CurrencyDeleteAction::class)->name('delete');
     });
+    Route::group(['prefix' => 'supplier', 'as' => 'supplier.'], function () {
+        Route::get('/', \App\Actions\Currency\CurrencyIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Currency\CurrencyStoreAction::class)->name('store');
+        Route::post('/{supplier}', \App\Actions\Currency\CurrencyUpdateAction::class)->name('update');
+        Route::delete('/{supplier}', \App\Actions\Currency\CurrencyDeleteAction::class)->name('delete');
+    });
 });
