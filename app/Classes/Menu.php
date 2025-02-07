@@ -3,7 +3,6 @@
 namespace App\Classes;
 
 use App\Enums\ModuleNameEnum;
-use App\Enums\SliderTypeEnum;
 use App\Services\BouncerService;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
