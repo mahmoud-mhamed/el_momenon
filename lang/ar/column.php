@@ -35,4 +35,7 @@ return [
     'code' => 'الكود',
     'equal_value' => 'القيمة المساوية',
     'is_default' => 'الإفتراضي',
+    'account_balance' => 'قيمة الحساب',
+    'currency_id' => 'العملة',
+    'country' => 'الدولة',
 ];

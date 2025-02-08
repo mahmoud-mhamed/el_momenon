@@ -10,5 +10,6 @@ enum ModuleNameEnum: string
     case USERS='users';
     case ROLES='roles';
     case CURRENCIES='currencies';
+    case SUPPLIER='supplier';
 
 }

@@ -39,4 +39,9 @@ return [
     Abilities::M_CURRENCIES_STORE->value => $create,
     Abilities::M_CURRENCIES_EDIT->value => $update,
     Abilities::M_CURRENCIES_DELETE->value => $delete,
+
+    Abilities::M_SUPPLIER_INDEX->value => $index,
+    Abilities::M_SUPPLIER_STORE->value => $create,
+    Abilities::M_SUPPLIER_EDIT->value => $update,
+    Abilities::M_SUPPLIER_DELETE->value => $delete,
 ];

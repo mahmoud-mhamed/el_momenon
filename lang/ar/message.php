@@ -16,7 +16,7 @@ return [
     'title' => 'العنوان',
     'sub_title' => 'العنوان الفرعي',
     'data_empty_title' => 'لا يوجد بيانات لعرضها',
-    'data_empty_description' => 'WK-GYM',
+    'data_empty_description' => 'مؤمنون',
     'image' => 'الصورة',
     'delete' => 'حذف',
     'view' => 'عرض',
