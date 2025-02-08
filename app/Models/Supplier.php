@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string name
@@ -10,6 +11,7 @@ use App\Models\BaseModel;
  * @property string country
  * @property int currency_id
  * @property float account_balance
+ * @property-read Currency currency
 */
 class Supplier extends BaseModel
 {
@@ -21,4 +23,9 @@ class Supplier extends BaseModel
     protected $casts = [
 
     ];
+
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
+    }
 }

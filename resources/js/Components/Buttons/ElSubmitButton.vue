@@ -1,7 +1,7 @@
 <template>
     <button
-        class="bg-primary-500 border border-primary-500 disabled:opacity-90 disabled:cursor-progress
-         text-white py-2 px-8 rounded hover:bg-opacity-80 !w-auto transition-all duration-300 text-base font-bold"
+        class="bg-primary-500 border-primary-500 button-classes
+         text-white hover:bg-opacity-80text-base font-bold"
             type="submit" :disabled="form?.processing || progressing" v-bind="$attrs">
         <el-loading-dots v-if="progressing || form?.processing"/>
         <span v-else v-text="text"/>

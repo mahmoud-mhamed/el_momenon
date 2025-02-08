@@ -1,12 +1,12 @@
 <template>
 
-    <aside class="relative">
+    <aside class="floating-price-input">
         <FloatLabel>
             <InputNumber
                 :disabled="processing || form.processing"
                 :class="{'p-invalid':hasError()}"
                 v-model="form[name]"
-                mode="decimal"
+                mode="decimal" :maxFractionDigits="5"
                 :suffix="' ' + (currency?.code??'')"
                 fluid
                 showButtons

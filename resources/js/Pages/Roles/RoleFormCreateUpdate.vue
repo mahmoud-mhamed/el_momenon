@@ -5,7 +5,7 @@
             <div class="grid grid-cols-2 gap-3">
                 <div v-for="(items, index) of abilities" class="bg-white dark:bg-gray-700 dark:text-white mb-6">
                     <aside
-                        class="flex justify-between items-center bg-primary_web-500 text-white text-lg p-2 mb-2 dark:bg-gray-900">
+                        class="flex justify-between items-center bg-primary_web-500 text-black text-lg p-2 mb-2 dark:bg-gray-900">
                         <span>
                             {{ $t('enums.ModuleNameEnum.' + index) }}
                         </span>
