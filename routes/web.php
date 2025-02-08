@@ -3,9 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/version', function () {
-    return 1.0;
+    return 1.1;
 });
 Route::get('/', function () {
     return \Inertia\Inertia::render('Soon');
     return view('welcome');
+});
+Route::get('/command', function () {
+    Artisan::call('migrate --force');
+    Artisan::call('storage:link');
+    return 'success';
 });
