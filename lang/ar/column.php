@@ -38,4 +38,5 @@ return [
     'account_balance' => 'قيمة الحساب',
     'currency_id' => 'العملة',
     'country' => 'الدولة',
+    'currency_name' => 'إسم العملة',
 ];

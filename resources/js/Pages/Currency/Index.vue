@@ -34,7 +34,7 @@ const edit_row = ref();
                                :text="$t('message.add_new')"/>
         </template>
         <ElDataTable :src="props.data.rows">
-            <Column :header="$t('column.name')">
+            <Column :header="$t('column.currency_name')">
                 <template #body="row">
                     <ElText :value="row.data.name"/>
                 </template>
@@ -44,7 +44,7 @@ const edit_row = ref();
                     <ElText :value="row.data.code"/>
                 </template>
             </Column>
-            <Column :header="$t('column.equal_value')">
+            <Column :header="$t('column.equal_value')+' - '+data.default_currency.code">
                 <template #body="row">
                     <ElPrice :currency="data.default_currency" :value="row.data.equal_value"/>
                 </template>
