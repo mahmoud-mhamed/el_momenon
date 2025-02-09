@@ -1,5 +1,5 @@
 <template>
-    <aside>
+    <aside class="floating-textarea">
         <FloatLabel>
              <Textarea v-model="form[name]" :id="name" class="w-full"
                        style="padding-top:17px!important;"

@@ -34,6 +34,13 @@ enum Abilities: string
     case M_SUPPLIER_EDIT = 'm_supplier_edit';
     case M_SUPPLIER_DELETE = 'm_supplier_delete';
 
+
+    // clients
+    case M_CLIENT_INDEX = 'm_client_index';
+    case M_CLIENT_STORE = 'm_client_store';
+    case M_CLIENT_EDIT = 'm_client_edit';
+    case M_CLIENT_DELETE = 'm_client_delete';
+
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
         ['key' => self::M_USERS_INDEX_EXPORT, 'module' => ModuleNameEnum::USERS],
@@ -59,6 +66,12 @@ enum Abilities: string
         ['key' => self::M_SUPPLIER_EDIT, 'module' => ModuleNameEnum::SUPPLIER],
         ['key' => self::M_SUPPLIER_STORE, 'module' => ModuleNameEnum::SUPPLIER],
         ['key' => self::M_SUPPLIER_DELETE, 'module' => ModuleNameEnum::SUPPLIER],
+
+
+        ['key' => self::M_CLIENT_INDEX, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_EDIT, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_STORE, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_DELETE, 'module' => ModuleNameEnum::CLIENT],
 
     ];
 
