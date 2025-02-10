@@ -1,5 +1,6 @@
 <template>
     <div>
+        <label>{{ $t('column.updated_at') }} : </label>
         <ElText :value="model.created_at !== model.updated_at?model.updated_at_text:null"/>
     </div>
 </template>
