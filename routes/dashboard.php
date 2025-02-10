@@ -62,5 +62,10 @@ Route::group([
         Route::post('/', \App\Actions\Client\ClientStoreAction::class)->name('store');
         Route::post('/{client}', \App\Actions\Client\ClientUpdateAction::class)->name('update');
         Route::delete('/{client}', \App\Actions\Client\ClientDeleteAction::class)->name('delete');
+
+        Route::group(['prefix' => 'profile/{client}', 'as' => 'profile.'], function () {
+            Route::get('/', [\App\Actions\Client\ClientProfileAction::class, 'viewMainData'])->name('main_data');
+            Route::get('/edit', [\App\Actions\Client\ClientProfileAction::class, 'viewEdit'])->name('edit');
+        });
     });
 });

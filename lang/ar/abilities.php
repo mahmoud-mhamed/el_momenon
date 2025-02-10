@@ -49,4 +49,5 @@ return [
     Abilities::M_CLIENT_STORE->value => $create,
     Abilities::M_CLIENT_EDIT->value => $update,
     Abilities::M_CLIENT_DELETE->value => $delete,
+    Abilities::M_CLIENT_PROFILE->value => $viewProfile,
 ];

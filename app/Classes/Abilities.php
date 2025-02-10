@@ -40,6 +40,7 @@ enum Abilities: string
     case M_CLIENT_STORE = 'm_client_store';
     case M_CLIENT_EDIT = 'm_client_edit';
     case M_CLIENT_DELETE = 'm_client_delete';
+    case M_CLIENT_PROFILE = 'm_client_profile';
 
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
@@ -72,6 +73,7 @@ enum Abilities: string
         ['key' => self::M_CLIENT_EDIT, 'module' => ModuleNameEnum::CLIENT],
         ['key' => self::M_CLIENT_STORE, 'module' => ModuleNameEnum::CLIENT],
         ['key' => self::M_CLIENT_DELETE, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_PROFILE, 'module' => ModuleNameEnum::CLIENT],
 
     ];
 
