@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Chart\Client\ClientInCurrentYearBarChart;
 use App\Classes\BaseAction;
 use App\Enums\ModuleNameEnum;
 use App\Models\Client;
@@ -39,6 +40,7 @@ class DashboardHomeAction extends BaseAction
             'pi-users'
         );
 
+        $data['ClientInCurrentYearBarChart']=ClientInCurrentYearBarChart::make()->toVue();
         return Inertia::render('Home', compact('data'));
     }
 }

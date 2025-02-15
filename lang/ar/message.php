@@ -48,4 +48,5 @@ return [
     'active' => 'نشط',
     'not_active' => 'غير نشط',
     'clients' => 'العملاء',
+    'ClientInCurrentYearBarChart' => 'العملاء في العام الحالي',
 ];
