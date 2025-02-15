@@ -30,6 +30,12 @@ class Menu
                 'active' => Str::startsWith($current_route_name, 'dashboard.currency.')
             ];
 
+        if (BouncerService::checkAbility(Abilities::M_CLIENT_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::CLIENT->value), 'icon' => 'pi-users',
+                'href' => \route('dashboard.client.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.client.')
+            ];
+
         if (BouncerService::checkAbility(Abilities::M_SUPPLIER_INDEX))
             $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::SUPPLIER->value), 'icon' => 'pi-users',
                 'href' => \route('dashboard.supplier.index'),

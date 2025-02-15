@@ -45,5 +45,8 @@ return [
     'edit_permission' => 'تعديل الصلاحيات',
     'custom_permission' => 'صلاحيات مخصصه',
     'export_excel' => 'التصدير إكسيل',
-
+    'active' => 'نشط',
+    'not_active' => 'غير نشط',
+    'clients' => 'العملاء',
+    'ClientInCurrentYearBarChart' => 'العملاء في العام الحالي',
 ];

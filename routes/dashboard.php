@@ -49,10 +49,23 @@ Route::group([
         Route::post('/{currency}', \App\Actions\Currency\CurrencyUpdateAction::class)->name('update');
         Route::delete('/{currency}', \App\Actions\Currency\CurrencyDeleteAction::class)->name('delete');
     });
+
     Route::group(['prefix' => 'supplier', 'as' => 'supplier.'], function () {
         Route::get('/', \App\Actions\Supplier\SupplierIndexAction::class)->name('index');
         Route::post('/', \App\Actions\Supplier\SupplierStoreAction::class)->name('store');
         Route::post('/{supplier}', \App\Actions\Supplier\SupplierUpdateAction::class)->name('update');
         Route::delete('/{supplier}', \App\Actions\Supplier\SupplierDeleteAction::class)->name('delete');
+    });
+
+    Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
+        Route::get('/', \App\Actions\Client\ClientIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Client\ClientStoreAction::class)->name('store');
+        Route::post('/{client}', \App\Actions\Client\ClientUpdateAction::class)->name('update');
+        Route::delete('/{client}', \App\Actions\Client\ClientDeleteAction::class)->name('delete');
+
+        Route::group(['prefix' => 'profile/{client}', 'as' => 'profile.'], function () {
+            Route::get('/', [\App\Actions\Client\ClientProfileAction::class, 'viewMainData'])->name('main_data');
+            Route::get('/edit', [\App\Actions\Client\ClientProfileAction::class, 'viewEdit'])->name('edit');
+        });
     });
 });

@@ -3,9 +3,7 @@
 namespace App\Traits;
 
 use App\Classes\Helpmate;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -96,7 +94,7 @@ trait HelpersModelTrait
         return $this->where('company_id', Auth::user()->company_id);
     }
 
-    public function whereOrWhereIn($column, ...$values)
+    public function whereOrWhereIn($column, $values)
     {
         $count_values = count($values);
         if (!$values || $count_values === 0) {
@@ -107,7 +105,7 @@ trait HelpersModelTrait
         return $this->whereIn($column, $values);
     }
 
-    public function filterStatus($column_name, ...$values)
+    public function filterStatus($column_name, $values=[])
     {
         return $this->whereOrWhereIn($column_name, $values);
     }

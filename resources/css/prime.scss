@@ -53,10 +53,14 @@ html[dir='rtl'] {
     text-align: center !important;
 }
 
-.multliselect,.floating-price-input {
+.multliselect,.floating-price-input{
     .p-floatlabel:has(.p-inputwrapper-filled) label ,
     .p-inputwrapper-focus + label {
         top: -5px !important;
         @apply bg-white;
     }
+}
+.floating-textarea label {
+    top: -5px !important;
+    @apply bg-white;
 }

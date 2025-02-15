@@ -38,4 +38,9 @@ return [
     'account_balance' => 'قيمة الحساب',
     'currency_id' => 'العملة',
     'country' => 'الدولة',
+    'currency_name' => 'إسم العملة',
+    'national_id_img_front' => 'صورة الهوية الأمامية',
+    'national_id' => 'رقم الهوية',
+    'national_id_img_back' => 'صورة الهوية الخلفية',
+    'note' => 'ملاحظة',
 ];

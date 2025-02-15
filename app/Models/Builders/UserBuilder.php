@@ -18,7 +18,7 @@ class UserBuilder extends BaseBuilder
             new UserFilter(fn($users) => $this->hasUser($users)),
             new RoleFilter(fn($role) => $this->hasRole($role)),
             new ActiveFilter(fn($active) => $this->isActive($active)),
-            new CreatedAtDateRangeFilter(fn($date) => $this->isCreatedAtRange($date)),
+            new CreatedAtDateRangeFilter(fn($date) => $this->createdAtRange($date)),
         ];
     }
 

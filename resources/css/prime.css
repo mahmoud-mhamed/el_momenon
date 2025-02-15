@@ -42,4 +42,9 @@ html[dir=rtl] .p-select-clear-icon {
   @apply bg-white;
 }
 
+.floating-textarea label {
+  top: -5px !important;
+  @apply bg-white;
+}
+
 /*# sourceMappingURL=prime.css.map */
