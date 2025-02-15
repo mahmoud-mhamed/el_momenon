@@ -47,4 +47,5 @@ return [
     'export_excel' => 'التصدير إكسيل',
     'active' => 'نشط',
     'not_active' => 'غير نشط',
+    'clients' => 'العملاء',
 ];

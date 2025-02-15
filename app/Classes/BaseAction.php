@@ -163,4 +163,12 @@ class BaseAction
         ]);
     }
 
+    public function makeStatisticCard($title,$value,$icon): array
+    {
+        return [
+            'title' => $title,
+            'value' => $value,
+            'icon' => $icon,
+        ];
+    }
 }
