@@ -1,4 +1,20 @@
 {
+  "node_modules/chart.js/auto/auto.js": {
+    "file": "assets/auto-CtCnJkrU.js",
+    "name": "auto",
+    "src": "node_modules/chart.js/auto/auto.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/app-BGPWAB0Y.css"
+    ],
+    "assets": [
+      "assets/bg-statistics-DSeqoFmJ.svg",
+      "assets/bg-chart-statistic-Dbomih6r.svg"
+    ]
+  },
   "node_modules/primeicons/fonts/primeicons.eot": {
     "file": "assets/primeicons-DMOk5skT.eot",
     "src": "node_modules/primeicons/fonts/primeicons.eot"
@@ -20,25 +36,38 @@
     "src": "node_modules/primeicons/fonts/primeicons.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DeMLBiGh.css",
+    "file": "assets/app-BGPWAB0Y.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/css/images/bg-chart-statistic.svg": {
+    "file": "assets/bg-chart-statistic-Dbomih6r.svg",
+    "src": "resources/css/images/bg-chart-statistic.svg"
+  },
+  "resources/css/images/bg-statistics.svg": {
+    "file": "assets/bg-statistics-DSeqoFmJ.svg",
+    "src": "resources/css/images/bg-statistics.svg"
+  },
   "resources/js/app.js": {
-    "file": "assets/app--vc1o93v.js",
+    "file": "assets/app-DD9usrQo.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
+    "dynamicImports": [
+      "node_modules/chart.js/auto/auto.js"
+    ],
     "css": [
-      "assets/app-CfCxh1DM.css",
-      "assets/app-DeMLBiGh.css"
+      "assets/app-CjopX0KC.css",
+      "assets/app-BGPWAB0Y.css"
     ],
     "assets": [
       "assets/primeicons-DMOk5skT.eot",
       "assets/primeicons-C6QP2o4f.woff2",
       "assets/primeicons-WjwUDZjB.woff",
       "assets/primeicons-MpK4pl85.ttf",
-      "assets/primeicons-Dr5RGzOO.svg"
+      "assets/primeicons-Dr5RGzOO.svg",
+      "assets/bg-statistics-DSeqoFmJ.svg",
+      "assets/bg-chart-statistic-Dbomih6r.svg"
     ]
   }
 }
