@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Actions;
+
 Route::group([
     'middleware' => ['guest'],
 ], function () {
@@ -17,7 +18,7 @@ Route::group([
     Route::post('/logout', \App\Actions\User\UserLogoutAction::class)->name('logout');
     Route::get('/', \App\Actions\DashboardHomeAction::class)->name('home');
 
-    Route::group(['prefix' => 'role','as' => 'roles.'], function () {
+    Route::group(['prefix' => 'role', 'as' => 'roles.'], function () {
         Route::get('/', \App\Actions\Roles\RolesIndexAction::class)->name('index');
         Route::get('/create', [\App\Actions\Roles\RolesStoreAction::class, 'viewForm'])->name('create');
         Route::post('/store', \App\Actions\Roles\RolesStoreAction::class)->name('store');
@@ -67,5 +68,16 @@ Route::group([
             Route::get('/', [\App\Actions\Client\ClientProfileAction::class, 'viewMainData'])->name('main_data');
             Route::get('/edit', [\App\Actions\Client\ClientProfileAction::class, 'viewEdit'])->name('edit');
         });
+    });
+
+
+    Route::group(['prefix' => 'bill', 'as' => 'bill.'], function () {
+        Route::get('/', \App\Actions\Bill\BillIndexAction::class)->name('index');
+        Route::get('/create', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('create');
+        Route::post('/store', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('store');
+        Route::get('/{bill}/edit', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('edit');
+        Route::post('/{bill}/update', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('update');
+        Route::delete('/{bill}', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('delete');
+
     });
 });

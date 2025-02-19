@@ -18,6 +18,10 @@ trait EnumOptionsTrait
             return $item;
         });
     }
+    public static function getRandomCase()
+    {
+        return collect(self::cases())->random();
+    }
 
     public static function getOptionsIdNameData(): Collection
     {
@@ -44,6 +48,10 @@ trait EnumOptionsTrait
         return collect(self::cases())->where('value',$value)->first();
     }
 
+    public static function getFileName():string
+    {
+        return class_basename(self::class);
+    }
     public static function names(): array
     {
         return array_column(self::cases(), 'name');
@@ -58,4 +66,10 @@ trait EnumOptionsTrait
     {
         return array_combine(self::values(), self::names());
     }
+
+    public function translate(): string
+    {
+        return self::getTrans($this);
+    }
+
 }

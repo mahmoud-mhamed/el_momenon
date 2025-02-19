@@ -50,4 +50,9 @@ return [
     Abilities::M_CLIENT_EDIT->value => $update,
     Abilities::M_CLIENT_DELETE->value => $delete,
     Abilities::M_CLIENT_PROFILE->value => $viewProfile,
+
+    Abilities::M_BILL_INDEX->value => $index,
+    Abilities::M_BILL_CREATE->value => $create,
+    Abilities::M_BILL_EDIT->value => $update,
+    Abilities::M_BILL_DELETE->value => $delete,
 ];

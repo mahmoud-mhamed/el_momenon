@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Actions\Bill;
+
+use App\Classes\Abilities;
+use App\Classes\BaseAction;
+use App\Enums\ModuleNameEnum;
+use App\Models\Bill;
+use App\Models\Supplier;
+use Inertia\Inertia;
+
+class BillIndexAction extends BaseAction
+{
+    protected Abilities $ability=Abilities::M_BILL_INDEX;
+
+    public function handle()
+    {
+        $this->useBreadcrumb();
+        $query = Bill::query()->with('supplier','client','disabledClient');
+        $data['rows'] = $query->latest('id')->paginate();
+        return Inertia::render('Bill/Index',compact('data'));
+    }
+
+    public function useBreadcrumb($append_breadcrumb = []): void
+    {
+        $this->breadcrumb([
+            ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::BILL), 'url' => route('dashboard.bill.index'), 'ability' => $this->ability],
+            ...$append_breadcrumb
+        ]);
+    }
+
+}

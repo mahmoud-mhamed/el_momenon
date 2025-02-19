@@ -49,4 +49,6 @@ return [
     'not_active' => 'غير نشط',
     'clients' => 'العملاء',
     'ClientInCurrentYearBarChart' => 'العملاء في العام الحالي',
+    'purchase_data' => 'بيانات الشراء',
+    'selling_data' => 'بيانات البيع',
 ];
