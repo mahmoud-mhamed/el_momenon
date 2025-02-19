@@ -13,4 +13,6 @@ enum ModuleNameEnum: string
     case SUPPLIER='supplier';
     case CLIENT='client';
 
+    case BILL='bill';
+
 }

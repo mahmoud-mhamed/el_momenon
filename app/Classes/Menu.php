@@ -41,6 +41,12 @@ class Menu
                 'href' => \route('dashboard.supplier.index'),
                 'active' => Str::startsWith($current_route_name, 'dashboard.supplier.')
             ];
+
+        if (BouncerService::checkAbility(Abilities::M_BILL_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::BILL->value), 'icon' => 'pi-receipt',
+                'href' => \route('dashboard.bill.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.bill.')
+            ];
         return $response;
     }
 
