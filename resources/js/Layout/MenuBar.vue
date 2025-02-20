@@ -7,7 +7,9 @@
             submenu: '!z-[99999]',
         }"
     >
-
+        <template #start>
+            <ElSearchInput v-if="$page.props.allowSearch"/>
+        </template>
         <template #item="{ item, props, hasSubmenu, root }">
 
         </template>
@@ -40,6 +42,7 @@ import {Badge, Menubar} from "primevue";
 import {asset} from "@/Helpers/Functions.js";
 import UserMenu from "@/Layout/Partial/UserMenu.vue";
 import Popover from "primevue/popover";
+import ElSearchInput from "@/Components/Form/ElSearchInput.vue";
 
 const ref_popover = ref();
 const togglePopover = (event) => {

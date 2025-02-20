@@ -16,7 +16,10 @@ class BillIndexAction extends BaseAction
     public function handle()
     {
         $this->useBreadcrumb();
-        $query = Bill::query()->with('supplier','client','disabledClient');
+        $this->allowSearch();
+        $query = Bill::query()
+            ->search(['notes','policy_number','chassis_number'])
+            ->with('supplier','client','disabledClient');
         $data['rows'] = $query->latest('id')->paginate();
         return Inertia::render('Bill/Index',compact('data'));
     }

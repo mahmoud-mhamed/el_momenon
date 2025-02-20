@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use App\Models\Builders\BillBuilder;
 use App\Enums\BillPurchaseTypeEnum;
 use App\Enums\BillStatusEnum;
 use App\Observers\BillObserver;
@@ -68,5 +70,22 @@ class Bill extends BaseModel
     public function disabledClient(): BelongsTo
     {
         return $this->belongsTo(Client::class, 'disabled_client_id');
+    }
+
+    /**
+     * @return BillBuilder
+     */
+    public static function query(): BillBuilder
+    {
+        return parent::query();
+    }
+
+    /**
+     * @param $query
+     * @return BillBuilder
+     */
+    public function newEloquentBuilder($query): BillBuilder
+    {
+        return new BillBuilder($query);
     }
 }

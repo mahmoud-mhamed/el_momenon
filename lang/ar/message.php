@@ -54,4 +54,5 @@ return [
     'disabled_client_data' => 'بيانات المعاق',
     'client_data' => 'بيانات العميل',
     'please_check_data' => 'برجاء التحقق من البيانات',
+    'search_here' => 'ابحث هنا',
 ];
