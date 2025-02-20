@@ -7,6 +7,7 @@ use App\Enums\BillStatusEnum;
 use App\Observers\BillObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int supplier_id
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read Client $client
  * @property-read Client disabledClient
  * @property-read Supplier supplier
+ * @property-read Archive[] $archives
  */
 #[ObservedBy([BillObserver::class])]
 class Bill extends BaseModel
@@ -47,6 +49,11 @@ class Bill extends BaseModel
 
     ];
 
+
+    public function archives(): HasMany
+    {
+        return $this->hasMany(Archive::class);
+    }
 
     public function client(): BelongsTo
     {

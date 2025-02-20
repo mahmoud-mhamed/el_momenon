@@ -25,23 +25,31 @@ class BillStoreAction extends BaseAction
         $validated_data = $request->validated();
         \DB::beginTransaction();
         $bill = Bill::create($validated_data);
-        foreach (['disabled_client_front_national_id', 'disabled_client_back_national_id', 'disabled_client_envelope'] as $item) {
-            if (data_get($validated_data, $item) && is_file($validated_data[$item])) {
-                Archive::create([
-                    'file' => $validated_data[$item],
-                    'bill_id' => $bill->id,
-                    'client_id' => $bill->client_id,
-                    'disabled_client_id' => $bill->disabled_client_id,
-                    'collection_name' => $item,
-                ]);
-            }
-        }
+        $this->handelFiles($bill,$validated_data);
 
         \DB::commit();
         $this->makeSuccessSessionMessage();
         return back();
     }
 
+    public function handelFiles(Bill $bill,$validated_data): void
+    {
+        foreach (['disabled_client_front_national_id', 'disabled_client_back_national_id', 'disabled_client_envelope'] as $item) {
+            if (data_get($validated_data, $item) && is_file($validated_data[$item])) {
+                $new_data=[
+                    'collection_name' => $item,
+                    'bill_id' => $bill->id,
+                ];
+                Archive::query()->where($new_data)->delete();
+                Archive::create([
+                    'file' => $validated_data[$item],
+                    'client_id' => $bill->client_id,
+                    'disabled_client_id' => $bill->disabled_client_id,
+                    ...$new_data
+                ]);
+            }
+        }
+    }
     public function viewForm(): \Inertia\Response|\Inertia\ResponseFactory
     {
         $this->checkAbility($this->ability);

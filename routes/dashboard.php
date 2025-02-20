@@ -75,8 +75,8 @@ Route::group([
         Route::get('/', \App\Actions\Bill\BillIndexAction::class)->name('index');
         Route::get('/create', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('create');
         Route::post('/store', \App\Actions\Bill\BillStoreAction::class)->name('store');
-        Route::get('/{bill}/edit', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('edit');
-        Route::post('/{bill}/update', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('update');
+        Route::get('/{bill}/edit', [\App\Actions\Bill\BillUpdateAction::class, 'viewForm'])->name('edit');
+        Route::post('/{bill}/update', \App\Actions\Bill\BillUpdateAction::class)->name('update');
         Route::delete('/{bill}', Actions\Bill\BillDeleteAction::class)->name('delete');
 
     });
