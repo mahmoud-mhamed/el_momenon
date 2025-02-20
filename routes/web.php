@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/version', function () {
-    return 1.2;
+    return 1.3;
 });
 Route::get('/', function () {
     return \Inertia\Inertia::render('Soon');
@@ -12,5 +12,10 @@ Route::get('/', function () {
 Route::get('/command', function () {
     Artisan::call('migrate --force');
     Artisan::call('storage:link');
+    return 'success';
+});
+Route::get('/fresh', function () {
+    Artisan::call('migrate:fresh --force');
+    Artisan::call('db:seed --force');
     return 'success';
 });

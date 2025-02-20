@@ -7,7 +7,7 @@
                     <ElFloatingInput :form="el_form" name="car_type" required/>
                     <ElFloatingInput :form="el_form" name="chassis_number" required/>
                     <ElFloatingDatePicker :form="el_form" name="purchase_date" required/>
-                    <ElFloatingDropdown :form="el_form" name="purchase_type" :options="form_data.purchase_types"/>
+                    <ElFloatingDropdown :form="el_form" required name="purchase_type" :options="form_data.purchase_types"/>
 
                     <hr class="col-span-full"/>
                     <ElFloatingInput :form="el_form" name="shipping_type"/>
