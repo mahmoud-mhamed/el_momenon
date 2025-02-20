@@ -74,10 +74,10 @@ Route::group([
     Route::group(['prefix' => 'bill', 'as' => 'bill.'], function () {
         Route::get('/', \App\Actions\Bill\BillIndexAction::class)->name('index');
         Route::get('/create', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('create');
-        Route::post('/store', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('store');
+        Route::post('/store', \App\Actions\Bill\BillStoreAction::class)->name('store');
         Route::get('/{bill}/edit', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('edit');
         Route::post('/{bill}/update', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('update');
-        Route::delete('/{bill}', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('delete');
+        Route::delete('/{bill}', Actions\Bill\BillDeleteAction::class)->name('delete');
 
     });
 });

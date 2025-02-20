@@ -52,11 +52,15 @@ return [
     'chassis_number' => 'رقم الشاسية',
     'car_type' => 'نوع السيارة',
     'purchase_date' => 'تاريخ الشراء',
-    'shipping_type' => 'نوع الشحن',
+    'shipping_type' => 'طريقة الشحن',
     'policy_number' => 'رقم بوليصة',
     'notes' => 'ملاحظات',
     'purchase_type' => 'طريقة الشراء',
     'shipping_amount' => 'قيمة الشحن',
     'supplier_id' => 'المورد',
     'client_id' => 'العميل',
+    ...(Lang::get('enums.ArchiveCollectionNameEnum')),
+    'id' => '#',
+
+
 ];

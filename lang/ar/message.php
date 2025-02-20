@@ -51,4 +51,6 @@ return [
     'ClientInCurrentYearBarChart' => 'العملاء في العام الحالي',
     'purchase_data' => 'بيانات الشراء',
     'selling_data' => 'بيانات البيع',
+    'disabled_client_data' => 'بيانات المعاق',
+    'client_data' => 'بيانات العميل',
 ];

@@ -33,19 +33,19 @@ const props = defineProps({
                     <ElRouteBillProfile :model="row.data"/>
                 </template>
             </Column>
-            <Column :header="$t('column.name')">
+            <Column :header="$t('column.supplier_id')">
                 <template #body="row">
                     <ElRouteSupplierProfile :model="row.data.supplier"/>
                 </template>
             </Column>
-            <Column :header="$t('column.client')">
+            <Column :header="$t('column.client_id')">
                 <template #body="row">
-                    <ElRouteClientProfile :value="row.data.client"/>
+                    <ElRouteClientProfile :model="row.data.client"/>
                 </template>
             </Column>
             <Column :header="$t('column.disabled_client_id')">
                 <template #body="row">
-                    <ElRouteClientProfile :value="row.data.disabled_client"/>
+                    <ElRouteClientProfile :model="row.data.disabled_client"/>
                 </template>
             </Column>
             <Column :header="$t('column.car_type')">
@@ -69,7 +69,7 @@ const props = defineProps({
                     <ElActionMenu>
                         <ElActionMenuEdit v-ability="Ability.M_BILL_EDIT" :href="route('dashboard.bill.edit',row.data.id)"/>
                         <ElActionMenuDeleteAction v-ability="Ability.M_BILL_DELETE"
-                                                  :dialog-message="row.data.id"
+                                                  :dialog-message="'# '+row.data.id"
                                                   :href="route('dashboard.bill.delete',row.data.id)"/>
                     </ElActionMenu>
                 </template>

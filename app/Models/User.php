@@ -37,7 +37,6 @@ class User extends Authenticatable
     //from base model
     use PaginatableTrait, EnumCastAppendAttributeTrait,
         SoftDeletes, ModelDateTextTrait, MorphModelTriggerTrait;
-    use BelongsToCompanyTrait;
     use LogsTrait;
     use FileUploadTrait;
 

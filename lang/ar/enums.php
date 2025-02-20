@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ArchiveCollectionNameEnum;
 use App\Enums\BillPurchaseTypeEnum;
 
 return [
@@ -22,5 +23,10 @@ return [
         BillPurchaseTypeEnum::INITIATIVE->value => 'مبادرة',
         BillPurchaseTypeEnum::DISABILITY_ANSWER->value => 'جواب إعاقة',
         BillPurchaseTypeEnum::PERSONAL->value => 'شخصي',
-    ]
+    ],
+    \App\Enums\ArchiveCollectionNameEnum::getFileName()=>[
+        ArchiveCollectionNameEnum::DISABLED_CLIENT_FRONT_NATIONAL_ID->value => 'صورة البطاقة الشخصية الأمامية',
+        ArchiveCollectionNameEnum::DISABLED_CLIENT_BACK_NATIONAL_ID->value => 'صورة البطاقة الشخصية الخلفية',
+        ArchiveCollectionNameEnum::DISABLED_CLIENT_ENVELOPE->value => 'الجواب',
+    ],
 ];
