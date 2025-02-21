@@ -11,15 +11,18 @@ use Inertia\Inertia;
 
 class SupplierIndexAction extends BaseAction
 {
-    protected Abilities $ability=Abilities::M_SUPPLIER_INDEX;
+    protected Abilities $ability = Abilities::M_SUPPLIER_INDEX;
 
     public function handle(): \Inertia\Response
     {
         $this->useBreadcrumb();
-        $query = Supplier::query()->with('currency');
-        $data=$this->getFormCreateUpdateData();
+        $query = Supplier::query()
+            ->search(['name', 'phone', 'country'])
+            ->with('currency');
+        $data = $this->getFormCreateUpdateData();
+        $this->allowSearch();
         $data['rows'] = $query->paginate();
-        return Inertia::render('Supplier/Index',compact('data'));
+        return Inertia::render('Supplier/Index', compact('data'));
     }
 
     public function getFormCreateUpdateData(): array
@@ -30,6 +33,7 @@ class SupplierIndexAction extends BaseAction
             ]
         ];
     }
+
     public function useBreadcrumb($append_breadcrumb = []): void
     {
         $this->breadcrumb([

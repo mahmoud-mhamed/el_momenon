@@ -17,9 +17,13 @@ class ClientIndexAction extends BaseAction
     public function handle(): \Inertia\Response
     {
         $this->useBreadcrumb();
-        $query = Client::query();
+        $query = Client::query()
+            ->search(['name', 'phone', 'national_id', 'note']);
+        $this->allowSearch();
         $data = $this->getFormCreateUpdateData();
         $data['rows'] = $query->paginate();
+        $this->useFilter(Client::query()->getFilters());
+
         return Inertia::render('Client/Index', compact('data'));
     }
 

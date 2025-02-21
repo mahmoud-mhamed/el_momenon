@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use App\Models\Builders\SupplierBuilder;
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -27,5 +29,22 @@ class Supplier extends BaseModel
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
+    }
+
+    /**
+     * @return SupplierBuilder
+     */
+    public static function query(): SupplierBuilder
+    {
+        return parent::query();
+    }
+
+    /**
+     * @param $query
+     * @return SupplierBuilder
+     */
+    public function newEloquentBuilder($query): SupplierBuilder
+    {
+        return new SupplierBuilder($query);
     }
 }

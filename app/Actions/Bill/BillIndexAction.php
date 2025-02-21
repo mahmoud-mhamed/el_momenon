@@ -11,17 +11,20 @@ use Inertia\Inertia;
 
 class BillIndexAction extends BaseAction
 {
-    protected Abilities $ability=Abilities::M_BILL_INDEX;
+    protected Abilities $ability = Abilities::M_BILL_INDEX;
 
     public function handle()
     {
         $this->useBreadcrumb();
         $this->allowSearch();
         $query = Bill::query()
-            ->search(['notes','policy_number','chassis_number'])
-            ->with('supplier','client','disabledClient');
+            ->filter()
+            ->search(['notes', 'policy_number', 'chassis_number'])
+            ->with('supplier', 'client', 'disabledClient');
+
+        $this->useFilter(Bill::query()->getFilters());
         $data['rows'] = $query->latest('id')->paginate();
-        return Inertia::render('Bill/Index',compact('data'));
+        return Inertia::render('Bill/Index', compact('data'));
     }
 
     public function useBreadcrumb($append_breadcrumb = []): void

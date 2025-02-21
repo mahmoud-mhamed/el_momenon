@@ -8,9 +8,6 @@ import {useQuery} from "@/Helpers/useQuery.js";
 const search=ref(useQuery().get('search'));
 const processing=ref(false);
 const searchD = refDebounced(search, 500);
-const show_dialog_filter = ref(false);
-import Dialog from 'primevue/dialog';
-import FilterForm from "@/Components/Filter/FilterForm.vue";
 
 watch(searchD, (search) => {
     processing.value=true;

@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Arrayable;
 
 final class ActiveFilter extends Filter
 {
-    public FilterTypeEnum $filterTypeEnum=FilterTypeEnum::DROPDOWN;
+    public FilterTypeEnum $filterTypeEnum = FilterTypeEnum::DROPDOWN;
     public string $key = 'is_active';
     public bool $isInt = true;
 

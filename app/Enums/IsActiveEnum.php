@@ -15,7 +15,7 @@ enum IsActiveEnum: int
     public static function getOptionsData(): Collection
     {
         return collect(self::cases())->map(function ($row) {
-            $item['id'] = (bool)$row->value;
+            $item['id'] = $row->value;
             $item['name'] = $row == self::ACTIVE ? __('message.active') : __('message.not_active');
             return $item;
         });
