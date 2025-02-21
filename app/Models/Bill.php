@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+
+use App\Models\Builders\BillBuilder;
 use App\Enums\BillPurchaseTypeEnum;
-use App\Traits\EnumCastAppendAttributeTrait;use App\Enums\BillStatusEnum;
+use App\Enums\BillStatusEnum;
+use App\Observers\BillObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int supplier_id
@@ -28,8 +32,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read Client $client
  * @property-read Client disabledClient
  * @property-read Supplier supplier
-  * @property-read string $purchase_type_text
+ * @property-read Archive[] $archives
  */
+#[ObservedBy([BillObserver::class])]
 class Bill extends BaseModel
 {
     protected $fillable = [
@@ -39,13 +44,18 @@ class Bill extends BaseModel
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
     ];
 
-    protected $casts = [       'purchase_type' => BillPurchaseTypeEnum::class,
- 
+    protected $casts = [
+        'purchase_type' => BillPurchaseTypeEnum::class,
         'status' => BillStatusEnum::class,
 
 
     ];
 
+
+    public function archives(): HasMany
+    {
+        return $this->hasMany(Archive::class);
+    }
 
     public function client(): BelongsTo
     {
@@ -60,5 +70,22 @@ class Bill extends BaseModel
     public function disabledClient(): BelongsTo
     {
         return $this->belongsTo(Client::class, 'disabled_client_id');
+    }
+
+    /**
+     * @return BillBuilder
+     */
+    public static function query(): BillBuilder
+    {
+        return parent::query();
+    }
+
+    /**
+     * @param $query
+     * @return BillBuilder
+     */
+    public function newEloquentBuilder($query): BillBuilder
+    {
+        return new BillBuilder($query);
     }
 }

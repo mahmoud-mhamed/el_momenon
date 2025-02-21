@@ -6,8 +6,8 @@
             <el-floating-input :form="el_form" name="national_id" required/>
             <el-floating-textarea :form="el_form" name="note" class="col-span-full mt-5 mb-5"/>
             <div class="col-span-full flex justify-between">
-                <ElAvatarInput :form="el_form" :required="is_create" :old-image-preview="el_form.national_id_img_front_url" name="national_id_img_front"/>
-                <ElAvatarInput :form="el_form" :required="is_create" :old-image-preview="el_form.national_id_img_back_url" name="national_id_img_back"/>
+                <ElAvatarInput :form="el_form" :old-image-preview="el_form.national_id_img_front_url" name="national_id_img_front"/>
+                <ElAvatarInput :form="el_form" :old-image-preview="el_form.national_id_img_back_url" name="national_id_img_back"/>
             </div>
         </div>
 

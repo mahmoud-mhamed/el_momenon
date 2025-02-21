@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use App\Models\Builders\CurrencyBuilder;
 use App\Models\BaseModel;
 
 /**
@@ -20,4 +22,21 @@ class Currency extends BaseModel
     protected $casts = [
         'is_default' => 'boolean',
     ];
+
+    /**
+     * @return CurrencyBuilder
+     */
+    public static function query(): CurrencyBuilder
+    {
+        return parent::query();
+    }
+
+    /**
+     * @param $query
+     * @return CurrencyBuilder
+     */
+    public function newEloquentBuilder($query): CurrencyBuilder
+    {
+        return new CurrencyBuilder($query);
+    }
 }

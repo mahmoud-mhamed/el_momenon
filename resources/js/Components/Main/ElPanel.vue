@@ -3,7 +3,7 @@
         <header class="flex justify-between">
             <div>
                 <div class="flex gap-2">
-                    <ElBreadcrumb class="dark:text-white" v-if="showBreadcrumb"/>
+                    <ElBreadcrumb class="dark:text-white"/>
                 </div>
             </div>
             <div>
@@ -12,11 +12,8 @@
                 </div>
             </div>
         </header>
-        <div >
-            <div >
-                <ShowFilterFormResult v-if="showFilters"/>
-                <!-- <FilterForm :filters="$page.props.filters"/> -->
-            </div>
+        <div>
+            <FilterForm v-if="usePage().props.filters" :filters="usePage().props.filters" class="mb-3"/>
             <slot/>
         </div>
     </main>
@@ -24,18 +21,8 @@
 
 <script setup>
 import ElBreadcrumb from "@/Components/Main/ElBreadcrumb.vue";
-import ShowFilterFormResult from "@/Components/Filter/ShowFilterFormResult.vue";
-const props = defineProps({
-    showBreadcrumb: {
-        type: Boolean,
-        default: true
-    },
-    showFilters: {
-        type: Boolean,
-        default: true
-    },
-})
-
+import FilterForm from "@/Components/Filter/FilterForm.vue";
+import {usePage} from "@inertiajs/vue3";
 </script>
 
 

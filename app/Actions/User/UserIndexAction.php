@@ -22,7 +22,7 @@ class UserIndexAction extends BaseAction
             ->filter()
             ->with('roles')
             ->latest('id')
-            ->search(['name','email']);
+            ->search(['name', 'email']);
         if ($this->requestIsExport(Abilities::M_USERS_INDEX_EXPORT)) {
             return $this->exportExcel($query->get(), ['id', 'name', 'email', 'is_active_text', 'created_at_text'], 'users');
         }
@@ -33,7 +33,7 @@ class UserIndexAction extends BaseAction
 
     public function getCreateUpdateData(): array
     {
-        $roles = DB::table('roles')->get(['id', 'name','title']);
+        $roles = DB::table('roles')->get(['id', 'name', 'title']);
         return [
             'form_data' => [
                 'roles' => $roles,

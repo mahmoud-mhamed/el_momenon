@@ -12,12 +12,13 @@ trait EnumOptionsTrait
 {
     public static function getOptionsData(): Collection
     {
-        return collect(self::cases())->map(function ($row){
+        return collect(self::cases())->map(function ($row) {
             $item['id'] = $row;
             $item['name'] = self::getTrans($row);
             return $item;
         });
     }
+
     public static function getRandomCase()
     {
         return collect(self::cases())->random();
@@ -25,7 +26,7 @@ trait EnumOptionsTrait
 
     public static function getOptionsIdNameData(): Collection
     {
-        return collect(self::cases())->map(function ($row){
+        return collect(self::cases())->map(function ($row) {
             $item['id'] = $row->value;
             $item['name'] = self::getTrans($row);
             return $item;
@@ -34,24 +35,25 @@ trait EnumOptionsTrait
 
     public static function getOptionsPluckData(): array
     {
-        $options=self::getOptionsData()->toArray();
-        return array_combine(self::values(), array_column($options,'name'));
+        $options = self::getOptionsData()->toArray();
+        return array_combine(self::values(), array_column($options, 'name'));
     }
 
-    public static function getTrans($case=null, $locale= null):?string
+    public static function getTrans($case = null, $locale = null): ?string
     {
-        return $case?__('enums.' . class_basename(__CLASS__) . '.' . ($case?->value??$case), [], $locale):null;
+        return $case ? __('enums.' . class_basename(__CLASS__) . '.' . ($case?->value ?? $case), [], $locale) : null;
     }
 
     public static function getEnumFromValue($value)
     {
-        return collect(self::cases())->where('value',$value)->first();
+        return collect(self::cases())->where('value', $value)->first();
     }
 
-    public static function getFileName():string
+    public static function getFileName(): string
     {
         return class_basename(self::class);
     }
+
     public static function names(): array
     {
         return array_column(self::cases(), 'name');
@@ -72,4 +74,8 @@ trait EnumOptionsTrait
         return self::getTrans($this);
     }
 
+    public function getValue(): string
+    {
+        return $this->value;
+    }
 }

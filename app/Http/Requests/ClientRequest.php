@@ -27,8 +27,8 @@ class ClientRequest extends FormRequest
                 Rule::unique('clients', 'national_id')->where('deleted_at', null)->ignore($this->client?->id),
             ],
             'note' => ['nullable', new SmallTextRule()],
-            'national_id_img_front' => [$required_in_create, new AvatarRule()],
-            'national_id_img_back' => [$required_in_create, new AvatarRule()],
+            'national_id_img_front' => ['nullable', new AvatarRule()],
+            'national_id_img_back' => ['nullable', new AvatarRule()],
         ];
     }
 }

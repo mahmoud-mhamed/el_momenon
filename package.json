@@ -25,6 +25,7 @@
         "@mayasabha/ckeditor4-vue3": "^1.0.9",
         "@primevue/themes": "^4.2.5",
         "@vitejs/plugin-vue": "^5.2.1",
+        "@vueuse/core": "^12.7.0",
         "apexcharts": "^4.4.0",
         "chart.js": "^4.4.7",
         "chartjs-plugin-datalabels": "^2.2.0",

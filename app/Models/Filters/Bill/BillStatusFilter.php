@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Models\Filters;
+namespace App\Models\Filters\Bill;
 
-use App\Enums\IsActiveEnum;
-use App\Classes\Filter\FilterTypeEnum;
 use App\Classes\Filter\Filter;
+use App\Classes\Filter\FilterTypeEnum;
+use App\Enums\BillStatusEnum;
 use Illuminate\Contracts\Support\Arrayable;
 
-final class ActiveFilter extends Filter
+final class BillStatusFilter extends Filter
 {
     public FilterTypeEnum $filterTypeEnum = FilterTypeEnum::DROPDOWN;
-    public string $key = 'is_active';
-    public bool $isInt = true;
+    public string $key = 'status';
 
     public function __construct(public ?\Closure $callback = null)
     {
@@ -19,6 +18,6 @@ final class ActiveFilter extends Filter
 
     public static function getData(): null|Arrayable|array|string
     {
-        return IsActiveEnum::getOptionsData();
+        return BillStatusEnum::getOptionsData();
     }
 }

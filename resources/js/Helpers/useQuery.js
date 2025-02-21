@@ -1,10 +1,10 @@
 export function useQuery() {
     const params = new URLSearchParams(window.location.search);
 
-    function get(name) {
-        // for (const [key, value] of params.entries()) {
-        // console.log(`${key}, ${value}`);
-        // }
+    function get(name,isInt=false) {
+        if (isInt) {
+            return getInt(name);
+        }
         const value = params.get(name);
         return value ? value : null;
     }
@@ -20,7 +20,7 @@ export function useQuery() {
     function getArray(name) {
         const value = [];
         for (const [key, val] of params.entries()) {
-            if(key.slice(0, key.indexOf("[")) == name)
+            if(key.slice(0, key.indexOf("[")) === name)
                 value.push(val);
         }
         // console.log('value :>> ', value);
@@ -35,5 +35,5 @@ export function useQuery() {
         value = isNaN(parseInt(value)) ? null : [parseInt(value)];
         return value;
     }
-    return {get, getInt, getArray, getArrayInt, params};
+    return {get, getArray, getArrayInt, params};
 }

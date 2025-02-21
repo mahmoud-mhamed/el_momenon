@@ -3,10 +3,9 @@
 namespace App\Models\Builders;
 
 use App\Classes\Filter\UseFilter;
-use App\Models\Filters\UserFilter;
 use App\Models\Filters\ActiveFilter;
-use App\Models\Filters\User\RoleFilter;
 use App\Models\Filters\CreatedAtDateRangeFilter;
+use App\Models\Filters\User\RoleFilter;
 
 class UserBuilder extends BaseBuilder
 {
@@ -15,30 +14,17 @@ class UserBuilder extends BaseBuilder
     public function filters(): array
     {
         return [
-            new UserFilter(fn($users) => $this->hasUser($users)),
             new RoleFilter(fn($role) => $this->hasRole($role)),
             new ActiveFilter(fn($active) => $this->isActive($active)),
             new CreatedAtDateRangeFilter(fn($date) => $this->createdAtRange($date)),
         ];
     }
 
-    /**
-     * @param array|null $users
-     * @return $this
-     */
-    final public function hasUser(?array $users): static
-    {
-        return $this->when(count($users), fn($q) => $q->whereIn('id', $users));
-    }
 
-    /**
-     * @param array|null $role
-     * @return $this
-     */
-    final public function hasRole(?array $role): static
+    final public function hasRole(?int $role): static
     {
-        return $this->when(count($role), function($q) use ($role) {
-            $q->whereHas('roles', fn($z) => $z->whereIn('roles.id', $role));
+        return $this->when($role, function($q) use ($role) {
+            $q->whereHas('roles', fn($z) => $z->where('roles.id', $role));
         });
     }
 }

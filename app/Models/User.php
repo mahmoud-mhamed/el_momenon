@@ -4,10 +4,6 @@ namespace App\Models;
 
 
 use App\Models\Builders\UserBuilder;
-
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Enums\IsActiveEnum;
-use App\Traits\BelongsToCompanyTrait;
 use App\Traits\EnumCastAppendAttributeTrait;
 use App\Traits\FileUploadTrait;
 use App\Traits\LogsTrait;
@@ -19,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 /**
  * @property string name
@@ -37,7 +35,6 @@ class User extends Authenticatable
     //from base model
     use PaginatableTrait, EnumCastAppendAttributeTrait,
         SoftDeletes, ModelDateTextTrait, MorphModelTriggerTrait;
-    use BelongsToCompanyTrait;
     use LogsTrait;
     use FileUploadTrait;
 

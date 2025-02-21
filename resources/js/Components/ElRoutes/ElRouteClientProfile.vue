@@ -2,6 +2,7 @@
     <ElRoute v-if="model?.id" :ability="Ability.M_CLIENT_PROFILE" :href="route('dashboard.client.profile.main_data',model.id)">
         <template #title> {{ model.name }}</template>
     </ElRoute>
+    <ElText v-else/>
 </template>
 
 <script setup>

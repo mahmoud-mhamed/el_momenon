@@ -11,15 +11,17 @@ use Inertia\Inertia;
 
 class CurrencyIndexAction extends BaseAction
 {
-    protected Abilities $ability=Abilities::M_CURRENCIES_INDEX;
+    protected Abilities $ability = Abilities::M_CURRENCIES_INDEX;
 
-    public function handle()
+    public function handle(): \Inertia\Response
     {
         $this->useBreadcrumb();
-        $query = Currency::query();
+        $this->allowSearch();
+        $query = Currency::query()
+            ->search(['name', 'code']);
         $data['rows'] = $query->paginate();
-        $data['default_currency'] = Currency::query()->where('is_default',true)->first();
-        return Inertia::render('Currency/Index',compact('data'));
+        $data['default_currency'] = Currency::query()->where('is_default', true)->first();
+        return Inertia::render('Currency/Index', compact('data'));
     }
 
     public function useBreadcrumb($append_breadcrumb = []): void

@@ -11,7 +11,7 @@ use Illuminate\Contracts\Support\Arrayable;
 
 final class RoleFilter extends Filter
 {
-    public FilterTypeEnum $filterTypeEnum=FilterTypeEnum::MULTI_SELECT;
+    public FilterTypeEnum $filterTypeEnum=FilterTypeEnum::DROPDOWN;
     public string $key = 'role';
     public bool $isInt = true;
 

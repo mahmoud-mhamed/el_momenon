@@ -1,6 +1,6 @@
 <template>
 
-    <aside>
+    <aside class="floating-price-input">
         <FloatLabel>
 
             <DatePicker
