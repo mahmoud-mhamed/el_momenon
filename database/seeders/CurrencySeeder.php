@@ -16,7 +16,7 @@ class CurrencySeeder extends Seeder
             return;
         Currency::create([
             'name' => 'جنية مصري',
-            'code' => 'ج.م',
+            'code' => 'ج م',
             'is_default' => true,
             'equal_value' => 1,
         ]);

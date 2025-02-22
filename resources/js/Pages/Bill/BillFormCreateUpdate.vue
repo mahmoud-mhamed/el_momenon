@@ -7,40 +7,49 @@
                     <ElFloatingInput :form="el_form" name="car_type" required/>
                     <ElFloatingInput :form="el_form" name="chassis_number" required/>
                     <ElFloatingDatePicker :form="el_form" name="purchase_date" required/>
-                    <ElFloatingDropdown :form="el_form" required name="purchase_type" :options="form_data.purchase_types"/>
-
-                    <hr class="col-span-full"/>
-                    <ElFloatingInput :form="el_form" name="shipping_type"/>
-                    <ElFloatingDatePicker :form="el_form" name="shipping_date"/>
-                    <ElFloatingPrice :currency="supplier_currency" :form="el_form" name="shipping_amount"/>
-                    <ElFloatingInput :form="el_form" name="policy_number"/>
+                    <ElFloatingDropdown :form="el_form" required name="purchase_type"
+                                        :options="form_data.purchase_types"/>
 
                     <hr class="col-span-full"/>
                     <ElFloatingDropdown :form="el_form" name="status" required :options="form_data.status"/>
                     <ElFloatingPrice :currency="supplier_currency" required :form="el_form" name="purchase_price"/>
+
+                    <hr class="col-span-full"/>
+                    <div class="grid col-span-full md:grid-cols-4 gap-4">
+                        <ElFloatingInput :form="el_form" name="shipping_type"/>
+                        <ElFloatingDatePicker :form="el_form" name="shipping_date"/>
+                        <ElFloatingPrice :currency="supplier_currency" :form="el_form" name="shipping_amount"/>
+                        <ElFloatingInput :form="el_form" name="policy_number"/>
+                    </div>
                 </div>
             </ElCardWithTitle>
             <ElCardWithTitle :title="$t('message.client_data')">
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <ElFloatingDropdown :form="el_form" name="client_id" required :options="form_data.clients"/>
                     <ElFloatingPrice :currency="supplier_currency" required :form="el_form" name="selling_price"/>
                     <ElFloatingPrice :currency="form_data.default_currency" required :form="el_form"
                                      name="currency_equal_value"/>
+                    <ElFloatingPrice :currency="form_data.default_currency" required :form="el_form"
+                                     name="selling_price_equal_value"/>
+                    <ElAvatarInput :form="el_form" :old-image-preview="props.row?.client_national_id_url"
+                                   name="client_national_id"/>
                     <hr class="col-span-full"/>
                     <ElFloatingTextarea class="col-span-full" :form="el_form" name="notes"/>
                 </div>
             </ElCardWithTitle>
 
-            <ElCardWithTitle :title="$t('message.disabled_client_data')">
+            <ElCardWithTitle
+                v-if="el_form.purchase_type && el_form.purchase_type !== Enum.BillPurchaseTypeEnum.PERSONAL"
+                :title="el_form.purchase_type === Enum.BillPurchaseTypeEnum.DISABILITY_ANSWER?$t('message.disabled_client_data'):$t('message.initiative_data')">
                 <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     <ElFloatingDropdown :form="el_form" name="disabled_client_id" :options="form_data.clients"/>
 
-                    <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_front_national_id_url"
-                                   name="disabled_client_front_national_id"/>
-                    <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_back_national_id_url"
-                                   name="disabled_client_back_national_id"/>
+                    <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_national_id_url"
+                                   name="disabled_client_national_id"/>
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_envelope_url"
                                    name="disabled_client_envelope"/>
+                    <ElAvatarInput :form="el_form" :old-image-preview="props.row?.smart_card_url"
+                                   name="smart_card"/>
                 </div>
             </ElCardWithTitle>
 
@@ -60,9 +69,10 @@ import ElFloatingPrice from "@/Components/Form/ElFloatingPrice.vue";
 import ElFloatingDatePicker from "@/Components/Form/ElFloatingDatePicker.vue";
 import ElFloatingInput from "@/Components/Form/ElFloatingInput.vue";
 import ElFloatingTextarea from "@/Components/Form/ElFloatingTextarea.vue";
-import {ref, watch} from "vue";
+import {computed, ref, watch} from "vue";
 import collect from "collect.js";
 import ElAvatarInput from "@/Components/Form/ElAvatarInput.vue";
+import {Enum} from "@/enum.js";
 
 const props = defineProps({
     form_data: Object,
@@ -79,6 +89,7 @@ const el_form = useForm({
     purchase_type: props.row?.purchase_type,
     selling_price: props.row?.selling_price,
     currency_equal_value: props.row?.currency_equal_value,
+    selling_price_equal_value: props.row?.selling_price_equal_value,
     purchase_date: props.row?.purchase_date,
     chassis_number: props.row?.chassis_number,
     car_type: props.row?.car_type,
@@ -88,9 +99,10 @@ const el_form = useForm({
     shipping_amount: props.row?.shipping_amount,
     policy_number: props.row?.policy_number,
     notes: props.row?.notes,
-    disabled_client_front_national_id: null,
-    disabled_client_back_national_id: null,
+    client_national_id: null,
+    disabled_client_national_id: null,
     disabled_client_envelope: null,
+    smart_card: null,
 });
 
 const setSupplierCurrency = () => {
@@ -103,6 +115,25 @@ const setSupplierCurrency = () => {
 }
 setSupplierCurrency();
 watch(() => el_form.supplier_id, setSupplierCurrency, {deep: true});
+
+const sellingPriceEqualValue = computed({
+    get() {
+        if (!el_form.currency_equal_value || !el_form.selling_price) {
+            return null;
+        }
+        return (el_form.currency_equal_value * el_form.selling_price).toFixed(3);
+    },
+    set(value) {
+        if (!value || !el_form.selling_price) {
+            return;
+        }
+        el_form.currency_equal_value = (value/el_form.selling_price).toFixed(3);
+    }
+});
+
+el_form.selling_price_equal_value = sellingPriceEqualValue;
+
+
 const submit = () => {
     el_form.post(el_form.id ? route('dashboard.bill.update', el_form.id) : route('dashboard.bill.store'), {
         preserveState: true,
@@ -111,4 +142,5 @@ const submit = () => {
         },
     })
 };
+
 </script>

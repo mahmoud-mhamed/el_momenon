@@ -19,7 +19,7 @@ class BillIndexAction extends BaseAction
         $this->allowSearch();
         $query = Bill::query()
             ->filter()
-            ->search(['notes', 'policy_number', 'chassis_number'])
+            ->search(['notes', 'policy_number', 'chassis_number','car_type'])
             ->with('supplier', 'client', 'disabledClient');
 
         $this->useFilter(Bill::query()->getFilters());

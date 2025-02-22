@@ -55,4 +55,5 @@ return [
     'client_data' => 'بيانات العميل',
     'please_check_data' => 'برجاء التحقق من البيانات',
     'search_here' => 'ابحث هنا',
+    'initiative_data' => 'بيانات المبادرة',
 ];

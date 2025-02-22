@@ -32,7 +32,7 @@ const props = defineProps({
         type: Array,
         default: {}
     },
-    form_data:{
+    form_data: {
         type: Object,
         default: null,
     }
@@ -45,7 +45,7 @@ const el_form = useForm({
     phone: el_row?.phone,
     country: el_row?.country,
     currency_id: el_row?.currency_id,
-    account_balance: el_row?.account_balance,
+    account_balance: el_row?.account_balance ?? 0,
 })
 const submit = () => {
     el_form.post(is_create ? route('dashboard.supplier.store') : route('dashboard.supplier.update', el_form.id), {

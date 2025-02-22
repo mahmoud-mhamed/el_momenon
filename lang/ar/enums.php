@@ -18,6 +18,7 @@ return [
         \App\Enums\BillStatusEnum::SHIPPED->value => 'تم الشحن',
         \App\Enums\BillStatusEnum::IN_CUSTOMS->value => 'في الجمرك',
         \App\Enums\BillStatusEnum::DELIVERED->value => 'تم التسليم',
+        \App\Enums\BillStatusEnum::CANCELED->value => 'تم الإلغاء',
     ],
     \App\Enums\BillPurchaseTypeEnum::getFileName()=>[
         BillPurchaseTypeEnum::INITIATIVE->value => 'مبادرة',
@@ -25,8 +26,9 @@ return [
         BillPurchaseTypeEnum::PERSONAL->value => 'شخصي',
     ],
     \App\Enums\ArchiveCollectionNameEnum::getFileName()=>[
-        ArchiveCollectionNameEnum::DISABLED_CLIENT_FRONT_NATIONAL_ID->value => 'صورة البطاقة الشخصية الأمامية',
-        ArchiveCollectionNameEnum::DISABLED_CLIENT_BACK_NATIONAL_ID->value => 'صورة البطاقة الشخصية الخلفية',
+        ArchiveCollectionNameEnum::DISABLED_CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية',
+        ArchiveCollectionNameEnum::CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية',
+        ArchiveCollectionNameEnum::SMART_CARD->value => 'الكارت الذكي',
         ArchiveCollectionNameEnum::DISABLED_CLIENT_ENVELOPE->value => 'الجواب',
     ],
 ];
