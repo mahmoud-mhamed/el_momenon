@@ -15,7 +15,7 @@ class BillProfileAction extends BaseAction
     public function viewMainData(Bill $bill): \Inertia\Response
     {
         $this->checkAbility(Abilities::M_BILL_PROFILE);
-        $bill->load('currency','equalCurrency');
+        $bill->load('currency', 'equalCurrency');
 
         $this->setProfileTab('MainDataTab', $bill);
         $data['row'] = $bill;
@@ -28,14 +28,14 @@ class BillProfileAction extends BaseAction
         $this->setProfileTab('ArchiveTab', $bill);
         $data['row'] = $bill;
         $data['archives'] = Archive::query()
-            ->with('bill')->with('client','disabledClient')
-            ->where('bill_id',$bill->id)->get();
+            ->with('bill')->with('client', 'disabledClient')
+            ->where('bill_id', $bill->id)->get();
         return Inertia::render('Bill/Profile/Index', compact('data'));
     }
 
     public function setProfileTab($tap_component, Bill &$row, $title = null): void
     {
-        $main_data_url = ['label' => $row->name, 'url' => route('dashboard.bill.profile.main_data', $row), 'ability' => Abilities::M_BILL_PROFILE];
+        $main_data_url = ['label' => '#' . $row->id, 'url' => route('dashboard.bill.profile.main_data', $row), 'ability' => Abilities::M_BILL_PROFILE];
 
         if ($title) {
             BillIndexAction::make()->useBreadcrumb([
