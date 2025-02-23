@@ -9,7 +9,7 @@
 
         </section>
         <div class="flex justify-between gap-2">
-            <ArchiveIcon :mimetype="archive.mimetype"/>
+            <ArchiveIcon :mimetype="archive.mimetype" @click="ref_previewDialog.viewArchive(archive)"/>
             <ElActionMenu>
                 <ElActionMenuInfo @click="ref_overlay_info.toggleOverlay($event,archive)"/>
             </ElActionMenu>

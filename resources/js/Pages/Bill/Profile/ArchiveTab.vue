@@ -5,10 +5,7 @@
 </template>
 
 <script setup>
-import ElContainer from "@/Components/Card/ElContainer.vue";
 import ArchiveCard from "@/Components/Archive/ArchiveCard.vue";
-import ElCardWithTitle from "@/Components/Card/ElCardWithTitle.vue";
-import ElRouteBillProfile from "@/Components/ElRoutes/ElRouteBillProfile.vue";
 
 const props = defineProps(['data']);
 </script>

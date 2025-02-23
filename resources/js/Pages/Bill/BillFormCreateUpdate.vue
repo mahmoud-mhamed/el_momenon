@@ -48,7 +48,7 @@
                                    name="disabled_client_national_id"/>
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_envelope_url"
                                    name="disabled_client_envelope"/>
-                    <ElAvatarInput :form="el_form" :old-image-preview="props.row?.smart_card_url"
+                    <ElArchiveInput :form="el_form" :old-image-preview="props.row?.smart_card_url"
                                    name="smart_card"/>
                 </div>
             </ElCardWithTitle>
@@ -73,6 +73,7 @@ import {computed, ref, watch} from "vue";
 import collect from "collect.js";
 import ElAvatarInput from "@/Components/Form/ElAvatarInput.vue";
 import {Enum} from "@/enum.js";
+import ElArchiveInput from "@/Components/Form/ElArchiveInput.vue";
 
 const props = defineProps({
     form_data: Object,

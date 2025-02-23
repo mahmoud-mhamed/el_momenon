@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\BillPurchaseTypeEnum;
 use App\Enums\BillStatusEnum;
+use App\Rules\ArchiveFileRule;
 use App\Rules\AvatarRule;
 use App\Rules\DateFormatCreatedAtRule;
 use App\Rules\LargeTextRule;
@@ -37,7 +38,7 @@ class BillRequest extends FormRequest
             'client_national_id' => ['nullable',new AvatarRule()],
             'disabled_client_national_id' => ['nullable',new AvatarRule()],
             'disabled_client_envelope' => ['nullable',new AvatarRule()],
-            'smart_card' => ['nullable',new AvatarRule()],
+            'smart_card' => ['nullable',new ArchiveFileRule()],
         ];
     }
 }
