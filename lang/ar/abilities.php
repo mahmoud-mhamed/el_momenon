@@ -50,6 +50,8 @@ return [
     Abilities::M_CLIENT_EDIT->value => $update,
     Abilities::M_CLIENT_DELETE->value => $delete,
     Abilities::M_CLIENT_PROFILE->value => $viewProfile,
+    Abilities::M_CLIENT_BILLS->value => 'عرض الفواتير',
+    Abilities::M_CLIENT_ARCHIVE->value => 'عرض الأرشيف',
 
     Abilities::M_BILL_INDEX->value => $index,
     Abilities::M_BILL_CREATE->value => $create,

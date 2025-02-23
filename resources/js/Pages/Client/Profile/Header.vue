@@ -9,6 +9,10 @@
         <template #tabs>
             <Tabs :label="$t('message.main_data')" v-ability="Ability.M_CLIENT_PROFILE"
                   :href="route('dashboard.client.profile.main_data',usePage().props?.profile_row.id)"/>
+            <Tabs :label="$t('message.bills')" v-ability="Ability.M_CLIENT_BILLS"
+                  :href="route('dashboard.client.profile.view-bills',usePage().props?.profile_row.id)"/>
+            <Tabs :label="$t('message.archive')" v-ability="Ability.M_CLIENT_BILLS"
+                  :href="route('dashboard.client.profile.view-archive',usePage().props?.profile_row.id)"/>
         </template>
     </ElHeader>
 </template>

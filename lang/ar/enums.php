@@ -26,8 +26,8 @@ return [
         BillPurchaseTypeEnum::PERSONAL->value => 'شخصي',
     ],
     \App\Enums\ArchiveCollectionNameEnum::getFileName()=>[
-        ArchiveCollectionNameEnum::DISABLED_CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية',
-        ArchiveCollectionNameEnum::CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية',
+        ArchiveCollectionNameEnum::DISABLED_CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية للمعاق',
+        ArchiveCollectionNameEnum::CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية للعميل',
         ArchiveCollectionNameEnum::SMART_CARD->value => 'الكارت الذكي',
         ArchiveCollectionNameEnum::DISABLED_CLIENT_ENVELOPE->value => 'الجواب',
     ],

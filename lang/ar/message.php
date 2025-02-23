@@ -56,4 +56,12 @@ return [
     'please_check_data' => 'برجاء التحقق من البيانات',
     'search_here' => 'ابحث هنا',
     'initiative_data' => 'بيانات المبادرة',
+    'bills' => 'الفواتير',
+    'archive' => 'الأرشيف',
+    'other_files' => 'ملفات اخرى',
+    'bill' => 'فاتورة',
+    'download' => 'تحميل',
+    'info' => 'التفاصيل',
+    'property' => 'الخاصية',
+    'value' => 'القيمة',
 ];

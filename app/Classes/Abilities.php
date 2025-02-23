@@ -41,6 +41,8 @@ enum Abilities: string
     case M_CLIENT_EDIT = 'm_client_edit';
     case M_CLIENT_DELETE = 'm_client_delete';
     case M_CLIENT_PROFILE = 'm_client_profile';
+    case M_CLIENT_BILLS = 'm_client_bills';
+    case M_CLIENT_ARCHIVE = 'm_client_archive';
 
 
     //bill
@@ -81,6 +83,8 @@ enum Abilities: string
         ['key' => self::M_CLIENT_STORE, 'module' => ModuleNameEnum::CLIENT],
         ['key' => self::M_CLIENT_DELETE, 'module' => ModuleNameEnum::CLIENT],
         ['key' => self::M_CLIENT_PROFILE, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_BILLS, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_ARCHIVE, 'module' => ModuleNameEnum::CLIENT],
 
         ['key' => self::M_BILL_INDEX, 'module' => ModuleNameEnum::BILL],
         ['key' => self::M_BILL_CREATE, 'module' => ModuleNameEnum::BILL],

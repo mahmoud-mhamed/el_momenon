@@ -62,6 +62,9 @@ return [
     'client_id' => 'العميل',
     ...(Lang::get('enums.ArchiveCollectionNameEnum')),
     'id' => '#',
+    'bill_id' => 'الفاتورة',
+    'size_text' => 'المساحة',
+    'type' => 'النوع',
 
 
 ];

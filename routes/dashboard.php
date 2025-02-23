@@ -66,7 +66,8 @@ Route::group([
 
         Route::group(['prefix' => 'profile/{client}', 'as' => 'profile.'], function () {
             Route::get('/', [\App\Actions\Client\ClientProfileAction::class, 'viewMainData'])->name('main_data');
-            Route::get('/edit', [\App\Actions\Client\ClientProfileAction::class, 'viewEdit'])->name('edit');
+            Route::get('/view-bills', [\App\Actions\Client\ClientProfileAction::class, 'viewBills'])->name('view-bills');
+            Route::get('/view-archive', [\App\Actions\Client\ClientProfileAction::class, 'viewArchive'])->name('view-archive');
         });
     });
 

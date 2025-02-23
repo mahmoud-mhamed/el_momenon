@@ -34,9 +34,10 @@ class BillRequest extends FormRequest
             'shipping_amount' => ['nullable',new PriceRule()],
             'policy_number' => ['nullable',new SmallTextRule()],
             'notes' => ['nullable',new LargeTextRule()],
-            'disabled_client_front_national_id' => ['nullable',new AvatarRule()],
-            'disabled_client_back_national_id' => ['nullable',new AvatarRule()],
+            'client_national_id' => ['nullable',new AvatarRule()],
+            'disabled_client_national_id' => ['nullable',new AvatarRule()],
             'disabled_client_envelope' => ['nullable',new AvatarRule()],
+            'smart_card' => ['nullable',new AvatarRule()],
         ];
     }
 }
