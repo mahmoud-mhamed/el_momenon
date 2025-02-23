@@ -57,4 +57,6 @@ return [
     Abilities::M_BILL_CREATE->value => $create,
     Abilities::M_BILL_EDIT->value => $update,
     Abilities::M_BILL_DELETE->value => $delete,
+    Abilities::M_BILL_PROFILE->value => $viewProfile,
+    Abilities::M_BILL_ARCHIVE->value => 'عرض الأرشيف',
 ];

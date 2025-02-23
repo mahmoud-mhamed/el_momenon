@@ -80,5 +80,10 @@ Route::group([
         Route::post('/{bill}/update', \App\Actions\Bill\BillUpdateAction::class)->name('update');
         Route::delete('/{bill}', Actions\Bill\BillDeleteAction::class)->name('delete');
 
+        Route::group(['prefix' => 'profile/{bill}', 'as' => 'profile.'], function () {
+            Route::get('/', [\App\Actions\Bill\BillProfileAction::class, 'viewMainData'])->name('main_data');
+            Route::get('/view-archive', [\App\Actions\Bill\BillProfileAction::class, 'viewArchive'])->name('view-archive');
+        });
+
     });
 });

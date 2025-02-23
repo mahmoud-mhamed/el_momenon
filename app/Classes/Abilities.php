@@ -50,6 +50,8 @@ enum Abilities: string
     case M_BILL_CREATE = 'm_bill_create';
     case M_BILL_EDIT = 'm_bill_edit';
     case M_BILL_DELETE = 'm_bill_delete';
+    case M_BILL_PROFILE = 'm_bill_profile';
+    case M_BILL_ARCHIVE = 'm_bill_archive';
 
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
@@ -90,6 +92,8 @@ enum Abilities: string
         ['key' => self::M_BILL_CREATE, 'module' => ModuleNameEnum::BILL],
         ['key' => self::M_BILL_EDIT, 'module' => ModuleNameEnum::BILL],
         ['key' => self::M_BILL_DELETE, 'module' => ModuleNameEnum::BILL],
+        ['key' => self::M_BILL_PROFILE, 'module' => ModuleNameEnum::BILL],
+        ['key' => self::M_BILL_ARCHIVE, 'module' => ModuleNameEnum::BILL],
 
     ];
 

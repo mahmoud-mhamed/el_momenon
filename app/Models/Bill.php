@@ -29,10 +29,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string shipping_type
  * @property string policy_number
  * @property string notes
+ * @property int equal_currency_id
  * @property-read string $status_text
  * @property-read Client $client
  * @property-read Client disabledClient
  * @property-read Supplier supplier
+ * @property-read Currency $currency
+ * @property-read Currency equalCurrency
  * @property-read Archive[] $archives
  */
 #[ObservedBy([BillObserver::class])]
@@ -40,7 +43,7 @@ class Bill extends BaseModel
 {
     protected $fillable = [
         'supplier_id', 'client_id', 'disabled_client_id', 'currency_id', 'purchase_price', 'purchase_type',
-        'selling_price', 'currency_equal_value','selling_price_equal_value',
+        'selling_price', 'currency_equal_value','selling_price_equal_value','equal_currency_id',
         'purchase_date', 'chassis_number', 'car_type', 'shipping_date', 'shipping_type', 'shipping_amount',
         'policy_number', 'notes', 'status',
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
@@ -53,6 +56,15 @@ class Bill extends BaseModel
 
     ];
 
+
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
+    }
+    public function equalCurrency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class,'equal_currency_id');
+    }
 
     public function archives(): HasMany
     {

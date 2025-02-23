@@ -1,5 +1,5 @@
 <template>
-    <div class="border rounded-md p-2">
+    <div class="border bg-white rounded-md p-2">
         <section class="flex justify-between gap-2 bg-white rounded-sm p-2">
             <div class="flex items-center gap-2 cursor-pointer" @click="ref_previewDialog.viewArchive(archive)">
                 <label dir="ltr">
