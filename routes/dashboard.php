@@ -83,7 +83,16 @@ Route::group([
         Route::group(['prefix' => 'profile/{bill}', 'as' => 'profile.'], function () {
             Route::get('/', [\App\Actions\Bill\BillProfileAction::class, 'viewMainData'])->name('main_data');
             Route::get('/view-archive', [\App\Actions\Bill\BillProfileAction::class, 'viewArchive'])->name('view-archive');
+            Route::get('payment/{type}', [\App\Actions\Bill\BillProfileAction::class, 'viewPayment'])->name('view-payment');
         });
+
+    });
+
+    Route::group(['prefix' => 'bill-payment', 'as' => 'bill-payment.'], function () {
+        Route::delete('{billPayment}', Actions\BillPayment\BillPaymentDeleteAction::class)->name('delete-payment-bill');
+
+        Route::post('store/{bill}', Actions\BillPayment\BillPaymentStoreAction::class)->name('store');
+        Route::post('update/{billPayment}', Actions\BillPayment\BillPaymentUpdateAction::class)->name('update');
 
     });
 });

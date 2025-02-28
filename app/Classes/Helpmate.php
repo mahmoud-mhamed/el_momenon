@@ -47,7 +47,7 @@ class Helpmate
         Artisan::call('cache:clear');
     }
 
-    public static function toFixed($number, $decimals = 2): null|float|int
+    public static function toFixed($number, $decimals = 4): null|float|int
     {
         if (!$number)
             return null;

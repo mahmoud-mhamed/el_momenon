@@ -8,6 +8,7 @@ use App\Traits\EnumOptionsTrait;
 enum Abilities: string
 {
     use EnumOptionsTrait;
+
     case M_USERS_INDEX = 'm_users_index';
     case M_USERS_INDEX_EXPORT = 'm_users_index_export';
     case M_USERS_STORE = 'm_users_store';
@@ -52,6 +53,17 @@ enum Abilities: string
     case M_BILL_DELETE = 'm_bill_delete';
     case M_BILL_PROFILE = 'm_bill_profile';
     case M_BILL_ARCHIVE = 'm_bill_archive';
+    case M_BILL_VIEW_PAYMENT_SUPPLIER = 'm_bill_view_payment_supplier';
+    case M_BILL_VIEW_PAYMENT_CLIENT = 'm_bill_view_payment_client';
+
+
+    case M_BILL_PAYMENT_STORE_TO_SUPPLIER = 'm_bill_payment_store_to_supplier';
+    case M_BILL_PAYMENT_UPDATE_TO_SUPPLIER = 'm_bill_payment_update_to_supplier';
+    case M_BILL_PAYMENT_DELETE_TO_SUPPLIER = 'm_bill_payment_delete_to_supplier';
+
+    case M_BILL_PAYMENT_STORE_FROM_CLIENT = 'm_bill_payment_store_from_client';
+    case M_BILL_PAYMENT_UPDATE_FROM_CLIENT = 'm_bill_payment_update_from_client';
+    case M_BILL_PAYMENT_DELETE_FROM_CLIENT = 'm_bill_payment_delete_from_client';
 
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
@@ -94,6 +106,16 @@ enum Abilities: string
         ['key' => self::M_BILL_DELETE, 'module' => ModuleNameEnum::BILL],
         ['key' => self::M_BILL_PROFILE, 'module' => ModuleNameEnum::BILL],
         ['key' => self::M_BILL_ARCHIVE, 'module' => ModuleNameEnum::BILL],
+        ['key' => self::M_BILL_VIEW_PAYMENT_SUPPLIER, 'module' => ModuleNameEnum::BILL],
+        ['key' => self::M_BILL_VIEW_PAYMENT_CLIENT, 'module' => ModuleNameEnum::BILL],
+
+
+        ['key' => self::M_BILL_PAYMENT_STORE_TO_SUPPLIER, 'module' => ModuleNameEnum::BILL_PAYMENT],
+        ['key' => self::M_BILL_PAYMENT_UPDATE_TO_SUPPLIER, 'module' => ModuleNameEnum::BILL_PAYMENT],
+        ['key' => self::M_BILL_PAYMENT_DELETE_TO_SUPPLIER, 'module' => ModuleNameEnum::BILL_PAYMENT],
+        ['key' => self::M_BILL_PAYMENT_STORE_FROM_CLIENT, 'module' => ModuleNameEnum::BILL_PAYMENT],
+        ['key' => self::M_BILL_PAYMENT_UPDATE_FROM_CLIENT, 'module' => ModuleNameEnum::BILL_PAYMENT],
+        ['key' => self::M_BILL_PAYMENT_DELETE_FROM_CLIENT, 'module' => ModuleNameEnum::BILL_PAYMENT],
 
     ];
 

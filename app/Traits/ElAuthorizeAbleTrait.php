@@ -31,7 +31,7 @@ trait ElAuthorizeAbleTrait
     /**
      * @return void
      */
-    public function checkAbility(Abilities $ability): void
+    public function checkAbility(Abilities|string $ability): void
     {
         if (!BouncerService::checkAbility($ability)) {
             $this->throwAccessDenied();

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('country')->nullable();
             $table->foreignId('currency_id')->nullable()->constrained()->restrictOnDelete();
-            $table->string('account_balance')->nullable();
 
             $table->nullableMorphs('created_by');
             $table->nullableMorphs('updated_by');

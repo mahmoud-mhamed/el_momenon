@@ -6,6 +6,7 @@ use App\Classes\Filter\UseFilter;
 use App\Models\Bill;
 use App\Models\Filters\Bill\BillClientFilter;
 use App\Models\Filters\Bill\BillDisabledClientFilter;
+use App\Models\Filters\Bill\BillPurchaseTypeFilter;
 use App\Models\Filters\Bill\BillStatusFilter;
 use App\Models\Filters\CreatedAtDateRangeFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -21,6 +22,7 @@ class BillBuilder extends BaseBuilder
             new BillClientFilter(fn($value) => $this->forClient($value)),
             new BillDisabledClientFilter(fn($value) => $this->forDisabledClient($value)),
             new BillStatusFilter(fn($value) => $this->forStatus($value)),
+            new BillPurchaseTypeFilter(fn($value) => $this->forPurchaseType($value)),
             new CreatedAtDateRangeFilter(fn($date) => $this->createdAtRange($date)),
         ];
     }
@@ -52,6 +54,12 @@ class BillBuilder extends BaseBuilder
         if (!$value)
             return $this;
         return $this->where('status', $value);
+    }
+    public function forPurchaseType(?string $value)
+    {
+        if (!$value)
+            return $this;
+        return $this->where('purchase_type', $value);
     }
 
 }

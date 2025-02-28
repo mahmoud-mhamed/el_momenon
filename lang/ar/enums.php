@@ -11,6 +11,7 @@ return [
         \App\Enums\ModuleNameEnum::SUPPLIER->value => 'الموردين',
         \App\Enums\ModuleNameEnum::CLIENT->value => 'العملاء',
         \App\Enums\ModuleNameEnum::BILL->value => 'الفواتير',
+        \App\Enums\ModuleNameEnum::BILL_PAYMENT->value => 'دفعات الفواتير',
     ],
     \App\Enums\BillStatusEnum::getFileName()=>[
         \App\Enums\BillStatusEnum::PENDING->value => 'قيد الإنتظار',
@@ -30,5 +31,10 @@ return [
         ArchiveCollectionNameEnum::CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية للعميل',
         ArchiveCollectionNameEnum::SMART_CARD->value => 'الكارت الذكي',
         ArchiveCollectionNameEnum::DISABLED_CLIENT_ENVELOPE->value => 'الجواب',
+        ArchiveCollectionNameEnum::PROOF_ARCHIVE_ID->value => 'إثبات دفع',
+    ],
+    \App\Enums\BillPaymentTypeEnum::getFileName()=>[
+        \App\Enums\BillPaymentTypeEnum::FROM_CLIENT->value => 'من العميل',
+        \App\Enums\BillPaymentTypeEnum::TO_SUPPLIER->value => 'إلي المورد',
     ],
 ];

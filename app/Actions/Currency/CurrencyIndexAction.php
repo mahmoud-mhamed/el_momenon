@@ -20,7 +20,6 @@ class CurrencyIndexAction extends BaseAction
         $query = Currency::query()
             ->search(['name', 'code']);
         $data['rows'] = $query->paginate();
-        $data['default_currency'] = Currency::query()->where('is_default', true)->first();
         return Inertia::render('Currency/Index', compact('data'));
     }
 

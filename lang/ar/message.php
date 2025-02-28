@@ -64,4 +64,9 @@ return [
     'info' => 'التفاصيل',
     'property' => 'الخاصية',
     'value' => 'القيمة',
+    'client_bill_payment' => 'دفعات العميل',
+    'supplier_bill_payment' => 'دفعات المورد',
+    'app_payment' => 'إضافة دفعة',
+    'client_rent' => 'باقي حساب العميل',
+    'supplier_rent' => 'باقي حساب المورد',
 ];

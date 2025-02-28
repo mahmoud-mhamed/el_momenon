@@ -5,7 +5,6 @@
             <el-floating-input :form="el_form" name="phone"/>
             <el-floating-input :form="el_form" name="country"/>
             <el-floating-dropdown :form="el_form" name="currency_id" required :options="form_data.currencies"/>
-            <el-floating-price v-if="is_create" :form="el_form" required name="account_balance"/>
         </div>
 
         <div class="flex flex-row-reverse gap-2 mt-3">
@@ -45,7 +44,6 @@ const el_form = useForm({
     phone: el_row?.phone,
     country: el_row?.country,
     currency_id: el_row?.currency_id,
-    account_balance: el_row?.account_balance ?? 0,
 })
 const submit = () => {
     el_form.post(is_create ? route('dashboard.supplier.store') : route('dashboard.supplier.update', el_form.id), {

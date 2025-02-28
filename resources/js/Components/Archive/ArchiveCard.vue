@@ -1,9 +1,12 @@
 <template>
     <div class="border bg-white rounded-md p-2">
         <section class="flex justify-between gap-2 bg-white rounded-sm p-2">
-            <div class="flex items-center gap-2 cursor-pointer" @click="ref_previewDialog.viewArchive(archive)">
+            <div class="flex flex-col text-right gap-2 cursor-pointer" @click="ref_previewDialog.viewArchive(archive)">
                 <label dir="ltr">
-                    {{ archive.collection_name_text ?? archive.name }}
+                    {{ archive.collection_name_text  }}
+                </label>
+                <label dir="ltr">
+                    {{ archive.name }}
                 </label>
             </div>
 

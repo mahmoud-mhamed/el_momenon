@@ -29,9 +29,6 @@ class CurrencyRequest extends FormRequest
                 new SmallTextRule(),Rule::unique(Currency::class,'code')
                     ->where('deleted_at',null)->ignore($request->currency?->id)
             ],
-            'equal_value'=>[
-                'required', new PriceRule()
-            ],
         ];
     }
 }

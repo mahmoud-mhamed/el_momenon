@@ -65,6 +65,13 @@ return [
     'bill_id' => 'الفاتورة',
     'size_text' => 'المساحة',
     'type' => 'النوع',
+    'paid_amount' => 'المبلغ المدفوع',
+    'paid_currency_id' => 'عملة الدفع',
+    'bill_currency_equal_value' => 'سعر الصرف',
+    'bill_currency_equal_total' => 'الإجمالي المساوي (عملة المورد)',
+    'payment_date' => 'تاريخ الدفع',
+    'proof_archive_id' => 'إثبات الدفع',
+    'rent' => 'الباقي',
 
 
 ];

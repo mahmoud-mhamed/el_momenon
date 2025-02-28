@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code');
-            $table->double('equal_value');
-            $table->boolean('is_default')->default(false);
             $table->nullableMorphs('created_by');
             $table->nullableMorphs('updated_by');
             $table->nullableMorphs('deleted_by');

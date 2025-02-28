@@ -59,4 +59,14 @@ return [
     Abilities::M_BILL_DELETE->value => $delete,
     Abilities::M_BILL_PROFILE->value => $viewProfile,
     Abilities::M_BILL_ARCHIVE->value => 'عرض الأرشيف',
+    Abilities::M_BILL_VIEW_PAYMENT_SUPPLIER->value => 'عرض دفعات المورد',
+    Abilities::M_BILL_VIEW_PAYMENT_CLIENT->value => 'عرض دفعات العميل',
+
+    Abilities::M_BILL_PAYMENT_STORE_TO_SUPPLIER->value => 'إضافة دفعة للمورد',
+    Abilities::M_BILL_PAYMENT_UPDATE_TO_SUPPLIER->value => 'تعديل دفعة للمورد',
+    Abilities::M_BILL_PAYMENT_DELETE_TO_SUPPLIER->value => 'حذف دفعة للمورد',
+    Abilities::M_BILL_PAYMENT_STORE_FROM_CLIENT->value => 'إضافة دفعة للعميل',
+    Abilities::M_BILL_PAYMENT_UPDATE_FROM_CLIENT->value => 'تعديل دفعة للعميل',
+    Abilities::M_BILL_PAYMENT_DELETE_FROM_CLIENT->value => 'حذف دفعة للعميل',
+
 ];
