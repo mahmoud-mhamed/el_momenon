@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('purchase_type')->nullable();
             $table->string('purchase_price')->nullable();
             $table->string('selling_price')->nullable();
+            $table->string('selling_price_equal_value')->nullable();
             $table->string('currency_equal_value')->nullable();
             $table->date('purchase_date')->nullable();
             $table->string('chassis_number')->nullable();

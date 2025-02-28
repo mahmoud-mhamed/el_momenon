@@ -66,7 +66,8 @@ Route::group([
 
         Route::group(['prefix' => 'profile/{client}', 'as' => 'profile.'], function () {
             Route::get('/', [\App\Actions\Client\ClientProfileAction::class, 'viewMainData'])->name('main_data');
-            Route::get('/edit', [\App\Actions\Client\ClientProfileAction::class, 'viewEdit'])->name('edit');
+            Route::get('/view-bills', [\App\Actions\Client\ClientProfileAction::class, 'viewBills'])->name('view-bills');
+            Route::get('/view-archive', [\App\Actions\Client\ClientProfileAction::class, 'viewArchive'])->name('view-archive');
         });
     });
 
@@ -78,6 +79,20 @@ Route::group([
         Route::get('/{bill}/edit', [\App\Actions\Bill\BillUpdateAction::class, 'viewForm'])->name('edit');
         Route::post('/{bill}/update', \App\Actions\Bill\BillUpdateAction::class)->name('update');
         Route::delete('/{bill}', Actions\Bill\BillDeleteAction::class)->name('delete');
+
+        Route::group(['prefix' => 'profile/{bill}', 'as' => 'profile.'], function () {
+            Route::get('/', [\App\Actions\Bill\BillProfileAction::class, 'viewMainData'])->name('main_data');
+            Route::get('/view-archive', [\App\Actions\Bill\BillProfileAction::class, 'viewArchive'])->name('view-archive');
+            Route::get('payment/{type}', [\App\Actions\Bill\BillProfileAction::class, 'viewPayment'])->name('view-payment');
+        });
+
+    });
+
+    Route::group(['prefix' => 'bill-payment', 'as' => 'bill-payment.'], function () {
+        Route::delete('{billPayment}', Actions\BillPayment\BillPaymentDeleteAction::class)->name('delete-payment-bill');
+
+        Route::post('store/{bill}', Actions\BillPayment\BillPaymentStoreAction::class)->name('store');
+        Route::post('update/{billPayment}', Actions\BillPayment\BillPaymentUpdateAction::class)->name('update');
 
     });
 });

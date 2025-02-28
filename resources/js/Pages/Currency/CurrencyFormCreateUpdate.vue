@@ -3,7 +3,6 @@
         <div class="grid md:grid-cols-2 mt-2 gap-3">
             <el-floating-input :form="el_form" required name="name" :label="$t('column.currency_name')"/>
             <el-floating-input :form="el_form" required name="code"/>
-            <el-floating-price :currency="currency" :form="el_form" v-if="!el_form.is_default" required name="equal_value"/>
         </div>
 
         <div class="flex flex-row-reverse gap-2 mt-3">

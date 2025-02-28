@@ -43,11 +43,6 @@ const edit_row = ref();
                     <ElText :value="row.data.country"/>
                 </template>
             </Column>
-            <Column :header="$t('column.account_balance')">
-                <template #body="row">
-                    <ElPrice :currency="row.data.currency" :value="row.data.account_balance"/>
-                </template>
-            </Column>
             <Column field="updated_at_text" :header="$t('column.updated_at')"/>
             <Column :header="$t('message.actions')">
                 <template #body="row">
@@ -55,7 +50,7 @@ const edit_row = ref();
                         <ElActionMenuEdit v-ability="Ability.M_SUPPLIER_EDIT"
                                           @click="edit_row=row.data;showDialogCreateUpdate=true"/>
                         <ElActionMenuDeleteAction v-ability="Ability.M_SUPPLIER_DELETE"
-                                                  :dialog-message="row.data.name+' | '+$t('column.account_balance')+' '+row.data.account_balance +' '+row.data.currency?.code"
+                                                  :dialog-message="row.data.name"
                                                   :href="route('dashboard.supplier.delete',row.data.id)"/>
                     </ElActionMenu>
                 </template>

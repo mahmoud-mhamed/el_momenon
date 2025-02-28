@@ -1,5 +1,5 @@
 <template>
-    <ElRoute v-if="model?.id" >
+    <ElRoute v-if="model?.id" :href="route('dashboard.bill.profile.main_data',model.id)">
         <template #title> #{{ model.id }}</template>
     </ElRoute>
 </template>

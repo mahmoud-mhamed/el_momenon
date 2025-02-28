@@ -6,8 +6,10 @@ use App\Classes\Filter\UseFilter;
 use App\Models\Bill;
 use App\Models\Filters\Bill\BillClientFilter;
 use App\Models\Filters\Bill\BillDisabledClientFilter;
+use App\Models\Filters\Bill\BillPurchaseTypeFilter;
 use App\Models\Filters\Bill\BillStatusFilter;
 use App\Models\Filters\CreatedAtDateRangeFilter;
+use Illuminate\Database\Eloquent\Builder;
 
 /**@mixin Bill */
 class BillBuilder extends BaseBuilder
@@ -20,6 +22,7 @@ class BillBuilder extends BaseBuilder
             new BillClientFilter(fn($value) => $this->forClient($value)),
             new BillDisabledClientFilter(fn($value) => $this->forDisabledClient($value)),
             new BillStatusFilter(fn($value) => $this->forStatus($value)),
+            new BillPurchaseTypeFilter(fn($value) => $this->forPurchaseType($value)),
             new CreatedAtDateRangeFilter(fn($date) => $this->createdAtRange($date)),
         ];
     }
@@ -29,6 +32,16 @@ class BillBuilder extends BaseBuilder
         if (!$client_id)
             return $this;
         return $this->where('client_id', $client_id);
+    }
+
+    public function forClientOrDisabledClient(?int $client_id)
+    {
+        if (!$client_id)
+            return $this;
+        return $this->where(function (Builder $query) use ($client_id) {
+            $query->where('client_id', $client_id)
+                ->orWhere('disabled_client_id', $client_id);
+        });
     }
     public function forDisabledClient(?int $client_id)
     {
@@ -41,6 +54,12 @@ class BillBuilder extends BaseBuilder
         if (!$value)
             return $this;
         return $this->where('status', $value);
+    }
+    public function forPurchaseType(?string $value)
+    {
+        if (!$value)
+            return $this;
+        return $this->where('purchase_type', $value);
     }
 
 }

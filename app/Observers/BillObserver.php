@@ -4,9 +4,17 @@ namespace App\Observers;
 
 use App\Models\Archive;
 use App\Models\Bill;
+use App\Models\Currency;
 
 class BillObserver
 {
+
+    public function creating(Bill $bill)
+    {
+        $bill->currency_id = $bill->supplier->currency_id;
+        $bill->equal_currency_id = Currency::query()->where('is_default',true)->first()?->id;
+    }
+
     /**
      * Handle the Bill "created" event.
      */
@@ -28,7 +36,7 @@ class BillObserver
      */
     public function deleted(Bill $bill): void
     {
-        Archive::query()->where('archives.bill_id',$bill->id)->delete();
+        Archive::query()->where('archives.bill_id', $bill->id)->delete();
     }
 
     /**

@@ -12,4 +12,5 @@ enum BillStatusEnum: string
     case SHIPPED = 'shipped';
     case IN_CUSTOMS = 'in_customs';
     case DELIVERED = 'delivered';
+    case CANCELED = 'canceled';
 }

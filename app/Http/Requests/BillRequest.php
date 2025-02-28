@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\BillPurchaseTypeEnum;
 use App\Enums\BillStatusEnum;
+use App\Rules\ArchiveFileRule;
 use App\Rules\AvatarRule;
 use App\Rules\DateFormatCreatedAtRule;
 use App\Rules\LargeTextRule;
@@ -24,6 +25,7 @@ class BillRequest extends FormRequest
             'purchase_type' => ['required', new Enum(BillPurchaseTypeEnum::class)],
             'selling_price' => ['required', new PriceRule()],
             'currency_equal_value' => ['required', new PriceRule()],
+            'selling_price_equal_value' => ['required', new PriceRule()],
             'purchase_date' => ['required', new DateFormatCreatedAtRule()],
             'chassis_number' => ['required', new SmallTextRule()],
             'status' => ['required', new Enum(BillStatusEnum::class)],
@@ -33,9 +35,10 @@ class BillRequest extends FormRequest
             'shipping_amount' => ['nullable',new PriceRule()],
             'policy_number' => ['nullable',new SmallTextRule()],
             'notes' => ['nullable',new LargeTextRule()],
-            'disabled_client_front_national_id' => ['nullable',new AvatarRule()],
-            'disabled_client_back_national_id' => ['nullable',new AvatarRule()],
+            'client_national_id' => ['nullable',new AvatarRule()],
+            'disabled_client_national_id' => ['nullable',new AvatarRule()],
             'disabled_client_envelope' => ['nullable',new AvatarRule()],
+            'smart_card' => ['nullable',new ArchiveFileRule()],
         ];
     }
 }

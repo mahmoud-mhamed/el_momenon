@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Classes\Helpmate;
 use App\Models\Builders\BillBuilder;
 use App\Enums\BillPurchaseTypeEnum;
 use App\Enums\BillStatusEnum;
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string purchase_type
  * @property string purchase_price
  * @property string selling_price
+ * @property string selling_price_equal_value
  * @property string currency_equal_value
  * @property string purchase_date
  * @property string chassis_number
@@ -28,17 +30,26 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string shipping_type
  * @property string policy_number
  * @property string notes
+ * @property int equal_currency_id
+ * @property double supplier_paid_amount
+ * @property double client_paid_amount
  * @property-read string $status_text
  * @property-read Client $client
  * @property-read Client disabledClient
  * @property-read Supplier supplier
+ * @property-read Currency $currency
+ * @property-read Currency equalCurrency
  * @property-read Archive[] $archives
+ * @property-read double supplier_rent_amount
+ * @property-read double client_rent_amount
  */
 #[ObservedBy([BillObserver::class])]
 class Bill extends BaseModel
 {
     protected $fillable = [
-        'supplier_id', 'client_id', 'disabled_client_id', 'currency_id', 'purchase_price', 'purchase_type', 'selling_price', 'currency_equal_value',
+        'supplier_id', 'supplier_paid_amount', 'client_paid_amount', 'client_id', 'disabled_client_id', 'currency_id', 'purchase_price',
+        'purchase_type',
+        'selling_price', 'currency_equal_value', 'selling_price_equal_value', 'equal_currency_id',
         'purchase_date', 'chassis_number', 'car_type', 'shipping_date', 'shipping_type', 'shipping_amount',
         'policy_number', 'notes', 'status',
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
@@ -47,10 +58,31 @@ class Bill extends BaseModel
     protected $casts = [
         'purchase_type' => BillPurchaseTypeEnum::class,
         'status' => BillStatusEnum::class,
-
-
+    ];
+    protected $appends = [
+        'client_rent_amount', 'supplier_rent_amount'
     ];
 
+
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    public function equalCurrency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'equal_currency_id');
+    }
+
+    public function getSupplierRentAmountAttribute(): float|int|null
+    {
+        return Helpmate::toFixed($this->purchase_price - $this->supplier_paid_amount);
+    }
+
+    public function getClientRentAmountAttribute(): float|int|null
+    {
+        return Helpmate::toFixed($this->selling_price - $this->client_paid_amount);
+    }
 
     public function archives(): HasMany
     {

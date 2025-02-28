@@ -14,5 +14,6 @@ enum ModuleNameEnum: string
     case CLIENT='client';
 
     case BILL='bill';
+    case BILL_PAYMENT='bill_payment';
 
 }

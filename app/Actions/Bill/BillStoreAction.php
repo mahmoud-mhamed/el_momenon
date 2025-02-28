@@ -34,7 +34,7 @@ class BillStoreAction extends BaseAction
 
     public function handelFiles(Bill $bill,$validated_data): void
     {
-        foreach (['disabled_client_front_national_id', 'disabled_client_back_national_id', 'disabled_client_envelope'] as $item) {
+        foreach (['client_national_id', 'disabled_client_national_id', 'disabled_client_envelope','smart_card'] as $item) {
             if (data_get($validated_data, $item) && is_file($validated_data[$item])) {
                 $new_data=[
                     'collection_name' => $item,

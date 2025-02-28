@@ -44,11 +44,6 @@ const edit_row = ref();
                     <ElText :value="row.data.code"/>
                 </template>
             </Column>
-            <Column :header="$t('column.equal_value')+' - '+data.default_currency.code">
-                <template #body="row">
-                    <ElPrice :currency="data.default_currency" :value="row.data.equal_value"/>
-                </template>
-            </Column>
             <Column field="updated_at_text" :header="$t('column.updated_at')"/>
             <Column :header="$t('message.actions')">
                 <template #body="row">
@@ -67,7 +62,7 @@ const edit_row = ref();
     <Dialog v-model:visible="showDialogCreateUpdate" :style="{width: '50rem'}"
             :header="edit_row?$t('message.edit'):$t('message.add_new')"
             modal maximizable>
-        <CurrencyFormCreateUpdate :currency="data.default_currency" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
+        <CurrencyFormCreateUpdate :row="edit_row" @hide="showDialogCreateUpdate=false"/>
     </Dialog>
 </template>
 

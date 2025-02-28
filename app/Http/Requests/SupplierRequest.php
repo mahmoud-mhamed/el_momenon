@@ -18,11 +18,6 @@ class SupplierRequest extends FormRequest
      */
     public function rules(Request $request): array
     {
-        $is_update = (bool)$request->supplier?->id;
-        $other_rule = [];
-        if (!$is_update) {
-            $other_rule['account_balance'] = ['required', new PriceRule()];
-        }
         return [
             'name' => [
                 'required', new SmallTextRule(),
@@ -38,7 +33,6 @@ class SupplierRequest extends FormRequest
             'currency_id' => [
                 'required', Rule::exists('currencies', 'id'),
             ],
-            ...$other_rule,
         ];
     }
 }

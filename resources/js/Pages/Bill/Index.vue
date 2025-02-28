@@ -48,6 +48,11 @@ const props = defineProps({
                     <ElRouteClientProfile :model="row.data.disabled_client"/>
                 </template>
             </Column>
+            <Column :header="$t('column.purchase_type')">
+                <template #body="row">
+                    <ElText :value="row.data.purchase_type_text"/>
+                </template>
+            </Column>
             <Column :header="$t('column.car_type')">
                 <template #body="row">
                     <ElText :value="row.data.car_type"/>
