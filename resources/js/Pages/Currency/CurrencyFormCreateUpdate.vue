@@ -40,8 +40,6 @@ const el_form = useForm({
     id: el_row?.id,
     name: el_row?.name,
     code: el_row?.code,
-    equal_value: el_row?.equal_value,
-    is_default: el_row?.is_default ?? false,
 })
 const submit = () => {
     el_form.post(is_create ? route('dashboard.currency.store') : route('dashboard.currency.update', el_form.id), {

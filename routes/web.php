@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/version', function () {
-    return 1.4;
+    return 1.5;
 });
 Route::get('/', function () {
     return \Inertia\Inertia::render('Soon');

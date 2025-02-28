@@ -24,8 +24,6 @@ class BillRequest extends FormRequest
             'purchase_price' => ['required', new PriceRule()],
             'purchase_type' => ['required', new Enum(BillPurchaseTypeEnum::class)],
             'selling_price' => ['required', new PriceRule()],
-            'currency_equal_value' => ['required', new PriceRule()],
-            'selling_price_equal_value' => ['required', new PriceRule()],
             'purchase_date' => ['required', new DateFormatCreatedAtRule()],
             'chassis_number' => ['required', new SmallTextRule()],
             'status' => ['required', new Enum(BillStatusEnum::class)],

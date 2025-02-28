@@ -52,7 +52,6 @@ const edit_row = ref();
                                           @click="edit_row=row.data;showDialogCreateUpdate=true"/>
                         <ElActionMenuDeleteAction v-ability="Ability.M_CURRENCIES_DELETE"
                                                   :dialog-message="row.data.name"
-                                                  v-if="!row.data.is_default"
                                                   :href="route('dashboard.currency.delete',row.data.id)"/>
                     </ElActionMenu>
                 </template>
