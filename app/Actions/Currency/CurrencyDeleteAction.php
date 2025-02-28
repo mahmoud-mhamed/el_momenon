@@ -12,7 +12,6 @@ class CurrencyDeleteAction extends BaseAction
 
     public function handle(Currency $currency)
     {
-        abort_if($currency->is_default,404);
         $this->tryDelete($currency);
         return back();
     }

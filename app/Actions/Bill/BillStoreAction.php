@@ -68,7 +68,6 @@ class BillStoreAction extends BaseAction
                 'clients' => Client::query()->get(),
                 'suppliers' => Supplier::query()->with('currency')->get(),
                 'purchase_types' => BillPurchaseTypeEnum::getOptionsData(),
-                'default_currency' => Currency::query()->where('is_default', 1)->first(),
             ]
         ];
     }

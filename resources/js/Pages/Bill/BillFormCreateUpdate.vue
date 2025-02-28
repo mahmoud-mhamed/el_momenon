@@ -27,14 +27,11 @@
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <ElFloatingDropdown :form="el_form" name="client_id" required :options="form_data.clients"/>
                     <ElFloatingPrice :currency="supplier_currency" required :form="el_form" name="selling_price"/>
-                    <ElFloatingPrice :currency="form_data.default_currency" required :form="el_form"
-                                     name="currency_equal_value"/>
-                    <ElFloatingPrice :currency="form_data.default_currency" required :form="el_form"
-                                     name="selling_price_equal_value"/>
+
+                    <hr class="col-span-full"/>
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.client_national_id_url"
                                    name="client_national_id"/>
-                    <hr class="col-span-full"/>
-                    <ElFloatingTextarea class="col-span-full" :form="el_form" name="notes"/>
+                    <ElFloatingTextarea class="col-span-3" :form="el_form" name="notes"/>
                 </div>
             </ElCardWithTitle>
 
@@ -89,8 +86,6 @@ const el_form = useForm({
     purchase_price: props.row?.purchase_price,
     purchase_type: props.row?.purchase_type,
     selling_price: props.row?.selling_price,
-    currency_equal_value: props.row?.currency_equal_value,
-    selling_price_equal_value: props.row?.selling_price_equal_value,
     purchase_date: props.row?.purchase_date,
     chassis_number: props.row?.chassis_number,
     car_type: props.row?.car_type,
@@ -116,23 +111,6 @@ const setSupplierCurrency = () => {
 }
 setSupplierCurrency();
 watch(() => el_form.supplier_id, setSupplierCurrency, {deep: true});
-
-const sellingPriceEqualValue = computed({
-    get() {
-        if (!el_form.currency_equal_value || !el_form.selling_price) {
-            return null;
-        }
-        return (el_form.currency_equal_value * el_form.selling_price).toFixed(3);
-    },
-    set(value) {
-        if (!value || !el_form.selling_price) {
-            return;
-        }
-        el_form.currency_equal_value = (value/el_form.selling_price).toFixed(3);
-    }
-});
-
-el_form.selling_price_equal_value = sellingPriceEqualValue;
 
 
 const submit = () => {

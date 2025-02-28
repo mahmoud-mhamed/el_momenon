@@ -22,7 +22,7 @@ class BillProfileAction extends BaseAction
         $bill->refresh();
 
         $this->checkAbility(Abilities::M_BILL_PROFILE);
-        $bill->load('currency', 'equalCurrency');
+        $bill->load('currency');
 
         $this->setProfileTab('MainDataTab', $bill);
         $data['row'] = $bill;

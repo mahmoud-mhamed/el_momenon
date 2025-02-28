@@ -12,7 +12,6 @@ class BillObserver
     public function creating(Bill $bill)
     {
         $bill->currency_id = $bill->supplier->currency_id;
-        $bill->equal_currency_id = Currency::query()->where('is_default',true)->first()?->id;
     }
 
     /**

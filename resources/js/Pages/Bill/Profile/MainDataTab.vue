@@ -12,9 +12,6 @@
             <ElLabelValuePrice :currency="data.row.currency" :value="data.row.shipping_amount"
                                :label="$t('column.shipping_amount')"/>
 
-            <ElLabelValuePrice :currency="data.row.equal_currency" :value="data.row.selling_price_equal_value"
-                               :label="$t('column.selling_price_equal_value')"/>
-
             <ElLabelValueText :value="data.row.policy_number" :label="$t('column.policy_number')"/>
             <ElLabelValueText :value="data.row.purchase_type_text" :label="$t('column.purchase_type')"/>
 

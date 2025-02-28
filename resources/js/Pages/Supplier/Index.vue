@@ -33,6 +33,11 @@ const edit_row = ref();
                     <ElRouteSupplierProfile :model="row.data"/>
                 </template>
             </Column>
+            <Column :header="$t('column.currency_id')">
+                <template #body="row">
+                    <ElText :value="row.data.currency?.name"/>
+                </template>
+            </Column>
             <Column :header="$t('column.phone')">
                 <template #body="row">
                     <ElText :value="row.data.phone"/>
