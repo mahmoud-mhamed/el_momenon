@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
+class ComposerStaticInitc01e50d9db9570981e5a3fa4c6a00647
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -680,6 +680,14 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
     );
 
     public static $classMap = array (
+        'App\\Actions\\BillPayment\\BillPaymentDeleteAction' => __DIR__ . '/../..' . '/app/Actions/BillPayment/BillPaymentDeleteAction.php',
+        'App\\Actions\\BillPayment\\BillPaymentStoreAction' => __DIR__ . '/../..' . '/app/Actions/BillPayment/BillPaymentStoreAction.php',
+        'App\\Actions\\BillPayment\\BillPaymentUpdateAction' => __DIR__ . '/../..' . '/app/Actions/BillPayment/BillPaymentUpdateAction.php',
+        'App\\Actions\\Bill\\BillDeleteAction' => __DIR__ . '/../..' . '/app/Actions/Bill/BillDeleteAction.php',
+        'App\\Actions\\Bill\\BillIndexAction' => __DIR__ . '/../..' . '/app/Actions/Bill/BillIndexAction.php',
+        'App\\Actions\\Bill\\BillProfileAction' => __DIR__ . '/../..' . '/app/Actions/Bill/BillProfileAction.php',
+        'App\\Actions\\Bill\\BillStoreAction' => __DIR__ . '/../..' . '/app/Actions/Bill/BillStoreAction.php',
+        'App\\Actions\\Bill\\BillUpdateAction' => __DIR__ . '/../..' . '/app/Actions/Bill/BillUpdateAction.php',
         'App\\Actions\\Client\\ClientDeleteAction' => __DIR__ . '/../..' . '/app/Actions/Client/ClientDeleteAction.php',
         'App\\Actions\\Client\\ClientIndexAction' => __DIR__ . '/../..' . '/app/Actions/Client/ClientIndexAction.php',
         'App\\Actions\\Client\\ClientProfileAction' => __DIR__ . '/../..' . '/app/Actions/Client/ClientProfileAction.php',
@@ -747,31 +755,55 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'App\\Console\\Commands\\MakeEnumCommand' => __DIR__ . '/../..' . '/app/Console/Commands/MakeEnumCommand.php',
         'App\\Console\\Commands\\MakeServiceCommand' => __DIR__ . '/../..' . '/app/Console/Commands/MakeServiceCommand.php',
         'App\\Console\\Commands\\TransLangFilesCommand' => __DIR__ . '/../..' . '/app/Console/Commands/TransLangFilesCommand.php',
+        'App\\Enums\\ArchiveCollectionNameEnum' => __DIR__ . '/../..' . '/app/Enums/ArchiveCollectionNameEnum.php',
+        'App\\Enums\\BillPaymentTypeEnum' => __DIR__ . '/../..' . '/app/Enums/BillPaymentTypeEnum.php',
+        'App\\Enums\\BillPaymetTypeEnum' => __DIR__ . '/../..' . '/app/Enums/BillPaymetTypeEnum.php',
+        'App\\Enums\\BillPurchaseTypeEnum' => __DIR__ . '/../..' . '/app/Enums/BillPurchaseTypeEnum.php',
+        'App\\Enums\\BillStatusEnum' => __DIR__ . '/../..' . '/app/Enums/BillStatusEnum.php',
         'App\\Enums\\IsActiveEnum' => __DIR__ . '/../..' . '/app/Enums/IsActiveEnum.php',
         'App\\Enums\\ModuleNameEnum' => __DIR__ . '/../..' . '/app/Enums/ModuleNameEnum.php',
         'App\\Exports\\ExcelExport' => __DIR__ . '/../..' . '/app/Exports/ExcelExport.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Middleware\\HandleInertiaRequests' => __DIR__ . '/../..' . '/app/Http/Middleware/HandleInertiaRequests.php',
+        'App\\Http\\Requests\\BillPaymentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BillPaymentRequest.php',
+        'App\\Http\\Requests\\BillRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BillRequest.php',
         'App\\Http\\Requests\\ClientRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ClientRequest.php',
         'App\\Http\\Requests\\CurrencyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CurrencyRequest.php',
         'App\\Http\\Requests\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/LoginRequest.php',
         'App\\Http\\Requests\\RolesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RolesRequest.php',
         'App\\Http\\Requests\\SupplierRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SupplierRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
+        'App\\Models\\Archive' => __DIR__ . '/../..' . '/app/Models/Archive.php',
         'App\\Models\\BaseModel' => __DIR__ . '/../..' . '/app/Models/BaseModel.php',
+        'App\\Models\\Bill' => __DIR__ . '/../..' . '/app/Models/Bill.php',
+        'App\\Models\\BillPayment' => __DIR__ . '/../..' . '/app/Models/BillPayment.php',
+        'App\\Models\\Builders\\ArchiveBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/ArchiveBuilder.php',
         'App\\Models\\Builders\\BaseBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/BaseBuilder.php',
+        'App\\Models\\Builders\\BillBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/BillBuilder.php',
+        'App\\Models\\Builders\\ClientBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/ClientBuilder.php',
+        'App\\Models\\Builders\\CurrencyBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/CurrencyBuilder.php',
+        'App\\Models\\Builders\\SupplierBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/SupplierBuilder.php',
         'App\\Models\\Builders\\UserBuilder' => __DIR__ . '/../..' . '/app/Models/Builders/UserBuilder.php',
         'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
         'App\\Models\\Currency' => __DIR__ . '/../..' . '/app/Models/Currency.php',
         'App\\Models\\Filters\\ActiveFilter' => __DIR__ . '/../..' . '/app/Models/Filters/ActiveFilter.php',
+        'App\\Models\\Filters\\Bill\\BillClientFilter' => __DIR__ . '/../..' . '/app/Models/Filters/Bill/BillClientFilter.php',
+        'App\\Models\\Filters\\Bill\\BillDisabledClientFilter' => __DIR__ . '/../..' . '/app/Models/Filters/Bill/BillDisabledClientFilter.php',
+        'App\\Models\\Filters\\Bill\\BillPurchaseTypeFilter' => __DIR__ . '/../..' . '/app/Models/Filters/Bill/BillPurchaseTypeFilter.php',
+        'App\\Models\\Filters\\Bill\\BillStatusFilter' => __DIR__ . '/../..' . '/app/Models/Filters/Bill/BillStatusFilter.php',
         'App\\Models\\Filters\\CreatedAtDateRangeFilter' => __DIR__ . '/../..' . '/app/Models/Filters/CreatedAtDateRangeFilter.php',
         'App\\Models\\Filters\\UserFilter' => __DIR__ . '/../..' . '/app/Models/Filters/UserFilter.php',
         'App\\Models\\Filters\\User\\RoleFilter' => __DIR__ . '/../..' . '/app/Models/Filters/User/RoleFilter.php',
         'App\\Models\\Supplier' => __DIR__ . '/../..' . '/app/Models/Supplier.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Observers\\ActivityObserver' => __DIR__ . '/../..' . '/app/Observers/ActivityObserver.php',
+        'App\\Observers\\ArchiveObserver' => __DIR__ . '/../..' . '/app/Observers/ArchiveObserver.php',
+        'App\\Observers\\BillObserver' => __DIR__ . '/../..' . '/app/Observers/BillObserver.php',
+        'App\\Observers\\BillPaymentObserver' => __DIR__ . '/../..' . '/app/Observers/BillPaymentObserver.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\Rules\\ArchiveFileRule' => __DIR__ . '/../..' . '/app/Rules/ArchiveFileRule.php',
         'App\\Rules\\AvatarRule' => __DIR__ . '/../..' . '/app/Rules/AvatarRule.php',
+        'App\\Rules\\DateFormatCreatedAtRule' => __DIR__ . '/../..' . '/app/Rules/DateFormatCreatedAtRule.php',
         'App\\Rules\\EmailRule' => __DIR__ . '/../..' . '/app/Rules/EmailRule.php',
         'App\\Rules\\LargeTextRule' => __DIR__ . '/../..' . '/app/Rules/LargeTextRule.php',
         'App\\Rules\\LatitudeRule' => __DIR__ . '/../..' . '/app/Rules/LatitudeRule.php',
@@ -783,11 +815,10 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'App\\Rules\\PriceRule' => __DIR__ . '/../..' . '/app/Rules/PriceRule.php',
         'App\\Rules\\SmallTextRule' => __DIR__ . '/../..' . '/app/Rules/SmallTextRule.php',
         'App\\Services\\BaseService' => __DIR__ . '/../..' . '/app/Services/BaseService.php',
+        'App\\Services\\BillService' => __DIR__ . '/../..' . '/app/Services/BillService.php',
         'App\\Services\\BouncerService' => __DIR__ . '/../..' . '/app/Services/BouncerService.php',
-        'App\\Traits\\AcceptanceTrait' => __DIR__ . '/../..' . '/app/Traits/AcceptanceTrait.php',
-        'App\\Traits\\BelongsToCompanyTrait' => __DIR__ . '/../..' . '/app/Traits/BelongsToCompanyTrait.php',
-        'App\\Traits\\BelongsToDepartmentTrait' => __DIR__ . '/../..' . '/app/Traits/BelongsToDepartmentTrait.php',
-        'App\\Traits\\BelongsToProjectTrait' => __DIR__ . '/../..' . '/app/Traits/BelongsToProjectTrait.php',
+        'App\\Traits\\BelongsToBillTrait' => __DIR__ . '/../..' . '/app/Traits/BelongsToBillTrait.php',
+        'App\\Traits\\BelongsToClientTrait' => __DIR__ . '/../..' . '/app/Traits/BelongsToClientTrait.php',
         'App\\Traits\\CommentTrait' => __DIR__ . '/../..' . '/app/Traits/CommentTrait.php',
         'App\\Traits\\ElAuthorizeAbleTrait' => __DIR__ . '/../..' . '/app/Traits/ElAuthorizeAbleTrait.php',
         'App\\Traits\\EnumCastAppendAttributeTrait' => __DIR__ . '/../..' . '/app/Traits/EnumCastAppendAttributeTrait.php',
@@ -2572,6 +2603,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Illuminate\\Database\\Capsule\\Manager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Capsule/Manager.php',
         'Illuminate\\Database\\ClassMorphViolationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/ClassMorphViolationException.php',
         'Illuminate\\Database\\Concerns\\BuildsQueries' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Concerns/BuildsQueries.php',
+        'Illuminate\\Database\\Concerns\\BuildsWhereDateClauses' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Concerns/BuildsWhereDateClauses.php',
         'Illuminate\\Database\\Concerns\\CompilesJsonPaths' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Concerns/CompilesJsonPaths.php',
         'Illuminate\\Database\\Concerns\\ExplainsQueries' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Concerns/ExplainsQueries.php',
         'Illuminate\\Database\\Concerns\\ManagesTransactions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php',
@@ -3468,6 +3500,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Illuminate\\Validation\\Rules\\ImageFile' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/ImageFile.php',
         'Illuminate\\Validation\\Rules\\In' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/In.php',
         'Illuminate\\Validation\\Rules\\NotIn' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/NotIn.php',
+        'Illuminate\\Validation\\Rules\\Numeric' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/Numeric.php',
         'Illuminate\\Validation\\Rules\\Password' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/Password.php',
         'Illuminate\\Validation\\Rules\\ProhibitedIf' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/ProhibitedIf.php',
         'Illuminate\\Validation\\Rules\\RequiredIf' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/RequiredIf.php',
@@ -3596,6 +3629,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'LaravelLang\\Lang\\Plugins\\Jetstream\\V5' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Jetstream/V5.php',
         'LaravelLang\\Lang\\Plugins\\Laravel\\Master' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Laravel/Master.php',
         'LaravelLang\\Lang\\Plugins\\Laravel\\V11' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Laravel/V11.php',
+        'LaravelLang\\Lang\\Plugins\\Laravel\\V12' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Laravel/V12.php',
         'LaravelLang\\Lang\\Plugins\\Nova\\DuskSuite\\Main' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Nova/DuskSuite/Main.php',
         'LaravelLang\\Lang\\Plugins\\Nova\\LogViewer\\Main' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Nova/LogViewer/Main.php',
         'LaravelLang\\Lang\\Plugins\\Nova\\V4' => __DIR__ . '/..' . '/laravel-lang/lang/src/Plugins/Nova/V4.php',
@@ -4999,6 +5033,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'PHPUnit\\Framework\\Attributes\\UsesMethod' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/UsesMethod.php',
         'PHPUnit\\Framework\\Attributes\\UsesTrait' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/UsesTrait.php',
         'PHPUnit\\Framework\\Attributes\\WithoutErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Attributes/WithoutErrorHandler.php',
+        'PHPUnit\\Framework\\ChildProcessResultProcessor' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/TestRunner/ChildProcessResultProcessor.php',
         'PHPUnit\\Framework\\CodeCoverageException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/CodeCoverageException.php',
         'PHPUnit\\Framework\\ComparisonMethodDoesNotAcceptParameterTypeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ObjectEquals/ComparisonMethodDoesNotAcceptParameterTypeException.php',
         'PHPUnit\\Framework\\ComparisonMethodDoesNotDeclareBoolReturnTypeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ObjectEquals/ComparisonMethodDoesNotDeclareBoolReturnTypeException.php',
@@ -5281,6 +5316,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'PHPUnit\\Metadata\\Group' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Group.php',
         'PHPUnit\\Metadata\\IgnoreDeprecations' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/IgnoreDeprecations.php',
         'PHPUnit\\Metadata\\IgnorePhpunitDeprecations' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/IgnorePhpunitDeprecations.php',
+        'PHPUnit\\Metadata\\InvalidAttributeException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Exception/InvalidAttributeException.php',
         'PHPUnit\\Metadata\\InvalidVersionRequirementException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Exception/InvalidVersionRequirementException.php',
         'PHPUnit\\Metadata\\Metadata' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/Metadata.php',
         'PHPUnit\\Metadata\\MetadataCollection' => __DIR__ . '/..' . '/phpunit/phpunit/src/Metadata/MetadataCollection.php',
@@ -5588,7 +5624,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'PHPUnit\\TextUI\\XmlConfiguration\\RemoveCacheTokensAttribute' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveCacheTokensAttribute.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\RemoveConversionToExceptionsAttributes' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveConversionToExceptionsAttributes.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\RemoveCoverageElementCacheDirectoryAttribute' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveCoverageElementCacheDirectoryAttribute.php',
-        'PHPUnit\\TextUI\\XmlConfiguration\\RemoveCoverageElementIncludeUncoveredFilesAttribute' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveCoverageElementIncludeUncoveredFilesAttribute.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\RemoveCoverageElementProcessUncoveredFilesAttribute' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveCoverageElementProcessUncoveredFilesAttribute.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\RemoveEmptyFilter' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveEmptyFilter.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\RemoveListeners' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Configuration/Xml/Migration/Migrations/RemoveListeners.php',
@@ -7139,11 +7174,13 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Spatie\\Activitylog\\Exceptions\\CouldNotLogActivity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Exceptions/CouldNotLogActivity.php',
         'Spatie\\Activitylog\\Exceptions\\CouldNotLogChanges' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Exceptions/CouldNotLogChanges.php',
         'Spatie\\Activitylog\\Exceptions\\InvalidConfiguration' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Exceptions/InvalidConfiguration.php',
+        'Spatie\\Activitylog\\Facades\\Activity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Facades/Activity.php',
         'Spatie\\Activitylog\\Facades\\CauserResolver' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Facades/CauserResolver.php',
         'Spatie\\Activitylog\\Facades\\LogBatch' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Facades/LogBatch.php',
         'Spatie\\Activitylog\\LogBatch' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/LogBatch.php',
         'Spatie\\Activitylog\\LogOptions' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/LogOptions.php',
         'Spatie\\Activitylog\\Models\\Activity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Models/Activity.php',
+        'Spatie\\Activitylog\\PendingActivityLog' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/PendingActivityLog.php',
         'Spatie\\Activitylog\\Traits\\CausesActivity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Traits/CausesActivity.php',
         'Spatie\\Activitylog\\Traits\\LogsActivity' => __DIR__ . '/..' . '/spatie/laravel-activitylog/src/Traits/LogsActivity.php',
         'Spatie\\LaravelPackageTools\\Commands\\InstallCommand' => __DIR__ . '/..' . '/spatie/laravel-package-tools/src/Commands/InstallCommand.php',
@@ -8265,10 +8302,10 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc01e50d9db9570981e5a3fa4c6a00647::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc01e50d9db9570981e5a3fa4c6a00647::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc01e50d9db9570981e5a3fa4c6a00647::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc01e50d9db9570981e5a3fa4c6a00647::$classMap;
 
         }, null, ClassLoader::class);
     }
