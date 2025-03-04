@@ -67,8 +67,6 @@ class Parser
         . '[$]?[A-Ia-i]?[A-Za-z][$]?(\\d+)'
         . '$~u';
 
-    private const UTF8 = 'UTF-8';
-
     /**
      * The index of the character we are currently looking at.
      */
@@ -1003,30 +1001,29 @@ class Parser
     {
         $token = '';
         $i = $this->currentCharacter;
-        $formula = mb_str_split($this->formula, 1, self::UTF8);
-        $formula_length = count($formula);
+        $formula_length = strlen($this->formula);
         // eat up white spaces
         if ($i < $formula_length) {
-            while ($formula[$i] === ' ') {
+            while ($this->formula[$i] == ' ') {
                 ++$i;
             }
 
             if ($i < ($formula_length - 1)) {
-                $this->lookAhead = $formula[$i + 1];
+                $this->lookAhead = $this->formula[$i + 1];
             }
             $token = '';
         }
 
         while ($i < $formula_length) {
-            $token .= $formula[$i];
+            $token .= $this->formula[$i];
 
             if ($i < ($formula_length - 1)) {
-                $this->lookAhead = $formula[$i + 1];
+                $this->lookAhead = $this->formula[$i + 1];
             } else {
                 $this->lookAhead = '';
             }
 
-            if ($this->match($token) !== '') {
+            if ($this->match($token) != '') {
                 $this->currentCharacter = $i + 1;
                 $this->currentToken = $token;
 
@@ -1034,7 +1031,7 @@ class Parser
             }
 
             if ($i < ($formula_length - 2)) {
-                $this->lookAhead = $formula[$i + 2];
+                $this->lookAhead = $this->formula[$i + 2];
             } else { // if we run out of characters lookAhead becomes empty
                 $this->lookAhead = '';
             }
@@ -1211,8 +1208,8 @@ class Parser
     public function parse(string $formula): bool
     {
         $this->currentCharacter = 0;
-        $this->formula = $formula;
-        $this->lookAhead = mb_substr($formula, 1, 1, self::UTF8);
+        $this->formula = (string) $formula;
+        $this->lookAhead = $formula[1] ?? '';
         $this->advance();
         $this->parseTree = $this->condition();
 
@@ -1637,9 +1634,7 @@ class Parser
             }
 
             // add its left subtree and return.
-            if ($left_tree !== '' || $tree['right'] !== '') {
-                return $left_tree . $this->convertFunction($tree['value'], $tree['right'] ?: 0);
-            }
+            return $left_tree . $this->convertFunction($tree['value'], $tree['right']);
         }
         $converted_tree = $this->convert($tree['value']);
 

@@ -45,7 +45,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      *
      * @var string
      */
-    const VERSION = '11.44.0';
+    const VERSION = '11.41.3';
 
     /**
      * The base path for the Laravel installation.
@@ -1043,11 +1043,9 @@ class Application extends Container implements ApplicationContract, CachesConfig
     /**
      * Resolve the given type from the container.
      *
-     * @template TClass of object
-     *
-     * @param  string|class-string<TClass>  $abstract
+     * @param  string  $abstract
      * @param  array  $parameters
-     * @return ($abstract is class-string<TClass> ? TClass : mixed)
+     * @return mixed
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
@@ -1061,12 +1059,10 @@ class Application extends Container implements ApplicationContract, CachesConfig
     /**
      * Resolve the given type from the container.
      *
-     * @template TClass of object
-     *
-     * @param  string|class-string<TClass>|callable  $abstract
+     * @param  string  $abstract
      * @param  array  $parameters
      * @param  bool  $raiseEvents
-     * @return ($abstract is class-string<TClass> ? TClass : mixed)
+     * @return mixed
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Illuminate\Contracts\Container\CircularDependencyException

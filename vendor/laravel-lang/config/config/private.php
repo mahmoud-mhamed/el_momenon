@@ -86,11 +86,6 @@ return [
             'type'     => 'Cyrl',
             'regional' => 'bg_BG',
         ],
-        
-        Locale::Canada->value => [
-            'type'     => 'Latn',
-            'regional' => 'en_CA',
-        ],
 
         Locale::Catalan->value => [
             'type'     => 'Latn',

@@ -1,6 +1,6 @@
 {
   "node_modules/chart.js/auto/auto.js": {
-    "file": "assets/auto-CJOCAvQ-.js",
+    "file": "assets/auto-WfMZYxnL.js",
     "name": "auto",
     "src": "node_modules/chart.js/auto/auto.js",
     "isDynamicEntry": true,
@@ -49,7 +49,7 @@
     "src": "resources/css/images/bg-statistics.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-72okxZ_4.js",
+    "file": "assets/app-BifFe5DP.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

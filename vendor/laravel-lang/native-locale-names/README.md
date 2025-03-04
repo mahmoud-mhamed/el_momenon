@@ -9,23 +9,15 @@
 
 ## Documentation
 
-See the [documentation](https://laravel-lang.com/packages-native-locale-names.html) for detailed installation.
-
-## Communication
-
-We also have official [chats](https://t.me/addlist/l0XGtvEIBiljMTMy) in Telegram.
+See the [documentation](https://laravel-lang.com) for detailed installation.
 
 ## Contributing
 
 Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for details.
 
-## Support Us
-
-❤️ Laravel Lang? Please consider supporting our collective on [Boosty](https://boosty.to/laravel-lang).
-
 ## License
 
-This package is licensed under the [MIT License](https://laravel-lang.com/license.html).
+This package is licensed under the [MIT License][link_license].
 
 
 [badge_stable]:     https://img.shields.io/github/v/release/Laravel-Lang/native-locale-names?label=stable&style=flat-square

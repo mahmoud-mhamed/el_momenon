@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+Route::get('/deploy',function (){
+    return Artisan::call('app:deploy');
+});
 Route::get('/version', function () {
     return 1.6;
 });
