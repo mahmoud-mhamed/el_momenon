@@ -17,10 +17,8 @@ class PhoneNumberRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $validator = preg_match("/^(010|011|012|015)\d{8}$/", $value);
-
-        if (!$validator) {
-            $fail( __('validation.phone'));
+        if (!is_numeric($value) || !ctype_digit(strval($value))) {
+            $fail(__('validation.numeric')); // Use a proper localization key for error messages
         }
     }
 }
