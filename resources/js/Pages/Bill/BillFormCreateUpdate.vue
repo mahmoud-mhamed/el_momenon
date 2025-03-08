@@ -46,7 +46,7 @@
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_envelope_url"
                                    name="disabled_client_envelope"/>
                     <ElArchiveInput :form="el_form" :old-image-preview="props.row?.smart_card_url"
-                                   name="smart_card"/>
+                                    name="smart_card"/>
                 </div>
             </ElCardWithTitle>
 
@@ -80,8 +80,8 @@ const is_create = !props?.row?.id;
 const supplier_currency = ref(is_create ? null : props.row.currency);
 const el_form = useForm({
     id: props.row?.id,
-    supplier_id: props.row?.supplier_id,
-    client_id: props.row?.client_id,
+    supplier_id: props.row?.supplier_id ?? props.form_data?.select_supplier_id,
+    client_id: props.row?.client_id ?? props.form_data?.select_client_id,
     disabled_client_id: props.row?.disabled_client_id,
     purchase_price: props.row?.purchase_price,
     purchase_type: props.row?.purchase_type,

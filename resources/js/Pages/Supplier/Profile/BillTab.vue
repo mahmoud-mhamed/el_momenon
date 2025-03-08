@@ -1,5 +1,10 @@
 <template>
     <ElContainer>
+        <div class="flex justify-end mb-2">
+            <ElSecondaryButton :href="route('dashboard.bill.create',{'select_supplier_id':props.data.row.id})"
+                               v-ability="Ability.M_BILL_CREATE"
+                               :text="$t('message.add_bill')"/>
+        </div>
         <ElDataTable :src="props.data.bills">
             <Column :header="$t('column.id')">
                 <template #body="row">
@@ -54,6 +59,7 @@ import ElDataTable from "@/Components/Table/ElDataTable.vue";
 import ElRouteClientProfile from "@/Components/ElRoutes/ElRouteClientProfile.vue";
 import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile.vue";
 import ElActionMenu from "@/Components/ActionMenu/ElActionMenu.vue";
+import ElSecondaryButton from "@/Components/Buttons/ElSecondaryButton.vue";
 
 const props = defineProps(['data']);
 </script>
