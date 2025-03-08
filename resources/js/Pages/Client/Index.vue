@@ -45,6 +45,11 @@ const edit_row = ref();
                     <ElText :value="row.data.national_id"/>
                 </template>
             </Column>
+            <Column :header="$t('message.bills_count')">
+                <template #body="row">
+                    <ElText :value="row.data.bills_count"/>
+                </template>
+            </Column>
             <Column field="updated_at_text" :header="$t('column.updated_at')"/>
             <Column :header="$t('message.actions')">
                 <template #body="row">

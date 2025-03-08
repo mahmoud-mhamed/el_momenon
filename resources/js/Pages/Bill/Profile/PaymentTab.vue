@@ -22,7 +22,9 @@
             </Column>
             <Column :header="$t('column.bill_currency_equal_value')">
                 <template #body="row">
-                    <ElPrice :value="row.data.bill_currency_equal_value" :currency="data.row.currency"/>
+                    <ElPrice :currency="row.data.bill.currency" :value="1"/>
+                    =
+                    <ElPrice :value="row.data.bill_currency_equal_value" :currency="row.data.paid_currency"/>
                 </template>
             </Column>
             <Column :header="$t('column.paid_amount')">

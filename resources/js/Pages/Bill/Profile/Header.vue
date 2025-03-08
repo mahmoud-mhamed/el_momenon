@@ -5,6 +5,14 @@
                 <ElLabelValueText :value="usePage().props?.profile_row.id" :label="$t('column.id')"/>
                 <ElLabelValueText :value="usePage().props?.profile_row.chassis_number" :label="$t('column.chassis_number')"/>
                 <ElLabelValueText :value="usePage().props?.profile_row.status_text" :label="$t('column.status')"/>
+                <div class="flex gap-2">
+                    <label>{{ $t('column.supplier_id') }} : </label>
+                    <ElRouteSupplierProfile :model="usePage().props?.profile_row.supplier"/>
+                </div>
+                <div class="flex gap-2">
+                    <label>{{ $t('column.client_id') }} : </label>
+                    <ElRouteClientProfile :model="usePage().props?.profile_row.client"/>
+                </div>
                 <ElLabelValuePrice :value="usePage().props?.profile_row.supplier_rent_amount"
                                    :currency="usePage().props?.profile_row.currency"
                                    :label="$t('message.supplier_rent')"/>
@@ -36,5 +44,7 @@ import AvatarProfile from "@/Components/Avatar/AvatarProfile.vue";
 import ElText from "@/Components/Text/ElText.vue";
 import ElLabelValueText from "@/Components/Text/ElLabelValueText.vue";
 import ElLabelValuePrice from "@/Components/Text/ElLabelValuePrice.vue";
+import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile.vue";
+import ElRouteClientProfile from "@/Components/ElRoutes/ElRouteClientProfile.vue";
 
 </script>

@@ -13,14 +13,14 @@
 
             <template v-if="el_form.paid_currency_id && el_form.paid_currency_id !== form_data.bill_currency.id">
                 <el-floating-price :form="el_form" required name="bill_currency_equal_value"
-                                   :label="1 + ' '+selected_paid_currency?.name + ' = ........ '+form_data.bill_currency.name "
-                                   :currency="form_data.bill_currency"/>
+                                   :label="1 + ' '+form_data.bill_currency.name + ' = ........ '+selected_paid_currency?.name "
+                                   :currency="selected_paid_currency"/>
 
                 <div class="flex items-center">
                     <ElLabelValuePrice :label="$t('column.bill_currency_equal_total')"
                                        :currency="form_data.bill_currency"
                                        v-if="el_form.bill_currency_equal_value && el_form.paid_amount"
-                                       :value="(el_form.bill_currency_equal_value * el_form.paid_amount).toFixed(4)"/>
+                                       :value="(el_form.paid_amount/el_form.bill_currency_equal_value).toFixed(4)"/>
 
                     <ElLabelValuePrice v-else :label="$t('column.bill_currency_equal_total')"
                                        :currency="form_data.bill_currency"/>
@@ -108,7 +108,7 @@ watch(() => el_form.paid_currency_id, selectPaidCurrency, {deep: true});
 
 const submit = () => {
     if (el_form.paid_amount && el_form.bill_currency_equal_value)
-        el_form.bill_currency_equal_total = el_form.bill_currency_equal_value * el_form.paid_amount;
+        el_form.bill_currency_equal_total = ( el_form.paid_amount/el_form.bill_currency_equal_value).toFixed(4);
     el_form.post(is_create ? route('dashboard.bill-payment.store', props.form_data.bill_id) : route('dashboard.bill-payment.update', el_form.id), {
         preserveState: true,
         onSuccess: () => {
