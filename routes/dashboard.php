@@ -56,6 +56,11 @@ Route::group([
         Route::post('/', \App\Actions\Supplier\SupplierStoreAction::class)->name('store');
         Route::post('/{supplier}', \App\Actions\Supplier\SupplierUpdateAction::class)->name('update');
         Route::delete('/{supplier}', \App\Actions\Supplier\SupplierDeleteAction::class)->name('delete');
+
+        Route::group(['prefix' => 'profile/{supplier}', 'as' => 'profile.'], function () {
+            Route::get('/view-bills', [\App\Actions\Supplier\SupplierProfileAction::class, 'viewBills'])->name('view-bills');
+            Route::get('/view-payment', [\App\Actions\Supplier\SupplierProfileAction::class, 'viewBillPayment'])->name('view-payment');
+        });
     });
 
     Route::group(['prefix' => 'client', 'as' => 'client.'], function () {
@@ -68,6 +73,7 @@ Route::group([
             Route::get('/', [\App\Actions\Client\ClientProfileAction::class, 'viewMainData'])->name('main_data');
             Route::get('/view-bills', [\App\Actions\Client\ClientProfileAction::class, 'viewBills'])->name('view-bills');
             Route::get('/view-archive', [\App\Actions\Client\ClientProfileAction::class, 'viewArchive'])->name('view-archive');
+            Route::get('/view-payment', [\App\Actions\Client\ClientProfileAction::class, 'viewBillPayment'])->name('view-payment');
         });
     });
 

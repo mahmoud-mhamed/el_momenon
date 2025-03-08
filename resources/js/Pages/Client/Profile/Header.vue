@@ -11,6 +11,8 @@
                   :href="route('dashboard.client.profile.main_data',usePage().props?.profile_row.id)"/>
             <Tabs :label="$t('message.bills')" v-ability="Ability.M_CLIENT_BILLS"
                   :href="route('dashboard.client.profile.view-bills',usePage().props?.profile_row.id)"/>
+            <Tabs :label="$t('message.payments')" v-ability="Ability.M_CLIENT_VIEW_BILL_PAYMENT"
+                  :href="route('dashboard.client.profile.view-payment',usePage().props?.profile_row.id)"/>
             <Tabs :label="$t('message.archive')" v-ability="Ability.M_CLIENT_BILLS"
                   :href="route('dashboard.client.profile.view-archive',usePage().props?.profile_row.id)"/>
         </template>

@@ -34,6 +34,9 @@ enum Abilities: string
     case M_SUPPLIER_STORE = 'm_supplier_store';
     case M_SUPPLIER_EDIT = 'm_supplier_edit';
     case M_SUPPLIER_DELETE = 'm_supplier_delete';
+//    case M_SUPPLIER_PROFILE = 'm_supplier_profile';
+    case M_SUPPLIER_BILLS = 'm_supplier_bills';
+    case M_SUPPLIER_BILL_PAYMENTS = 'm_supplier_bill_payments';
 
 
     // clients
@@ -44,6 +47,7 @@ enum Abilities: string
     case M_CLIENT_PROFILE = 'm_client_profile';
     case M_CLIENT_BILLS = 'm_client_bills';
     case M_CLIENT_ARCHIVE = 'm_client_archive';
+    case M_CLIENT_VIEW_BILL_PAYMENT = 'm_client_view_bill_payment';
 
 
     //bill
@@ -90,6 +94,9 @@ enum Abilities: string
         ['key' => self::M_SUPPLIER_EDIT, 'module' => ModuleNameEnum::SUPPLIER],
         ['key' => self::M_SUPPLIER_STORE, 'module' => ModuleNameEnum::SUPPLIER],
         ['key' => self::M_SUPPLIER_DELETE, 'module' => ModuleNameEnum::SUPPLIER],
+//        ['key' => self::M_SUPPLIER_PROFILE, 'module' => ModuleNameEnum::SUPPLIER],
+        ['key' => self::M_SUPPLIER_BILLS, 'module' => ModuleNameEnum::SUPPLIER],
+        ['key' => self::M_SUPPLIER_BILL_PAYMENTS, 'module' => ModuleNameEnum::SUPPLIER],
 
 
         ['key' => self::M_CLIENT_INDEX, 'module' => ModuleNameEnum::CLIENT],
@@ -99,6 +106,7 @@ enum Abilities: string
         ['key' => self::M_CLIENT_PROFILE, 'module' => ModuleNameEnum::CLIENT],
         ['key' => self::M_CLIENT_BILLS, 'module' => ModuleNameEnum::CLIENT],
         ['key' => self::M_CLIENT_ARCHIVE, 'module' => ModuleNameEnum::CLIENT],
+        ['key' => self::M_CLIENT_VIEW_BILL_PAYMENT, 'module' => ModuleNameEnum::CLIENT],
 
         ['key' => self::M_BILL_INDEX, 'module' => ModuleNameEnum::BILL],
         ['key' => self::M_BILL_CREATE, 'module' => ModuleNameEnum::BILL],

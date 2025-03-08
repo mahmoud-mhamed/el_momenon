@@ -4,9 +4,12 @@ namespace App\Actions\Client;
 
 use App\Classes\Abilities;
 use App\Classes\BaseAction;
+use App\Enums\BillPaymentTypeEnum;
 use App\Models\Archive;
 use App\Models\Bill;
+use App\Models\BillPayment;
 use App\Models\Client;
+use App\Models\Supplier;
 use Inertia\Inertia;
 
 class ClientProfileAction extends BaseAction
@@ -18,25 +21,42 @@ class ClientProfileAction extends BaseAction
         $data['row'] = $client;
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
+
     public function viewBills(Client $client): \Inertia\Response
     {
         $this->checkAbility(Abilities::M_CLIENT_BILLS);
         $this->setProfileTab('BillTab', $client);
         $data['row'] = $client;
-        $data['bills'] = Bill::query()->with('supplier','client','disabledClient')->forClientOrDisabledClient($client->id)->get();
+        $data['bills'] = Bill::query()->with('supplier', 'client', 'disabledClient')->forClientOrDisabledClient($client->id)->get();
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
+
     public function viewArchive(Client $client): \Inertia\Response
     {
         $this->checkAbility(Abilities::M_CLIENT_ARCHIVE);
         $this->setProfileTab('ArchiveTab', $client);
         $data['row'] = $client;
         $data['archives'] = Archive::query()
-            ->with('bill')->with('client','disabledClient')
+            ->with('bill')->with('client', 'disabledClient')
             ->forClientOrDisabledClient($client->id)->get()->groupBy('bill_id');
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
 
+    public function viewBillPayment(Client $client): \Inertia\Response
+    {
+        $this->checkAbility(Abilities::M_SUPPLIER_BILL_PAYMENTS);
+        $this->setProfileTab('PaymentTab', $client);
+        $data['row'] = $client;
+        $data['payments'] = BillPayment::query()->where('type', BillPaymentTypeEnum::FROM_CLIENT)
+            ->with('paidCurrency', 'proofArchive')
+            ->with('bill', 'bill.currency')
+            ->whereHas('bill', function ($query) use ($client) {
+                return $query->where('client_id',$client->id);
+            })
+            ->latest('id')->paginate();
+
+        return Inertia::render('Client/Profile/Index', compact('data'));
+    }
 
     public function setProfileTab($tap_component, Client &$row, $title = null): void
     {

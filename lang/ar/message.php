@@ -69,4 +69,5 @@ return [
     'app_payment' => 'إضافة دفعة',
     'client_rent' => 'باقي حساب العميل',
     'supplier_rent' => 'باقي حساب المورد',
+    'payments' => 'الدفعات',
 ];
