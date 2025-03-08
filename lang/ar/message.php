@@ -71,4 +71,5 @@ return [
     'supplier_rent' => 'باقي حساب المورد',
     'payments' => 'الدفعات',
     'bills_count' => 'عدد الفواتير',
+    'add_bill' => 'إضافة فاتورة',
 ];

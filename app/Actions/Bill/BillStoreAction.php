@@ -25,18 +25,18 @@ class BillStoreAction extends BaseAction
         $validated_data = $request->validated();
         \DB::beginTransaction();
         $bill = Bill::create($validated_data);
-        $this->handelFiles($bill,$validated_data);
+        $this->handelFiles($bill, $validated_data);
 
         \DB::commit();
         $this->makeSuccessSessionMessage();
         return back();
     }
 
-    public function handelFiles(Bill $bill,$validated_data): void
+    public function handelFiles(Bill $bill, $validated_data): void
     {
-        foreach (['client_national_id', 'disabled_client_national_id', 'disabled_client_envelope','smart_card'] as $item) {
+        foreach (['client_national_id', 'disabled_client_national_id', 'disabled_client_envelope', 'smart_card'] as $item) {
             if (data_get($validated_data, $item) && is_file($validated_data[$item])) {
-                $new_data=[
+                $new_data = [
                     'collection_name' => $item,
                     'bill_id' => $bill->id,
                 ];
@@ -50,24 +50,35 @@ class BillStoreAction extends BaseAction
             }
         }
     }
+
     public function viewForm(): \Inertia\Response|\Inertia\ResponseFactory
     {
         $this->checkAbility($this->ability);
         BillIndexAction::make()->useBreadcrumb([
             ['label' => __('message.add_new')],
         ]);
+
         $data = $this->getFormCreateUpdateData();
         return inertia('Bill/Create', compact('data'));
     }
 
     public function getFormCreateUpdateData(): array
     {
+        $supplier_id = request()->get('select_supplier_id');
+        if ($supplier_id)
+            $supplier_id = $supplier_id * 1;
+
+        $client_id = request()->get('select_client_id');
+        if ($client_id)
+            $client_id = $client_id * 1;
         return [
             'form_data' => [
                 'status' => BillStatusEnum::getOptionsData(),
                 'clients' => Client::query()->get(),
                 'suppliers' => Supplier::query()->with('currency')->get(),
                 'purchase_types' => BillPurchaseTypeEnum::getOptionsData(),
+                'select_supplier_id' => $supplier_id,
+                'select_client_id' => $client_id,
             ]
         ];
     }
