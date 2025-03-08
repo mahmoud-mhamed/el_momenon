@@ -73,4 +73,9 @@ return [
     Abilities::M_BILL_PAYMENT_UPDATE_FROM_CLIENT->value => 'تعديل دفعة للعميل',
     Abilities::M_BILL_PAYMENT_DELETE_FROM_CLIENT->value => 'حذف دفعة للعميل',
 
+
+    Abilities::M_EMPLOYEE_INDEX->value => $index,
+    Abilities::M_EMPLOYEE_CREATE->value => $create,
+    Abilities::M_EMPLOYEE_EDIT->value => $update,
+    Abilities::M_EMPLOYEE_DELETE->value => $delete,
 ];

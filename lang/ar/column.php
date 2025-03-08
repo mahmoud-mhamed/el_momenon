@@ -70,6 +70,7 @@ return [
     'payment_date' => 'تاريخ الدفع',
     'proof_archive_id' => 'إثبات الدفع',
     'rent' => 'الباقي',
+    'salary' => 'الراتب',
 
 
 ];

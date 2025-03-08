@@ -69,6 +69,12 @@ enum Abilities: string
     case M_BILL_PAYMENT_UPDATE_FROM_CLIENT = 'm_bill_payment_update_from_client';
     case M_BILL_PAYMENT_DELETE_FROM_CLIENT = 'm_bill_payment_delete_from_client';
 
+
+    //employee
+    case M_EMPLOYEE_INDEX = 'm_employee_index';
+    case M_EMPLOYEE_CREATE = 'm_employee_create';
+    case M_EMPLOYEE_EDIT = 'm_employee_edit';
+    case M_EMPLOYEE_DELETE = 'm_employee_delete';
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
         ['key' => self::M_USERS_INDEX_EXPORT, 'module' => ModuleNameEnum::USERS],
@@ -124,6 +130,12 @@ enum Abilities: string
         ['key' => self::M_BILL_PAYMENT_STORE_FROM_CLIENT, 'module' => ModuleNameEnum::BILL_PAYMENT],
         ['key' => self::M_BILL_PAYMENT_UPDATE_FROM_CLIENT, 'module' => ModuleNameEnum::BILL_PAYMENT],
         ['key' => self::M_BILL_PAYMENT_DELETE_FROM_CLIENT, 'module' => ModuleNameEnum::BILL_PAYMENT],
+
+
+        ['key' => self::M_EMPLOYEE_INDEX, 'module' => ModuleNameEnum::EMPLOYEE],
+        ['key' => self::M_EMPLOYEE_CREATE, 'module' => ModuleNameEnum::EMPLOYEE],
+        ['key' => self::M_EMPLOYEE_EDIT, 'module' => ModuleNameEnum::EMPLOYEE],
+        ['key' => self::M_EMPLOYEE_DELETE, 'module' => ModuleNameEnum::EMPLOYEE],
 
     ];
 

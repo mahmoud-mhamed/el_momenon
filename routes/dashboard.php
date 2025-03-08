@@ -78,6 +78,13 @@ Route::group([
     });
 
 
+    Route::group(['prefix' => 'employee', 'as' => 'employee.'], function () {
+        Route::get('/', \App\Actions\Employee\EmployeeIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Employee\EmployeeStoreAction::class)->name('store');
+        Route::post('/{employee}', \App\Actions\Employee\EmployeeUpdateAction::class)->name('update');
+        Route::delete('/{employee}', \App\Actions\Employee\EmployeeDeleteAction::class)->name('delete');
+    });
+
     Route::group(['prefix' => 'bill', 'as' => 'bill.'], function () {
         Route::get('/', \App\Actions\Bill\BillIndexAction::class)->name('index');
         Route::get('/create', [\App\Actions\Bill\BillStoreAction::class, 'viewForm'])->name('create');
