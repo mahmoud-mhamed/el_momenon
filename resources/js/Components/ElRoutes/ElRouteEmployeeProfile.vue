@@ -1,5 +1,5 @@
 <template>
-    <ElRoute v-if="model?.id" :ability="Ability.M_SUPPLIER_BILLS" :href="route('dashboard.supplier.profile.view-bills',model.id)">
+    <ElRoute v-if="model?.id">
         <template #title> {{ model.name }}</template>
     </ElRoute>
     <ElText v-else/>

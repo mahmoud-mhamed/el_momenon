@@ -47,6 +47,13 @@ class Menu
                 'href' => \route('dashboard.bill.index'),
                 'active' => Str::startsWith($current_route_name, 'dashboard.bill.')
             ];
+
+        if (BouncerService::checkAbility(Abilities::M_EMPLOYEE_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::EMPLOYEE->value), 'icon' => 'pi-users',
+                'href' => \route('dashboard.employee.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.employee.')
+            ];
+
         return $response;
     }
 

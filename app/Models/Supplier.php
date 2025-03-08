@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Builders\SupplierBuilder;
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property string name
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string country
  * @property int currency_id
  * @property-read Currency currency
+ * @property-read Bill[] $bills
 */
 class Supplier extends BaseModel
 {
@@ -25,6 +27,10 @@ class Supplier extends BaseModel
 
     ];
 
+    public function bills(): HasMany
+    {
+        return $this->hasMany(Bill::class);
+    }
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);

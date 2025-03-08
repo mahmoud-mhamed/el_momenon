@@ -2,14 +2,12 @@
 
 namespace App\Actions\Bill;
 
-use App\Actions\Client\ClientIndexAction;
 use App\Classes\Abilities;
 use App\Classes\BaseAction;
 use App\Enums\BillPaymentTypeEnum;
 use App\Models\Archive;
 use App\Models\Bill;
 use App\Models\BillPayment;
-use App\Models\Client;
 use App\Models\Currency;
 use App\Services\BillService;
 use Inertia\Inertia;
@@ -56,7 +54,8 @@ class BillProfileAction extends BaseAction
         $data['currencies'] = Currency::query()->get();
         $data['payments'] = BillPayment::query()->where('bill_payments.bill_id', $bill->id)
             ->with('bill', 'bill.currency', 'paidCurrency', 'proofArchive')
-            ->where('type', $type)->get();
+            ->latest('id')
+            ->where('type', $type)->paginate();
 
 
         $data['rent'] = $type == BillPaymentTypeEnum::TO_SUPPLIER ? $bill->supplier_rent_amount : $bill->client_rent_amount;
@@ -66,7 +65,7 @@ class BillProfileAction extends BaseAction
 
     public function setProfileTab($tap_component, Bill &$row, $title = null): void
     {
-        $row->loadMissing('currency');
+        $row->loadMissing('currency','supplier','client');
         $main_data_url = ['label' => '#' . $row->id, 'url' => route('dashboard.bill.profile.main_data', $row), 'ability' => Abilities::M_BILL_PROFILE];
 
         if ($title) {

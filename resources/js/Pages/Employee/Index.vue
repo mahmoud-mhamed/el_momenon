@@ -15,6 +15,9 @@ import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile
 import SupplierFormCreateUpdate from "@/Pages/Supplier/SupplierFormCreateUpdate.vue";
 import ElRouteClientProfile from "@/Components/ElRoutes/ElRouteClientProfile.vue";
 import ClientFormCreateUpdate from "@/Pages/Client/ClientFormCreateUpdate.vue";
+import ElRouteEmployeeProfile from "@/Components/ElRoutes/ElRouteEmployeeProfile.vue";
+import ElEgPrice from "@/Components/Text/ElEgPrice.vue";
+import EmployeeFormCreateUpdate from "@/Pages/Employee/EmployeeFormCreateUpdate.vue";
 
 const props = defineProps({
     data: Object,
@@ -26,13 +29,13 @@ const edit_row = ref();
 <template>
     <ElPanel>
         <template #actions>
-            <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_CLIENT_STORE"
+            <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_EMPLOYEE_CREATE"
                                :text="$t('message.add_new')"/>
         </template>
         <ElDataTable :src="props.data.rows">
             <Column :header="$t('column.name')">
                 <template #body="row">
-                    <ElRouteClientProfile :model="row.data"/>
+                    <ElRouteEmployeeProfile :model="row.data"/>
                 </template>
             </Column>
             <Column :header="$t('column.phone')">
@@ -40,25 +43,20 @@ const edit_row = ref();
                     <ElText :value="row.data.phone"/>
                 </template>
             </Column>
-            <Column :header="$t('column.national_id')">
+            <Column :header="$t('column.salary')">
                 <template #body="row">
-                    <ElText :value="row.data.national_id"/>
-                </template>
-            </Column>
-            <Column :header="$t('message.bills_count')">
-                <template #body="row">
-                    <ElText :value="row.data.bills_count"/>
+                    <ElEgPrice :value="row.data.salary"/>
                 </template>
             </Column>
             <Column field="updated_at_text" :header="$t('column.updated_at')"/>
             <Column :header="$t('message.actions')">
                 <template #body="row">
                     <ElActionMenu>
-                        <ElActionMenuEdit v-ability="Ability.M_CLIENT_EDIT"
+                        <ElActionMenuEdit v-ability="Ability.M_EMPLOYEE_EDIT"
                                           @click="edit_row=row.data;showDialogCreateUpdate=true"/>
-                        <ElActionMenuDeleteAction v-ability="Ability.M_CLIENT_DELETE"
+                        <ElActionMenuDeleteAction v-ability="Ability.M_EMPLOYEE_DELETE"
                                                   :dialog-message="row.data.name"
-                                                  :href="route('dashboard.client.delete',row.data.id)"/>
+                                                  :href="route('dashboard.employee.delete',row.data.id)"/>
                     </ElActionMenu>
                 </template>
             </Column>
@@ -67,7 +65,7 @@ const edit_row = ref();
     <Dialog v-model:visible="showDialogCreateUpdate" :style="{width: '50rem'}"
             :header="edit_row?$t('message.edit'):$t('message.add_new')"
             modal maximizable>
-        <ClientFormCreateUpdate :form_data="data.form_data" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
+        <EmployeeFormCreateUpdate :form_data="data.form_data" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
     </Dialog>
 </template>
 

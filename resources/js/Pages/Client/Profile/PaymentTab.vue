@@ -1,15 +1,11 @@
 <template>
     <ElContainer>
-        <div class="flex mb-2 gap-3 justify-between">
-            <div></div>
-            <div>
-                <ElPrimaryButton v-ability="'m_bill_payment_store_'+data.type"
-                                 v-if="data.rent"
-                                 :text="$t('message.app_payment')"
-                                 @click="edit_row=null;show_dialog_bill=true"/>
-            </div>
-        </div>
         <ElDataTable :src="props.data.payments">
+            <Column :header="$t('column.bill_id')">
+                <template #body="row">
+                    <ElRouteBillProfile :model="row.data.bill"/>
+                </template>
+            </Column>
             <Column :header="$t('column.payment_date')">
                 <template #body="row">
                     <ElText :value="row.data.payment_date"/>
@@ -29,7 +25,7 @@
             </Column>
             <Column :header="$t('column.paid_amount')">
                 <template #body="row">
-                    <ElPrice :value="row.data.bill_currency_equal_total" :currency="data.row.currency"/>
+                    <ElPrice :value="row.data.bill_currency_equal_total" :currency="row.data.bill.currency"/>
                 </template>
             </Column>
             <Column :header="$t('column.note')">
@@ -44,26 +40,8 @@
                 </template>
             </Column>
             <Column field="created_at_text" :header="$t('column.created_at')"/>
-            <Column :header="$t('message.actions')">
-                <template #body="row">
-                    <ElActionMenu>
-                        <ElActionMenuEdit v-ability="'m_bill_payment_update_'+data.type"
-                                          @click="edit_row=row.data;show_dialog_bill=true"/>
-                        <ElActionMenuDeleteAction v-ability="'m_bill_payment_delete_'+data.type"
-                                                  :el-id="row.data.id"
-                                                  :href="route('dashboard.bill-payment.delete-payment-bill',row.data.id)"/>
-                    </ElActionMenu>
-                </template>
-            </Column>
         </ElDataTable>
     </ElContainer>
-
-    <Dialog v-model:visible="show_dialog_bill" :style="{width: '50rem'}"
-            :header="edit_row?$t('message.edit'):$t('message.add_new')"
-            modal maximizable>
-        <BillPaymentFormCreateUpdate :type="data.type" :bill_id="data.row.id" :form_data="data.form_data"
-                                     :row="edit_row" @hide="show_dialog_bill=false"/>
-    </Dialog>
 </template>
 
 <script setup>
@@ -79,9 +57,7 @@ import {ref} from "vue";
 import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
 import Dialog from "primevue/dialog";
 import BillPaymentFormCreateUpdate from "@/Pages/Bill/Profile/BillPaymentFormCreateUpdate.vue";
+import ElRouteBillProfile from "@/Components/ElRoutes/ElRouteBillProfile.vue";
 
 const props = defineProps(['data']);
-
-const show_dialog_bill = ref(false);
-const edit_row = ref();
 </script>

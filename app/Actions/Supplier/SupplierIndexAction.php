@@ -18,6 +18,8 @@ class SupplierIndexAction extends BaseAction
         $this->useBreadcrumb();
         $query = Supplier::query()
             ->search(['name', 'phone', 'country'])
+            ->withCount('bills')
+            ->latest('id')
             ->with('currency');
         $data = $this->getFormCreateUpdateData();
         $this->allowSearch();

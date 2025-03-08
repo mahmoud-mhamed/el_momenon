@@ -18,6 +18,8 @@ class ClientIndexAction extends BaseAction
     {
         $this->useBreadcrumb();
         $query = Client::query()
+            ->withCount('bills')
+            ->latest('id')
             ->search(['name', 'phone', 'national_id', 'note']);
         $this->allowSearch();
         $data = $this->getFormCreateUpdateData();
