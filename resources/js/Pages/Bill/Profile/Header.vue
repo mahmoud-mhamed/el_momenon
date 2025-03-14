@@ -3,7 +3,8 @@
         <template #header>
             <div class="flex flex-col gap-2">
                 <ElLabelValueText :value="usePage().props?.profile_row.id" :label="$t('column.id')"/>
-                <ElLabelValueText :value="usePage().props?.profile_row.chassis_number" :label="$t('column.chassis_number')"/>
+                <ElLabelValueText :value="usePage().props?.profile_row.chassis_number"
+                                  :label="$t('column.chassis_number')"/>
                 <ElLabelValueText :value="usePage().props?.profile_row.status_text" :label="$t('column.status')"/>
                 <div class="flex gap-2">
                     <label>{{ $t('column.supplier_id') }} : </label>
@@ -13,12 +14,37 @@
                     <label>{{ $t('column.client_id') }} : </label>
                     <ElRouteClientProfile :model="usePage().props?.profile_row.client"/>
                 </div>
-                <ElLabelValuePrice :value="usePage().props?.profile_row.supplier_rent_amount"
-                                   :currency="usePage().props?.profile_row.currency"
-                                   :label="$t('message.supplier_rent')"/>
-                <ElLabelValuePrice :value="usePage().props?.profile_row.client_rent_amount"
-                                   :currency="usePage().props?.profile_row.currency"
-                                   :label="$t('message.client_rent')"/>
+                <div class="flex flex-wrap gap-4">
+                    <ElLabelValuePrice :value="usePage().props?.profile_row.purchase_price"
+                                       class="w-[200px]"
+                                       :currency="usePage().props?.profile_row.currency"
+                                       :label="$t('column.purchase_price')"/>
+
+                    <ElLabelValuePrice :value="usePage().props?.profile_row.supplier_paid_amount"
+                                       class="w-[200px]"
+                                       :currency="usePage().props?.profile_row.currency"
+                                       :label="$t('column.supplier_paid_amount')"/>
+
+                    <ElLabelValuePrice :value="usePage().props?.profile_row.supplier_rent_amount"
+                                       class="w-[200px]"
+                                       :currency="usePage().props?.profile_row.currency"
+                                       :label="$t('message.supplier_rent')"/>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <ElLabelValuePrice :value="usePage().props?.profile_row.selling_price"
+                                       :currency="usePage().props?.profile_row.currency"
+                                       class="w-[200px]"
+                                       :label="$t('column.selling_price')"/>
+                    <ElLabelValuePrice :value="usePage().props?.profile_row.client_paid_amount"
+                                       :currency="usePage().props?.profile_row.currency"
+                                       class="w-[200px]"
+                                       :label="$t('column.client_paid_amount')"/>
+
+                    <ElLabelValuePrice :value="usePage().props?.profile_row.client_rent_amount"
+                                       class="w-[200px]"
+                                       :currency="usePage().props?.profile_row.currency"
+                                       :label="$t('message.client_rent')"/>
+                </div>
             </div>
         </template>
         <template #tabs>
