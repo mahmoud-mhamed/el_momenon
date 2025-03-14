@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Archive;
 use App\Models\Bill;
+use App\Models\BillPayment;
 use App\Models\Currency;
 use App\Services\SupplierService;
 
@@ -37,6 +38,7 @@ class BillObserver
     public function deleted(Bill $bill): void
     {
         Archive::query()->where('archives.bill_id', $bill->id)->delete();
+        BillPayment::query()->where('bill_id',$bill?->id)->delete();
         SupplierService::make()->setCurrentAccount($bill->supplier);
     }
 
