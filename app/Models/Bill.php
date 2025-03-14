@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read Archive[] $archives
  * @property-read double supplier_rent_amount
  * @property-read double client_rent_amount
+ * @property-read string name
  */
 #[ObservedBy([BillObserver::class])]
 class Bill extends BaseModel
@@ -56,9 +57,15 @@ class Bill extends BaseModel
         'status' => BillStatusEnum::class,
     ];
     protected $appends = [
+        'name',
         'client_rent_amount', 'supplier_rent_amount'
     ];
 
+
+    public function getNameAttribute()
+    {
+        return $this->chassis_number .' - '.$this->car_type;
+    }
 
     public function currency(): BelongsTo
     {

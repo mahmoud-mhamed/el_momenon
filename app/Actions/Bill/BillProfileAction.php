@@ -48,7 +48,7 @@ class BillProfileAction extends BaseAction
 
         $this->setProfileTab('PaymentTab', $bill);
 
-        $data = $this->getFormCreateUpdatePayment($bill,$type);
+        $data = $this->getFormCreateUpdatePayment($bill, $type);
         $data['type'] = $type;
         $data['row'] = $bill;
         $data['currencies'] = Currency::query()->get();
@@ -65,7 +65,7 @@ class BillProfileAction extends BaseAction
 
     public function setProfileTab($tap_component, Bill &$row, $title = null): void
     {
-        $row->loadMissing('currency','supplier','client');
+        $row->loadMissing('currency', 'supplier', 'client');
         $main_data_url = ['label' => '#' . $row->id, 'url' => route('dashboard.bill.profile.main_data', $row), 'ability' => Abilities::M_BILL_PROFILE];
 
         if ($title) {
@@ -84,14 +84,13 @@ class BillProfileAction extends BaseAction
         ]);
     }
 
-    public function getFormCreateUpdatePayment(Bill $bill,BillPaymentTypeEnum $type): array
+    public function getFormCreateUpdatePayment(Bill|null $bill, BillPaymentTypeEnum $type): array
     {
+        $bill?->loadMissing('currency');
         return [
             'form_data' => [
-                'bill_id' => $bill->id,
                 'currencies' => Currency::get(),
-                'bill_currency' => $bill->currency,
-                'rent' => $type==BillPaymentTypeEnum::TO_SUPPLIER ? $bill->supplier_rent_amount : $bill->client_rent_amount,
+                'bills' => Bill::query()->with('currency')->get(),
             ],
         ];
     }

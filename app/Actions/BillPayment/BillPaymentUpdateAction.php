@@ -23,7 +23,7 @@ class BillPaymentUpdateAction extends BaseAction
         $this->checkAbility('m_bill_payment_store_' . $type->value);
         $bill = $billPayment->bill;
         $max_paid = $type == BillPaymentTypeEnum::TO_SUPPLIER ? $bill->supplier_rent_amount : $bill->client_rent_amount;
-        $max_paid = $max_paid * 1 + $validated_data['bill_currency_equal_total'] * 1;
+        $max_paid = $max_paid * 1 +$billPayment->paid_amount * 1;
         if ($max_paid < $validated_data['bill_currency_equal_total']) {
             throw ValidationException::withMessages([
                 'bill_currency_equal_total' => __('validation-inline.lte.numeric', [
@@ -50,6 +50,7 @@ class BillPaymentUpdateAction extends BaseAction
         $billPayment->update($validated_data);
         \DB::commit();
         $this->makeSuccessSessionMessage();
+        $this->refreshDom();
         return back();
     }
 

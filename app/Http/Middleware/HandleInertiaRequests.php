@@ -48,6 +48,15 @@ class HandleInertiaRequests extends Middleware
                 'user' => Auth::user(),
                 'abilities' => $request->user()?->getAbilities()?->pluck('name')->toArray(),
             ] : null,
+            'other_data' => $this->getOtherData($request),
         ]);
+    }
+
+    private function getOtherData(Request $request): array
+    {
+        return [
+            'refresh_dom_key' => $request->session()->get('refresh_dom_key', ''),
+            'data' => $request->session()->get('el_flash_temp_data', []),
+        ];
     }
 }

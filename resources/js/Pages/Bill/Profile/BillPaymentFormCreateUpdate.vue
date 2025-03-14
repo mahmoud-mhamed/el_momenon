@@ -1,44 +1,54 @@
 <template>
-    <form @submit.prevent="submit()">
-        <div v-if="is_create" class="mb-3">
-            <ElLabelValuePrice :label="$t('column.rent')" :currency="form_data.bill_currency" :value="form_data.rent"/>
-        </div>
-        <div class="grid md:grid-cols-2 mt-2 gap-3">
-            <el-floating-dropdown :form="el_form" required name="paid_currency_id" :options="form_data.currencies"/>
+    <Dialog v-model:visible="showDialogCreateUpdate" :style="{width: '50rem'}"
+            :header="el_form.id?$t('message.edit'):$t('message.add_new')"
+            modal maximizable>
+        <form @submit.prevent="submit()">
+            <div v-if="!el_form?.id" class="my-3 grid md:grid-cols-2 items-center gap-3">
+                <ElFloatingDropdown :form="el_form" v-if="showSelectBill"
+                                    class="flex-grow" name="bill_id" :options="form_data.bills"/>
 
-            <el-floating-price :form="el_form" required name="paid_amount"
-                               :currency="selected_paid_currency"/>
+                <ElLabelValuePrice :label="$t('column.rent')"
+                                   class="flex-grow" v-if="el_form.bill_id"
+                                   :currency="selected_bill?.currency" :value="selected_bill?.[el_form.type==='to_supplier'?'supplier_rent_amount':'client_rent_amount']"/>
+            </div>
+            <div class="grid md:grid-cols-2 mt-2 gap-3" v-if="selected_bill">
+                <el-floating-dropdown :form="el_form" required name="paid_currency_id" :options="form_data.currencies"/>
 
-            <ElFloatingDatePicker :form="el_form" required name="payment_date"/>
-
-            <template v-if="el_form.paid_currency_id && el_form.paid_currency_id !== form_data.bill_currency.id">
-                <el-floating-price :form="el_form" required name="bill_currency_equal_value"
-                                   :label="1 + ' '+form_data.bill_currency.name + ' = ........ '+selected_paid_currency?.name "
+                <el-floating-price :form="el_form" required name="paid_amount"
                                    :currency="selected_paid_currency"/>
 
-                <div class="flex items-center">
-                    <ElLabelValuePrice :label="$t('column.bill_currency_equal_total')"
-                                       :currency="form_data.bill_currency"
-                                       v-if="el_form.bill_currency_equal_value && el_form.paid_amount"
-                                       :value="(el_form.paid_amount/el_form.bill_currency_equal_value).toFixed(4)"/>
+                <ElFloatingDatePicker :form="el_form" required name="payment_date"/>
 
-                    <ElLabelValuePrice v-else :label="$t('column.bill_currency_equal_total')"
-                                       :currency="form_data.bill_currency"/>
+                <template v-if="el_form.paid_currency_id && el_form.paid_currency_id !== selected_bill?.currency?.id">
+                    <el-floating-price :form="el_form" required name="bill_currency_equal_value"
+                                       :label="1 + ' '+selected_bill.currency?.name + ' = ........ '+selected_paid_currency?.name "
+                                       :currency="selected_paid_currency"/>
 
-                </div>
-            </template>
+                    <div class="flex items-center">
+                        <ElLabelValuePrice :label="$t('column.bill_currency_equal_total')"
+                                           :currency="selected_bill?.currency"
+                                           v-if="el_form.bill_currency_equal_value && el_form.paid_amount"
+                                           :value="(el_form.paid_amount/el_form.bill_currency_equal_value).toFixed(4)"/>
 
-            <ElArchiveInput :form="el_form" :old-image-preview="props.row?.proof_archive?.file_url"
-                            name="proof_archive_id"/>
-            <ElFloatingTextarea class="col-span-full" :form="el_form" name="note"/>
+                        <ElLabelValuePrice v-else :label="$t('column.bill_currency_equal_total')"
+                                           :currency="selected_bill?.currency"/>
 
-        </div>
+                    </div>
+                </template>
 
-        <div class="flex flex-row-reverse gap-2 mt-3">
-            <el-secondary-button :text="$t('message.cancel')" @click="emit('hide')" v-if="is_create"/>
-            <el-submit-button :text="$t('message.save')" :form="el_form"/>
-        </div>
-    </form>
+                <ElArchiveInput :form="el_form" :old-image-preview="el_form.proof_archive_id_url"
+                                name="proof_archive_id"/>
+                <ElFloatingTextarea class="col-span-full" :form="el_form" name="note"/>
+
+            </div>
+
+            <div class="flex flex-row-reverse gap-2 mt-3">
+                <el-secondary-button :text="$t('message.cancel')" @click="emit('hide')" v-if="!el_form?.id"/>
+                <el-submit-button :text="$t('message.save')" :form="el_form"/>
+            </div>
+        </form>
+    </Dialog>
+
 </template>
 
 <script setup>
@@ -53,70 +63,96 @@ import ElFloatingDatePicker from "@/Components/Form/ElFloatingDatePicker.vue";
 import ElArchiveInput from "@/Components/Form/ElArchiveInput.vue";
 import ElLabelValuePrice from "@/Components/Text/ElLabelValuePrice.vue";
 import {ref, watch} from "vue";
+import Dialog from "primevue/dialog";
 
 const emit = defineEmits(['hide']);
 
 const props = defineProps({
-    row: {
-        type: Array,
-        default: {}
-    },
     form_data: {
         type: Object,
         default: null,
     },
-    bill_id: {
-        type: Number,
-    },
-    type: {
-        type: String,
-    }
 })
 const is_create = !props?.row?.id;
-const el_row = props?.row;
 const el_form = useForm({
-    id: el_row?.id,
-    bill_id: el_row?.name,
-    paid_amount: el_row?.paid_amount,
-    paid_currency_id: el_row?.paid_currency_id,
-    bill_currency_equal_value: el_row?.bill_currency_equal_value,
-    bill_currency_equal_total: el_row?.bill_currency_equal_total,
-    type: props?.type,
-    note: el_row?.note,
-    payment_date: el_row?.payment_date,
+    id: null,
+    bill_id: null,
+    paid_amount: null,
+    paid_currency_id: null,
+    bill_currency_equal_value: null,
+    bill_currency_equal_total: null,
+    type: null,
+    note: null,
+    payment_date: null,
     proof_archive_id: null,
+    proof_archive_id_url: null,
 });
 const selected_paid_currency = ref();
 let collect_currencies = collect(props.form_data.currencies);
 const selectPaidCurrency = () => {
-
     if (!el_form.paid_currency_id) {
         selected_paid_currency.value = null;
         el_form.bill_currency_equal_value = null;
         return;
     }
     selected_paid_currency.value = collect_currencies.where('id', el_form.paid_currency_id).first();
-    if (el_form.paid_currency_id === props.form_data.bill_currency.id) {
+    if (el_form.paid_currency_id === selected_bill.value?.currency?.id) {
         el_form.bill_currency_equal_value = 1;
         return;
     }
 }
-if (!is_create)
-    selectPaidCurrency();
 
-watch(() => el_form.paid_currency_id, selectPaidCurrency, {deep: true});
 
 const submit = () => {
     if (el_form.paid_amount && el_form.bill_currency_equal_value)
-        el_form.bill_currency_equal_total = ( el_form.paid_amount/el_form.bill_currency_equal_value).toFixed(4);
-    el_form.post(is_create ? route('dashboard.bill-payment.store', props.form_data.bill_id) : route('dashboard.bill-payment.update', el_form.id), {
+        el_form.bill_currency_equal_total = (el_form.paid_amount / el_form.bill_currency_equal_value).toFixed(4);
+    el_form.post(!el_form?.id ? route('dashboard.bill-payment.store', el_form.bill_id) : route('dashboard.bill-payment.update', el_form.id), {
         preserveState: true,
         onSuccess: () => {
-            is_create && el_form.reset();
-            if (is_create)
-                emit('hide');
+            !el_form.id && el_form.reset();
         },
     })
 }
+const showSelectBill = ref(false);
+const showDialogCreateUpdate = ref(false);
+const selected_bill = ref();
 
+const setSelectedBill = () => {
+    if (!el_form.bill_id) {
+        selected_bill.value = null;
+        return;
+    }
+    selected_bill.value = collect_bills.where('id', el_form.bill_id).first();
+}
+
+watch(() => el_form.bill_id, setSelectedBill, {deep: true});
+watch(() => el_form.paid_currency_id, selectPaidCurrency, {deep: true});
+
+const collect_bills = collect(props.form_data.bills);
+const showDialog = (edit_payment = null, type = null, bill_id = null) => {
+    showSelectBill.value = !bill_id;
+    el_form.reset();
+    selected_bill.value = null;
+    if (!edit_payment){
+        el_form.type = type;
+        el_form.bill_id = bill_id;
+    }
+
+    if (edit_payment) {
+        let el_form_keys = Object.keys(el_form)
+        for (let i = 0; i < el_form_keys.length; i++) {
+            if (el_form_keys?.[i] && edit_payment.hasOwnProperty(el_form_keys[i])) {
+                el_form[el_form_keys[i]] = edit_payment[el_form_keys[i]] ?? null;
+            }
+        }
+
+        el_form.proof_archive_id_url = edit_payment?.proof_archive?.file_url;
+    }
+    el_form.proof_archive_id = null;
+    showDialogCreateUpdate.value = true;
+}
+
+defineExpose({
+    showDialog
+});
 </script>

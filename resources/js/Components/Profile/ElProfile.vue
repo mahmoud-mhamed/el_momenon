@@ -1,5 +1,5 @@
 <template>
-    <main class="mb-3">
+    <main class="mb-3" :key="'el_profile_key'+(usePage().props?.other_data?.refresh_dom_key??'')">
         <section v-if="$slots.header" class="mb-3">
             <slot name="header"/>
         </section>
@@ -11,6 +11,7 @@
 
 <script setup>
 
+import {usePage} from "@inertiajs/vue3";
 </script>
 
 <style scoped>

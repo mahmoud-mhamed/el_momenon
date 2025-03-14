@@ -171,4 +171,14 @@ class BaseAction
             'icon' => $icon,
         ];
     }
+
+    /**
+     * Refresh the DOM by setting a session key.
+     *
+     * @return void
+     */
+    public function refreshDom(): void
+    {
+        Session::flash('refresh_dom_key', time());
+    }
 }
