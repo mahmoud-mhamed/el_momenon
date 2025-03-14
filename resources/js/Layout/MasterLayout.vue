@@ -2,18 +2,14 @@
 
     <PageHead/>
 
-    <div
-        class="flex flex-col p-0 m-0 font-sans font-normal leading-5 box-border text-slate-900 print:overflow-scroll print:h-auto"
-    >
-        <div class="flex flex-row leading-5 box-border basis-auto text-slate-900">
+    <div class="flex flex-col font-sans font-normal leading-5 box-border">
+        <div class="flex w-full max-w-[100vw]">
             <MasterLayoutAsideBar/>
-            <div class="flex flex-col w-full">
+            <div class="flex-grow" style="width: calc(100vw - 150px);">
                 <MenuBar/>
-                <section class="flex flex-grow">
-                    <ScrollPanel class="p-3" style="width:100%;">
-                        <slot/>
-                    </ScrollPanel>
-                </section>
+                <ScrollPanel class="px-2">
+                    <slot/>
+                </ScrollPanel>
             </div>
         </div>
     </div>

@@ -13,13 +13,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string phone
  * @property string country
  * @property int currency_id
+ * @property string current_account
  * @property-read Currency currency
  * @property-read Bill[] $bills
-*/
+ */
 class Supplier extends BaseModel
 {
     protected $fillable = [
-        'name', 'phone', 'country', 'currency_id',
+        'name', 'phone', 'country', 'currency_id', 'current_account',
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
     ];
 
@@ -31,6 +32,7 @@ class Supplier extends BaseModel
     {
         return $this->hasMany(Bill::class);
     }
+
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);

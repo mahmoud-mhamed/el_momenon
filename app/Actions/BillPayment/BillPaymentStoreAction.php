@@ -49,6 +49,7 @@ class BillPaymentStoreAction extends BaseAction
         BillPayment::create($validated_data);
         \DB::commit();
         $this->makeSuccessSessionMessage();
+        $this->refreshDom();
         return back();
     }
 }

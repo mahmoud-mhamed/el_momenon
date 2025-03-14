@@ -18,5 +18,6 @@ class BillService extends BaseService
             'supplier_paid_amount' => $sum_paid_supplier,
             'client_paid_amount' => $sum_paid_customer,
         ]);
+        SupplierService::make()->setCurrentAccount($bill->supplier);
     }
 }

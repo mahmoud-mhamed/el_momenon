@@ -1,6 +1,19 @@
 <template>
     <ElContainer>
+        <div class="flex justify-between mb-2">
+            <div></div>
+            <div>
+                <ElPrimaryButton v-ability="'m_bill_payment_store_'+data.type"
+                                 :text="$t('message.app_payment')"
+                                 @click="ref_bill_payment_form_create_update.showDialog(null,data.type,null);"/>
+            </div>
+        </div>
         <ElDataTable :src="props.data.payments">
+            <Column :header="$t('column.id')">
+                <template #body="row">
+                    #{{row.data.id}}
+                </template>
+            </Column>
             <Column :header="$t('column.bill_id')">
                 <template #body="row">
                     <ElRouteBillProfile :model="row.data.bill"/>
@@ -40,8 +53,21 @@
                 </template>
             </Column>
             <Column field="created_at_text" :header="$t('column.created_at')"/>
+            <Column :header="$t('message.actions')">
+                <template #body="row">
+                    <ElActionMenu>
+                        <ElActionMenuEdit v-ability="'m_bill_payment_update_'+data.type"
+                                          @click="ref_bill_payment_form_create_update.showDialog(row.data);"/>
+                        <ElActionMenuDeleteAction v-ability="'m_bill_payment_delete_'+data.type"
+                                                  :el-id="row.data.id"
+                                                  :href="route('dashboard.bill-payment.delete-payment-bill',row.data.id)"/>
+                    </ElActionMenu>
+                </template>
+            </Column>
         </ElDataTable>
     </ElContainer>
+    <BillPaymentFormCreateUpdate :form_data="data.form_data" ref="ref_bill_payment_form_create_update"/>
+
 </template>
 
 <script setup>
@@ -60,4 +86,5 @@ import BillPaymentFormCreateUpdate from "@/Pages/Bill/Profile/BillPaymentFormCre
 import ElRouteBillProfile from "@/Components/ElRoutes/ElRouteBillProfile.vue";
 
 const props = defineProps(['data']);
+const ref_bill_payment_form_create_update = ref();
 </script>

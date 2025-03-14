@@ -3,6 +3,9 @@
         <template #header>
             <div class="flex flex-col gap-2">
                 <ElLabelValueText :value="usePage().props?.profile_row.name" :label="$t('column.name')"/>
+                <ElLabelValuePrice :currency="usePage().props?.profile_row.currency" :value="usePage().props?.profile_row.current_account" :label="$t('column.current_account')"/>
+                <ElLabelValueText :value="usePage().props?.profile_row.bills_count" :label="$t('message.bills_count')"/>
+
             </div>
         </template>
         <template #tabs>
@@ -21,5 +24,6 @@ import {Ability} from "@/ability.js";
 import AvatarProfile from "@/Components/Avatar/AvatarProfile.vue";
 import ElText from "@/Components/Text/ElText.vue";
 import ElLabelValueText from "@/Components/Text/ElLabelValueText.vue";
+import ElLabelValuePrice from "@/Components/Text/ElLabelValuePrice.vue";
 
 </script>

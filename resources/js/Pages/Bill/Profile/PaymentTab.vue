@@ -4,9 +4,8 @@
             <div></div>
             <div>
                 <ElPrimaryButton v-ability="'m_bill_payment_store_'+data.type"
-                                 v-if="data.rent"
-                                 :text="$t('message.app_payment')"
-                                 @click="edit_row=null;show_dialog_bill=true"/>
+                                 v-if="data.rent" :text="$t('message.app_payment')"
+                                 @click="ref_bill_payment_form_create_update.showDialog(null,data.type,data.row.id);"/>
             </div>
         </div>
         <ElDataTable :src="props.data.payments">
@@ -48,7 +47,7 @@
                 <template #body="row">
                     <ElActionMenu>
                         <ElActionMenuEdit v-ability="'m_bill_payment_update_'+data.type"
-                                          @click="edit_row=row.data;show_dialog_bill=true"/>
+                                          @click="ref_bill_payment_form_create_update.showDialog(row.data);"/>
                         <ElActionMenuDeleteAction v-ability="'m_bill_payment_delete_'+data.type"
                                                   :el-id="row.data.id"
                                                   :href="route('dashboard.bill-payment.delete-payment-bill',row.data.id)"/>
@@ -58,12 +57,7 @@
         </ElDataTable>
     </ElContainer>
 
-    <Dialog v-model:visible="show_dialog_bill" :style="{width: '50rem'}"
-            :header="edit_row?$t('message.edit'):$t('message.add_new')"
-            modal maximizable>
-        <BillPaymentFormCreateUpdate :type="data.type" :bill_id="data.row.id" :form_data="data.form_data"
-                                     :row="edit_row" @hide="show_dialog_bill=false"/>
-    </Dialog>
+    <BillPaymentFormCreateUpdate :form_data="data.form_data" ref="ref_bill_payment_form_create_update"/>
 </template>
 
 <script setup>
@@ -77,11 +71,9 @@ import ArchiveCard from "@/Components/Archive/ArchiveCard.vue";
 import ElPrimaryButton from "@/Components/Buttons/ElPrimaryButton.vue";
 import {ref} from "vue";
 import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
-import Dialog from "primevue/dialog";
 import BillPaymentFormCreateUpdate from "@/Pages/Bill/Profile/BillPaymentFormCreateUpdate.vue";
 
 const props = defineProps(['data']);
 
-const show_dialog_bill = ref(false);
-const edit_row = ref();
+const ref_bill_payment_form_create_update = ref();
 </script>

@@ -71,6 +71,11 @@ return [
     'proof_archive_id' => 'إثبات الدفع',
     'rent' => 'الباقي',
     'salary' => 'الراتب',
+    'current_account' => 'الحساب الحالي',
+    'supplier_paid_amount' => 'المدفوع للمورد',
+    'client_paid_amount' => 'المدفوع من العميل',
+    'supplier_rent_amount' => 'المتبقي للمورد',
+    'client_rent_amount' => 'المتبقي علي العميل',
 
 
 ];

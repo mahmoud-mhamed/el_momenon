@@ -70,6 +70,6 @@ return [
     'client_rent' => 'باقي حساب العميل',
     'supplier_rent' => 'باقي حساب المورد',
     'payments' => 'الدفعات',
-    'bills_count' => 'عدد الفواتير',
+    'bills_count' => 'عدد السيارات (الفواتير)',
     'add_bill' => 'إضافة فاتورة',
 ];
