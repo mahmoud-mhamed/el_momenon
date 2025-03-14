@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Archive;
 use App\Models\Bill;
 use App\Models\Currency;
+use App\Services\SupplierService;
 
 class BillObserver
 {
@@ -19,7 +20,7 @@ class BillObserver
      */
     public function created(Bill $bill): void
     {
-        //
+        SupplierService::make()->setCurrentAccount($bill->supplier);
     }
 
     /**
@@ -27,7 +28,7 @@ class BillObserver
      */
     public function updated(Bill $bill): void
     {
-        //
+        SupplierService::make()->setCurrentAccount($bill->supplier);
     }
 
     /**
@@ -36,6 +37,7 @@ class BillObserver
     public function deleted(Bill $bill): void
     {
         Archive::query()->where('archives.bill_id', $bill->id)->delete();
+        SupplierService::make()->setCurrentAccount($bill->supplier);
     }
 
     /**
@@ -43,7 +45,7 @@ class BillObserver
      */
     public function restored(Bill $bill): void
     {
-        //
+        SupplierService::make()->setCurrentAccount($bill->supplier);
     }
 
     /**

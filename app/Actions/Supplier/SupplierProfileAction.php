@@ -21,20 +21,21 @@ class SupplierProfileAction extends BaseAction
         $this->setProfileTab('BillTab', $supplier);
         $data['row'] = $supplier;
         $data['bills'] = Bill::query()
-            ->with('supplier','client','disabledClient')
-            ->where('supplier_id',$supplier->id)
+            ->with('supplier', 'client', 'disabledClient','currency')
+            ->where('supplier_id', $supplier->id)
             ->paginate();
         return Inertia::render('Supplier/Profile/Index', compact('data'));
     }
+
     public function viewBillPayment(Supplier $supplier): \Inertia\Response
     {
         $this->checkAbility(Abilities::M_SUPPLIER_BILL_PAYMENTS);
         $this->setProfileTab('PaymentTab', $supplier);
         $data['row'] = $supplier;
-        $data['payments']=BillPayment::query()->where('type',BillPaymentTypeEnum::TO_SUPPLIER)
-            ->with('paidCurrency','proofArchive')
-            ->with('bill','bill.currency')
-            ->whereRelation('bill','supplier_id',$supplier->id)->latest('id')->paginate();
+        $data['payments'] = BillPayment::query()->where('type', BillPaymentTypeEnum::TO_SUPPLIER)
+            ->with('paidCurrency', 'proofArchive')
+            ->with('bill', 'bill.currency')
+            ->whereRelation('bill', 'supplier_id', $supplier->id)->latest('id')->paginate();
 
         return Inertia::render('Supplier/Profile/Index', compact('data'));
     }
@@ -42,6 +43,9 @@ class SupplierProfileAction extends BaseAction
 
     public function setProfileTab($tap_component, Supplier &$row, $title = null): void
     {
+        $row->loadMissing('currency');
+        $row->loadCount('bills');
+
         $main_data_url = ['label' => $row->name, 'url' => route('dashboard.supplier.profile.view-bills', $row), 'ability' => Abilities::M_SUPPLIER_BILLS];
 
         if ($title) {
