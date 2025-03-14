@@ -3,8 +3,7 @@
     <section
         v-bind="$attrs"
         :class="{'border-e shadow':useBorder}"
-        class=" el-container h-[100vh]"
-    >
+        class=" el-container h-[100vh] w-[150px]">
         <div class="flex flex-col w-full">
             <div class="flex-col flex-none items-center pb-5 pt-2 flex">
                 <a

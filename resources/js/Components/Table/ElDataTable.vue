@@ -15,12 +15,11 @@
         :rowsPerPageOptions="[5,10,50,100,1000]"
         :totalRecords="totalRecords"
         :autoLayout="true"
-        scrollable
+        scrollable scrollHeight="90vh"
         showGridlines
         stripedRows
         resizableColumns
-        columnResizeMode="expand"
-    >
+        columnResizeMode="expand">
         <template #empty>
             <div class="text-center">
                 <ElTextNoData/>

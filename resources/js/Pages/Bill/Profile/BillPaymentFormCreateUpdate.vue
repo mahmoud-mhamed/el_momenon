@@ -43,7 +43,7 @@
             </div>
 
             <div class="flex flex-row-reverse gap-2 mt-3">
-                <el-secondary-button :text="$t('message.cancel')" @click="emit('hide')" v-if="!el_form?.id"/>
+                <el-secondary-button :text="$t('message.cancel')" @click="showDialogCreateUpdate=false" v-if="!el_form?.id"/>
                 <el-submit-button :text="$t('message.save')" :form="el_form"/>
             </div>
         </form>

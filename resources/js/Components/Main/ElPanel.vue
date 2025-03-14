@@ -1,5 +1,5 @@
 <template>
-    <main class="p-4 dark:bg-dark-500" :key="'el_panel_key' + (usePage().props?.other_data?.refresh_dom_key ?? '')">
+    <main class="p-2 dark:bg-dark-500" :key="'el_panel_key' + (usePage().props?.other_data?.refresh_dom_key ?? '')">
         <header class="flex justify-between">
             <div>
                 <div class="flex gap-2">
