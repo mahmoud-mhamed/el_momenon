@@ -62,9 +62,9 @@ class Bill extends BaseModel
     ];
 
 
-    public function getNameAttribute()
+    public function getNameAttribute(): string
     {
-        return $this->chassis_number .' - '.$this->car_type;
+        return '#'.$this->id.' - '.$this->chassis_number .' - '.$this->car_type;
     }
 
     public function currency(): BelongsTo

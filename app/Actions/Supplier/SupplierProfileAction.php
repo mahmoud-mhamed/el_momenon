@@ -2,6 +2,7 @@
 
 namespace App\Actions\Supplier;
 
+use App\Actions\Bill\BillProfileAction;
 use App\Actions\Client\ClientIndexAction;
 use App\Classes\Abilities;
 use App\Classes\BaseAction;
@@ -21,7 +22,7 @@ class SupplierProfileAction extends BaseAction
         $this->setProfileTab('BillTab', $supplier);
         $data['row'] = $supplier;
         $data['bills'] = Bill::query()
-            ->with('supplier', 'client', 'disabledClient','currency')
+            ->with('supplier', 'client', 'disabledClient', 'currency')
             ->where('supplier_id', $supplier->id)
             ->paginate();
         return Inertia::render('Supplier/Profile/Index', compact('data'));
@@ -31,6 +32,13 @@ class SupplierProfileAction extends BaseAction
     {
         $this->checkAbility(Abilities::M_SUPPLIER_BILL_PAYMENTS);
         $this->setProfileTab('PaymentTab', $supplier);
+
+        $data = BillProfileAction::make()->getFormCreateUpdatePayment(
+            bill: null, type: BillPaymentTypeEnum::TO_SUPPLIER,
+            supplier_id: $supplier->id
+        );
+        $data['type'] = BillPaymentTypeEnum::TO_SUPPLIER;
+
         $data['row'] = $supplier;
         $data['payments'] = BillPayment::query()->where('type', BillPaymentTypeEnum::TO_SUPPLIER)
             ->with('paidCurrency', 'proofArchive')

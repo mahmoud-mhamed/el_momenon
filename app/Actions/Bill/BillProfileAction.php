@@ -84,13 +84,15 @@ class BillProfileAction extends BaseAction
         ]);
     }
 
-    public function getFormCreateUpdatePayment(Bill|null $bill, BillPaymentTypeEnum $type): array
+    public function getFormCreateUpdatePayment(Bill|null $bill, BillPaymentTypeEnum $type,$supplier_id=null): array
     {
         $bill?->loadMissing('currency');
         return [
             'form_data' => [
                 'currencies' => Currency::get(),
-                'bills' => Bill::query()->with('currency')->get(),
+                'bills' => Bill::query()
+                    ->when($supplier_id,fn($z)=>$z->where('supplier_id',$supplier_id))
+                    ->with('currency')->get(),
             ],
         ];
     }
