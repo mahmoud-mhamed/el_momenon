@@ -48,7 +48,7 @@ class BillProfileAction extends BaseAction
 
         $this->setProfileTab('PaymentTab', $bill);
 
-        $data = $this->getFormCreateUpdatePayment($bill, $type);
+        $data = $this->getFormCreateUpdatePayment();
         $data['type'] = $type;
         $data['row'] = $bill;
         $data['currencies'] = Currency::query()->get();
@@ -84,14 +84,14 @@ class BillProfileAction extends BaseAction
         ]);
     }
 
-    public function getFormCreateUpdatePayment(Bill|null $bill, BillPaymentTypeEnum $type,$supplier_id=null): array
+    public function getFormCreateUpdatePayment($supplier_id=null,$client_id=null): array
     {
-        $bill?->loadMissing('currency');
         return [
             'form_data' => [
                 'currencies' => Currency::get(),
                 'bills' => Bill::query()
                     ->when($supplier_id,fn($z)=>$z->where('supplier_id',$supplier_id))
+                    ->when($client_id,fn($z)=>$z->where('client_id',$client_id))
                     ->with('currency')->get(),
             ],
         ];

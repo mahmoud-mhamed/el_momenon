@@ -34,7 +34,6 @@ class SupplierProfileAction extends BaseAction
         $this->setProfileTab('PaymentTab', $supplier);
 
         $data = BillProfileAction::make()->getFormCreateUpdatePayment(
-            bill: null, type: BillPaymentTypeEnum::TO_SUPPLIER,
             supplier_id: $supplier->id
         );
         $data['type'] = BillPaymentTypeEnum::TO_SUPPLIER;

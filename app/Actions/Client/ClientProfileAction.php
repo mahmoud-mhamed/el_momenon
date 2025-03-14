@@ -2,6 +2,7 @@
 
 namespace App\Actions\Client;
 
+use App\Actions\Bill\BillProfileAction;
 use App\Classes\Abilities;
 use App\Classes\BaseAction;
 use App\Enums\BillPaymentTypeEnum;
@@ -27,7 +28,7 @@ class ClientProfileAction extends BaseAction
         $this->checkAbility(Abilities::M_CLIENT_BILLS);
         $this->setProfileTab('BillTab', $client);
         $data['row'] = $client;
-        $data['bills'] = Bill::query()->with('supplier', 'client', 'disabledClient')->forClientOrDisabledClient($client->id)->get();
+        $data['bills'] = Bill::query()->with('currency','supplier', 'client', 'disabledClient')->forClientOrDisabledClient($client->id)->get();
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
 
@@ -46,14 +47,18 @@ class ClientProfileAction extends BaseAction
     {
         $this->checkAbility(Abilities::M_SUPPLIER_BILL_PAYMENTS);
         $this->setProfileTab('PaymentTab', $client);
+
+        $data = BillProfileAction::make()->getFormCreateUpdatePayment(
+            client_id: $client->id
+        );
+
+        $data['type'] = BillPaymentTypeEnum::FROM_CLIENT;
         $data['row'] = $client;
         $data['payments'] = BillPayment::query()->where('type', BillPaymentTypeEnum::FROM_CLIENT)
             ->with('paidCurrency', 'proofArchive')
             ->with('bill', 'bill.currency')
-            ->whereHas('bill', function ($query) use ($client) {
-                return $query->where('client_id',$client->id);
-            })
-            ->latest('id')->paginate();
+            ->whereRelation('bill', 'client_id', $client->id)->latest('id')->paginate();
+
 
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
