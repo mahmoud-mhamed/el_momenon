@@ -45,7 +45,7 @@ return [
     Abilities::M_SUPPLIER_EDIT->value => $update,
     Abilities::M_SUPPLIER_DELETE->value => $delete,
 //    Abilities::M_SUPPLIER_PROFILE->value => $viewProfile,
-    Abilities::M_SUPPLIER_BILLS->value => 'عرض الفواتير',
+    Abilities::M_SUPPLIER_BILLS->value => 'عرض السيارات (الفواتير)',
     Abilities::M_SUPPLIER_BILL_PAYMENTS->value => 'عرض الدفعات',
 
     Abilities::M_CLIENT_INDEX->value => $index,
@@ -53,7 +53,7 @@ return [
     Abilities::M_CLIENT_EDIT->value => $update,
     Abilities::M_CLIENT_DELETE->value => $delete,
     Abilities::M_CLIENT_PROFILE->value => $viewProfile,
-    Abilities::M_CLIENT_BILLS->value => 'عرض الفواتير',
+    Abilities::M_CLIENT_BILLS->value => 'عرض السيارات (الفواتير)',
     Abilities::M_CLIENT_ARCHIVE->value => 'عرض الأرشيف',
     Abilities::M_CLIENT_VIEW_BILL_PAYMENT->value => 'عرض الدفعات',
 

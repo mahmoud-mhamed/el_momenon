@@ -11,13 +11,13 @@ const props = defineProps({
 
 <template>
     <ElPanel>
-        <section class="grid gap-8">
-            <aside class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <section class="grid gap-3 md:gap-8">
+            <aside class="grid md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
                 <ElDataStatisticCard :data="data.users"/>
                 <ElDataStatisticCard :data="data.clients"/>
                 <ElDataStatisticCard :data="data.currencies"/>
                 <ElDataStatisticCard :data="data.suppliers"/>
-                <ElChartCard class="col-span-2" :data="data" name="ClientInCurrentYearBarChart"/>
+                <ElChartCard class="md:col-span-2" :data="data" name="ClientInCurrentYearBarChart"/>
             </aside>
         </section>
     </ElPanel>

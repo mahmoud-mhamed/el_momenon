@@ -4,12 +4,12 @@
 
     <div class="flex flex-col font-sans font-normal leading-5 box-border">
         <div class="flex w-full max-w-[100vw]">
-            <MasterLayoutAsideBar/>
+            <MasterLayoutAsideBar class="hidden md:block"/>
             <div class="flex-grow" style="width: calc(100vw - 150px);">
                 <MenuBar/>
-                <ScrollPanel class="px-2">
+                <div class="px-2">
                     <slot/>
-                </ScrollPanel>
+                </div>
             </div>
         </div>
     </div>
@@ -20,7 +20,6 @@
 
 <script setup>
 
-import ScrollPanel from "primevue/scrollpanel";
 import NotificationAlert from "@/Layout/Partial/NotificationAlert.vue";
 import PageHead from "@/Layout/Partial/PageHead.vue";
 import MenuBar from "@/Layout/MenuBar.vue";

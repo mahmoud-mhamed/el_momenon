@@ -3,7 +3,7 @@
     <section
         v-bind="$attrs"
         :class="{'border-e shadow':useBorder}"
-        class=" el-container h-[100vh] w-[150px]">
+        class=" md:block el-container min-h-[100vh] w-[180px]">
         <div class="flex flex-col w-full">
             <div class="flex-col flex-none items-center pb-5 pt-2 flex">
                 <a
@@ -15,16 +15,16 @@
                 </a>
             </div>
             <div class="flex flex-col px-2 flex-grow flex-shrink-0 pb-5 items-center w-full basis-auto h-full menu-container">
-                <ScrollPanel
+                <div
                     style="width:100%;"
-                    class="p-scrollpanel-bar-y h-max aside-scroll-panel relative">
+                    class="p-scrollpanel-bar-y h-max aside-scroll-panel  relative overflow-y-auto ">
                     <ul class="w-full divide-y divide-slate-100 dark:divide-slate-700 font-bold  overflow-y-auto">
                         <li v-for="item in $page.props.menu" class="py-2 leading-5 box-border">
                             <Link
                                 :href="item.href"
                                 class="flex cursor-pointer justify-center items-center"
                                 :class="{
-                                    'text-primary-600 active':item.active,
+                                    'text-white rounded px-1 bg-primary-400':item.active,
                                     'text-slate-600 dark:text-white': !item.active
                                 }">
                                 <label class="text-xs md:text-sm text-start cursor-pointer w-full" v-text="$t(item.label)"/>
@@ -34,7 +34,7 @@
                             </Link>
                         </li>
                     </ul>
-                </ScrollPanel>
+                </div>
             </div>
         </div>
     </section>
