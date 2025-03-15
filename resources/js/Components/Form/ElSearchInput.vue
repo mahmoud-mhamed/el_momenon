@@ -22,7 +22,7 @@ watch(searchD, (search) => {
 </script>
 
 <template>
-    <label class="w-[300px] inline-block -mt-3 relative p-input-icon-left text-dark-500">
+    <label class="md:w-[300px] inline-block -mt-3 relative p-input-icon-left text-dark-500">
         <span class="absolute top-[12.5px] start-[14px] dark:text-gray-400" style="z-index: 3333">
             <i v-if="!processing" class="pi pi-search"/>
             <i v-else class="pi pi-spin pi-spinner"/>

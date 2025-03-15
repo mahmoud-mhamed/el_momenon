@@ -2,16 +2,24 @@
 
     <Menubar
         :model="$page.props.menu"
-        class="!pb-0"
+        class="!pb-0 el-menubar"
         :pt="{
             submenu: '!z-[99999]',
-        }"
-    >
+        }">
         <template #start>
+
+            <div class="block md:hidden">
+                <Sidebar v-model:visible="showMasterLayoutAsideBar" class="!w-[180px]">
+                    <template #container="{ closeCallback }">
+                        <MasterLayoutAsideBar/>
+                    </template>
+                </Sidebar>
+                <Button class="-mt-4 me-1 !p-2.5" icon="pi pi-bars" @click="showMasterLayoutAsideBar = true"/>
+            </div>
+
             <ElSearchInput v-if="$page.props.allowSearch"/>
         </template>
         <template #item="{ item, props, hasSubmenu, root }">
-
         </template>
 
         <template #end>
@@ -38,15 +46,22 @@
 <script setup>
 
 import {ref} from "vue";
-import {Badge, Menubar} from "primevue";
-import {asset} from "@/Helpers/Functions.js";
+import {Menubar} from "primevue";
 import UserMenu from "@/Layout/Partial/UserMenu.vue";
 import Popover from "primevue/popover";
 import ElSearchInput from "@/Components/Form/ElSearchInput.vue";
+import MasterLayoutAsideBar from "@/Layout/Partial/MasterLayoutAsideBar.vue";
+import Button from 'primevue/button';
+import Sidebar from 'primevue/sidebar';
 
 const ref_popover = ref();
 const togglePopover = (event) => {
     ref_popover.value.toggle(event);
 }
-
+const showMasterLayoutAsideBar = ref(false);
 </script>
+<style>
+.el-menubar .p-menubar-button{
+    display: none!important;
+}
+</style>

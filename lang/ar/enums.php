@@ -10,8 +10,8 @@ return [
         \App\Enums\ModuleNameEnum::CURRENCIES->value => 'العملات',
         \App\Enums\ModuleNameEnum::SUPPLIER->value => 'الموردين',
         \App\Enums\ModuleNameEnum::CLIENT->value => 'العملاء',
-        \App\Enums\ModuleNameEnum::BILL->value => 'الفواتير',
-        \App\Enums\ModuleNameEnum::BILL_PAYMENT->value => 'دفعات الفواتير',
+        \App\Enums\ModuleNameEnum::BILL->value => 'السيارات (الفواتير)',
+        \App\Enums\ModuleNameEnum::BILL_PAYMENT->value => 'دفعات السيارات (الفواتير)',
         \App\Enums\ModuleNameEnum::EMPLOYEE->value => 'الموظفين',
     ],
     \App\Enums\BillStatusEnum::getFileName()=>[

@@ -18,7 +18,7 @@
         scrollable scrollHeight="90vh"
         showGridlines
         stripedRows
-        resizableColumns
+        resizableColumns class="border"
         columnResizeMode="expand">
         <template #empty>
             <div class="text-center">
