@@ -13,7 +13,7 @@
             </div>
         </header>
         <hr />
-        <div class="h-fit p-0 lg:p-3">
+        <div class="h-fit p-1 lg:p-3">
             <slot/>
         </div>
     </section>
