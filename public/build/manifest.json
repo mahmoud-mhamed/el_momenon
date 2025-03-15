@@ -1,6 +1,6 @@
 {
   "node_modules/chart.js/auto/auto.js": {
-    "file": "assets/auto-BA-vhGSp.js",
+    "file": "assets/auto-fKdo_Mg5.js",
     "name": "auto",
     "src": "node_modules/chart.js/auto/auto.js",
     "isDynamicEntry": true,
@@ -8,7 +8,7 @@
       "resources/js/app.js"
     ],
     "css": [
-      "assets/app-CA209c-8.css"
+      "assets/app-DFB90TOi.css"
     ],
     "assets": [
       "assets/bg-statistics-DSeqoFmJ.svg",
@@ -36,7 +36,7 @@
     "src": "node_modules/primeicons/fonts/primeicons.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CA209c-8.css",
+    "file": "assets/app-DFB90TOi.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -49,7 +49,7 @@
     "src": "resources/css/images/bg-statistics.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CrNuqibD.js",
+    "file": "assets/app-CRheLNKE.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -57,8 +57,8 @@
       "node_modules/chart.js/auto/auto.js"
     ],
     "css": [
-      "assets/app-BIZajyDx.css",
-      "assets/app-CA209c-8.css"
+      "assets/app-BerPkgyv.css",
+      "assets/app-DFB90TOi.css"
     ],
     "assets": [
       "assets/primeicons-DMOk5skT.eot",
