@@ -3,6 +3,8 @@
         <template #header>
             <div class="flex flex-col gap-2">
                 <ElLabelValueText :value="usePage().props?.profile_row.name" :label="$t('column.name')"/>
+                <ElLabelValuePrice :currency="usePage().props?.profile_row.currency" :value="usePage().props?.profile_row.sum_bills_amount" :label="$t('column.sum_bills_amount')"/>
+                <ElLabelValuePrice :currency="usePage().props?.profile_row.currency" :value="usePage().props?.profile_row.sum_paid" :label="$t('column.sum_paid')"/>
                 <ElLabelValuePrice :currency="usePage().props?.profile_row.currency" :value="usePage().props?.profile_row.current_account" :label="$t('column.current_account')"/>
                 <ElLabelValueText :value="usePage().props?.profile_row.bills_count" :label="$t('message.bills_count')"/>
 

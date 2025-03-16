@@ -2,7 +2,7 @@
     <form @submit.prevent="submit">
         <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
             <ElCardWithTitle :title="$t('message.purchase_data')">
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <ElFloatingDropdown :form="el_form" name="supplier_id" required :options="form_data.suppliers"/>
                     <ElFloatingInput :form="el_form" name="car_type" required/>
                     <ElFloatingInput :form="el_form" name="chassis_number" required/>
@@ -24,21 +24,21 @@
                 </div>
             </ElCardWithTitle>
             <ElCardWithTitle :title="$t('message.client_data')">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <ElFloatingDropdown :form="el_form" name="client_id" required :options="form_data.clients"/>
                     <ElFloatingPrice :currency="supplier_currency" required :form="el_form" name="selling_price"/>
 
                     <hr class="col-span-full"/>
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.client_national_id_url"
                                    name="client_national_id"/>
-                    <ElFloatingTextarea class="col-span-3" :form="el_form" name="notes"/>
+                    <ElFloatingTextarea class="md:col-span-3" :form="el_form" name="notes"/>
                 </div>
             </ElCardWithTitle>
 
             <ElCardWithTitle
                 v-if="el_form.purchase_type && el_form.purchase_type !== Enum.BillPurchaseTypeEnum.PERSONAL"
                 :title="el_form.purchase_type === Enum.BillPurchaseTypeEnum.DISABILITY_ANSWER?$t('message.disabled_client_data'):$t('message.initiative_data')">
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <ElFloatingDropdown :form="el_form" name="disabled_client_id" :options="form_data.clients"/>
 
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_national_id_url"

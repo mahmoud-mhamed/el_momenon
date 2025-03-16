@@ -45,9 +45,8 @@ return [
     'disabled_client_id' => 'المعاق - صاحب المبادرة',
     'shipping_date' => 'تاريخ الشحن',
     'status' => 'الحالة',
-    'selling_price' => 'سعر البيع النهائي',
-    'selling_price_equal_value' => 'سعر البيع النهائي المساوي',
-    'purchase_price' => 'سعر الشراء النهائي',
+    'selling_price' => 'تمن العربية الي العميل',
+    'purchase_price' => 'تمن العربية من المورد',
     'chassis_number' => 'رقم الشاسية',
     'car_type' => 'نوع السيارة',
     'purchase_date' => 'تاريخ الشراء',
@@ -71,11 +70,13 @@ return [
     'proof_archive_id' => 'إثبات الدفع',
     'rent' => 'الباقي',
     'salary' => 'الراتب',
-    'current_account' => 'الحساب الحالي',
+    'current_account' => 'المتبقي',
     'supplier_paid_amount' => 'المدفوع للمورد',
     'client_paid_amount' => 'المدفوع من العميل',
     'supplier_rent_amount' => 'المتبقي للمورد',
     'client_rent_amount' => 'المتبقي علي العميل',
+    'sum_paid' => 'إجمالي المدفوع',
+    'sum_bills_amount' => 'إجمالي الفواتير',
 
 
 ];

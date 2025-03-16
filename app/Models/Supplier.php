@@ -14,13 +14,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string country
  * @property int currency_id
  * @property string current_account
+ * @property string sum_paid
+ * @property string sum_bills_amount
  * @property-read Currency currency
  * @property-read Bill[] $bills
  */
 class Supplier extends BaseModel
 {
     protected $fillable = [
-        'name', 'phone', 'country', 'currency_id', 'current_account',
+        'name', 'phone', 'country', 'currency_id', 'current_account','sum_bills_amount','sum_paid',
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
     ];
 

@@ -10,7 +10,6 @@ use App\Models\Archive;
 use App\Models\Bill;
 use App\Models\BillPayment;
 use App\Models\Client;
-use App\Models\Supplier;
 use Inertia\Inertia;
 
 class ClientProfileAction extends BaseAction
@@ -28,7 +27,7 @@ class ClientProfileAction extends BaseAction
         $this->checkAbility(Abilities::M_CLIENT_BILLS);
         $this->setProfileTab('BillTab', $client);
         $data['row'] = $client;
-        $data['bills'] = Bill::query()->with('currency','supplier', 'client', 'disabledClient')->forClientOrDisabledClient($client->id)->get();
+        $data['bills'] = Bill::query()->with('currency','supplier', 'client', 'disabledClient')->forClient($client->id)->get();
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
 

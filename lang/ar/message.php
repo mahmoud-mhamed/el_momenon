@@ -72,4 +72,6 @@ return [
     'payments' => 'الدفعات',
     'bills_count' => 'عدد السيارات (الفواتير)',
     'add_bill' => 'إضافة فاتورة',
+    'add_new_supplier' => 'إضافة مورد',
+    'add_new_client' => 'إضافة عميل',
 ];

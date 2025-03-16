@@ -25,12 +25,22 @@ const edit_row = ref();
     <ElPanel>
         <template #actions>
             <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_SUPPLIER_STORE"
-                               :text="$t('message.add_new')"/>
+                               :text="$t('message.add_new_supplier')"/>
         </template>
         <ElDataTable :src="props.data.rows">
             <Column :header="$t('column.name')">
                 <template #body="row">
                     <ElRouteSupplierProfile :model="row.data"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.sum_bills_amount')">
+                <template #body="row">
+                    <ElPrice :value="row.data.sum_bills_amount" :currency="row.data.currency"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.sum_paid')">
+                <template #body="row">
+                    <ElPrice :value="row.data.sum_paid" :currency="row.data.currency"/>
                 </template>
             </Column>
             <Column :header="$t('column.current_account')">

@@ -20,7 +20,7 @@ class BillIndexAction extends BaseAction
         $query = Bill::query()
             ->filter()
             ->search(['notes', 'policy_number', 'chassis_number','car_type'])
-            ->with('supplier', 'client', 'disabledClient');
+            ->with('supplier', 'client', 'disabledClient','currency');
 
         $this->useFilter(Bill::query()->getFilters());
         $data['rows'] = $query->latest('id')->paginate();
