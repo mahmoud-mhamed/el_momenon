@@ -17,6 +17,8 @@ class SupplierService extends BaseService
 
         $supplier->update([
             'current_account' => $bills - $sum_payments,
+            'sum_bills_amount' => $bills,
+            'sum_paid' => $sum_payments,
         ]);
     }
 }

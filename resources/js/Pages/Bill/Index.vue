@@ -63,6 +63,36 @@ const props = defineProps({
                     <ElText :value="row.data.chassis_number"/>
                 </template>
             </Column>
+            <Column :header="$t('column.purchase_price')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.purchase_price"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.supplier_paid_amount')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.supplier_paid_amount"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.supplier_rent_amount')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.supplier_rent_amount"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.selling_price')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.selling_price"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.client_paid_amount')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.client_paid_amount"/>
+                </template>
+            </Column>
+            <Column :header="$t('column.client_rent_amount')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.client_rent_amount"/>
+                </template>
+            </Column>
             <Column :header="$t('column.status')">
                 <template #body="row">
                     <ElText :value="row.data.status_text"/>

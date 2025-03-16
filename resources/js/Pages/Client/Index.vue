@@ -27,7 +27,7 @@ const edit_row = ref();
     <ElPanel>
         <template #actions>
             <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_CLIENT_STORE"
-                               :text="$t('message.add_new')"/>
+                               :text="$t('message.add_new_client')"/>
         </template>
         <ElDataTable :src="props.data.rows">
             <Column :header="$t('column.name')">
