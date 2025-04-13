@@ -32,7 +32,7 @@
         </template>
         <slot/>
     </DataTable>
-    <EmptyData v-else/>
+    <EmptyData :empty-message="emptyMessage" :is-large="emptyIsLarge" v-else/>
 </template>
 
 <script setup>
@@ -44,6 +44,8 @@ import EmptyData from "@/Components/EmptyData.vue";
 
 const props = defineProps({
     src: Object,
+    emptyIsLarge: {type: Boolean, default: true},
+    emptyMessage: {type: String, default: null},
 });
 
 const loading = ref(false);

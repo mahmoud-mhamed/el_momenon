@@ -74,4 +74,9 @@ return [
     'add_bill' => 'إضافة فاتورة',
     'add_new_supplier' => 'إضافة مورد',
     'add_new_client' => 'إضافة عميل',
+    'BillInCurrentYearBarChart' => 'الفواتير (السيارات) في العام الحالي',
+    'search_for_car' => 'إبحث عن سيارة',
+    'print_bill' => 'طباعة الفاتورة',
+    'date' => 'التاريخ',
+    'price' => 'السعر',
 ];

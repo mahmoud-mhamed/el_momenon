@@ -6,7 +6,7 @@ Route::get('/deploy',function (){
     return Artisan::call('app:deploy');
 });
 Route::get('/version', function () {
-    return 2.0;
+    return 2.1;
 });
 Route::get('/', function () {
     return \Inertia\Inertia::render('Soon');
