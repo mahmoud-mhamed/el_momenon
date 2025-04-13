@@ -2,9 +2,12 @@
 
 namespace App\Actions;
 
+use App\Actions\Bill\BillIndexAction;
+use App\Chart\Bill\BillInCurrentYearBarChart;
 use App\Chart\Client\ClientInCurrentYearBarChart;
 use App\Classes\BaseAction;
 use App\Enums\ModuleNameEnum;
+use App\Models\Bill;
 use App\Models\Client;
 use App\Models\Currency;
 use App\Models\Supplier;
@@ -40,7 +43,16 @@ class DashboardHomeAction extends BaseAction
             'pi-users'
         );
 
-        $data['ClientInCurrentYearBarChart']=ClientInCurrentYearBarChart::make()->toVue();
+        $bills = null;
+        $data['search_key']=request()->get('search');
+        if (request()->get('search')) {
+            $bills = BillIndexAction::make()->getBillQuery()->paginate();
+        }
+
+        $data['bills'] = $bills;
+
+        $data['ClientInCurrentYearBarChart'] = ClientInCurrentYearBarChart::make()->toVue();
+        $data['BillInCurrentYearBarChart'] = BillInCurrentYearBarChart::make()->toVue();
         return Inertia::render('Home', compact('data'));
     }
 }

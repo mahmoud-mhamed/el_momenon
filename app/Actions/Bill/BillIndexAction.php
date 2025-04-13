@@ -13,14 +13,18 @@ class BillIndexAction extends BaseAction
 {
     protected Abilities $ability = Abilities::M_BILL_INDEX;
 
+    public function getBillQuery()
+    {
+        return Bill::query()
+            ->filter()
+            ->search(['notes', 'policy_number', 'chassis_number','car_type'])
+            ->with('supplier', 'client', 'disabledClient','currency');
+    }
     public function handle()
     {
         $this->useBreadcrumb();
         $this->allowSearch();
-        $query = Bill::query()
-            ->filter()
-            ->search(['notes', 'policy_number', 'chassis_number','car_type'])
-            ->with('supplier', 'client', 'disabledClient','currency');
+        $query = $this->getBillQuery();
 
         $this->useFilter(Bill::query()->getFilters());
         $data['rows'] = $query->latest('id')->paginate();
