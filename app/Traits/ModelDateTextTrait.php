@@ -22,10 +22,15 @@ trait ModelDateTextTrait
     {
         foreach (['created_at', 'updated_at'] as $translate) {
             if ($type === 'retrieved') {
-                $model->setAttribute($translate . '_text', (new self)->getDate(data_get($model->getAttributes(),$translate)));
+                $model->setAttribute($translate . '_text', (new self)->getDate(data_get($model->getAttributes(), $translate)));
             } else {
                 unset($model->{$translate . '_text'});
             }
+        }
+        if ($type === 'retrieved') {
+            $model->setAttribute('created_at_text2', (new self)->fullDateTime(data_get($model->getAttributes(), $translate)));
+        } else {
+            unset($model->{'created_at_text2'});
         }
     }
 
@@ -51,6 +56,15 @@ trait ModelDateTextTrait
 
         return self::translateDate($carbon->format('Y-m-d'));
     }
+
+    public function fullDateTime($date): ?string
+    {
+        if (!$date)
+            return null;
+        $carbon = !is_string($date) && get_class($date) == Carbon::class ? $date : Carbon::parse($date);
+        return self::translateDate($carbon->format('Y-m-d h:i A'));
+    }
+
     public static function translateDate($formatedDataTime): string
     {
         $locale = app()->getLocale();
