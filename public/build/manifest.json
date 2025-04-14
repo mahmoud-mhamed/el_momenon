@@ -1,6 +1,6 @@
 {
   "node_modules/chart.js/auto/auto.js": {
-    "file": "assets/auto-eTsuUdTB.js",
+    "file": "assets/auto-zj3mC3G_.js",
     "name": "auto",
     "src": "node_modules/chart.js/auto/auto.js",
     "isDynamicEntry": true,
@@ -8,7 +8,7 @@
       "resources/js/app.js"
     ],
     "css": [
-      "assets/app-BHNCc3al.css"
+      "assets/app-DMAzqYKi.css"
     ],
     "assets": [
       "assets/bg-statistics-DSeqoFmJ.svg",
@@ -36,7 +36,7 @@
     "src": "node_modules/primeicons/fonts/primeicons.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BHNCc3al.css",
+    "file": "assets/app-DMAzqYKi.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -49,7 +49,7 @@
     "src": "resources/css/images/bg-statistics.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CY1RenEi.js",
+    "file": "assets/app-CkQCnDCA.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -58,7 +58,7 @@
     ],
     "css": [
       "assets/app-BerPkgyv.css",
-      "assets/app-BHNCc3al.css"
+      "assets/app-DMAzqYKi.css"
     ],
     "assets": [
       "assets/primeicons-DMOk5skT.eot",
