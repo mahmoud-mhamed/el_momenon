@@ -4,7 +4,7 @@
             <slot name="header"></slot>
         </section>
         <section v-if="$slots.tabs" class="text-start px-2 rounded mx-auto">
-            <ul class="flex flex-wrap -mb-px">
+            <ul class="flex flex-wrap mt-4 -mb-px">
                 <slot name="tabs"></slot>
             </ul>
         </section>

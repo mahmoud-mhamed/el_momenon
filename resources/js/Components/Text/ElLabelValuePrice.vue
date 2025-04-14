@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex gap-2">
         <label v-if="label">{{ label }} : </label>
         <ElPrice :currency="currency" :value="value"/>
     </div>
