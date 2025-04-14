@@ -19,7 +19,7 @@
 
                 <ElFloatingDatePicker :form="el_form" required name="payment_date"/>
 
-                <template v-if="el_form.paid_currency_id && el_form.paid_currency_id !== selected_bill?.currency?.id">
+                <div v-if="el_form.paid_currency_id && el_form.paid_currency_id !== selected_bill?.currency?.id">
                     <el-floating-price :form="el_form" required name="bill_currency_equal_value"
                                        :label="1 + ' '+selected_bill.currency?.name + ' = ........ '+selected_paid_currency?.name "
                                        :currency="selected_paid_currency"/>
@@ -34,11 +34,11 @@
                                            :currency="selected_bill?.currency"/>
 
                     </div>
-                </template>
+                </div>
 
                 <ElArchiveInput :form="el_form" :old-image-preview="el_form.proof_archive_id_url"
                                 name="proof_archive_id"/>
-                <ElFloatingTextarea class="col-span-full" :form="el_form" name="note"/>
+                <ElFloatingTextarea class="col-span-full mt-3" :form="el_form" name="note"/>
 
             </div>
 

@@ -9,8 +9,10 @@ use App\Models\Supplier;
 
 class SupplierService extends BaseService
 {
-    public function setCurrentAccount(Supplier $supplier): void
+    public function setCurrentAccount(Supplier|null $supplier): void
     {
+        if (!$supplier)
+            return;
         $bills = Bill::query()->where('supplier_id', $supplier->id)->sum('purchase_price');
 
         $sum_payments=BillPayment::query()->where('type',BillPaymentTypeEnum::TO_SUPPLIER)->sum('bill_currency_equal_total');
