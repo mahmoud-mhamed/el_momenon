@@ -13,6 +13,7 @@ import ElPrice from "@/Components/Text/ElPrice.vue";
 import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
 import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile.vue";
 import SupplierFormCreateUpdate from "@/Pages/Supplier/SupplierFormCreateUpdate.vue";
+import ElActionMenuExportExcel from "@/Components/ActionMenu/ElActionMenuExportExcel.vue";
 
 const props = defineProps({
     data: Object,
@@ -26,6 +27,9 @@ const edit_row = ref();
         <template #actions>
             <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_SUPPLIER_STORE"
                                :text="$t('message.add_new_supplier')"/>
+            <ElActionMenu>
+                <ElActionMenuExportExcel/>
+            </ElActionMenu>
         </template>
         <ElDataTable :src="props.data.rows">
             <Column :header="$t('column.name')">

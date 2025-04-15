@@ -15,6 +15,7 @@ import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile
 import SupplierFormCreateUpdate from "@/Pages/Supplier/SupplierFormCreateUpdate.vue";
 import ElRouteClientProfile from "@/Components/ElRoutes/ElRouteClientProfile.vue";
 import ClientFormCreateUpdate from "@/Pages/Client/ClientFormCreateUpdate.vue";
+import ElActionMenuExportExcel from "@/Components/ActionMenu/ElActionMenuExportExcel.vue";
 
 const props = defineProps({
     data: Object,
@@ -28,6 +29,9 @@ const edit_row = ref();
         <template #actions>
             <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_CLIENT_STORE"
                                :text="$t('message.add_new_client')"/>
+            <ElActionMenu>
+                <ElActionMenuExportExcel/>
+            </ElActionMenu>
         </template>
         <ElDataTable :src="props.data.rows">
             <Column :header="$t('column.name')">

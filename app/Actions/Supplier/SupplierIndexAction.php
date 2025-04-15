@@ -13,7 +13,7 @@ class SupplierIndexAction extends BaseAction
 {
     protected Abilities $ability = Abilities::M_SUPPLIER_INDEX;
 
-    public function handle(): \Inertia\Response
+    public function handle()
     {
         $this->useBreadcrumb();
         $query = Supplier::query()
@@ -21,6 +21,17 @@ class SupplierIndexAction extends BaseAction
             ->withCount('bills')
             ->latest('id')
             ->with('currency');
+
+        if ($this->requestIsExport()) {
+            return $this->exportExcel($query->get(), [
+                'id', 'name', 'phone',
+                __('column.currency.name') => 'currency.name',
+                'bills_count', 'sum_bills_amount',
+                'sum_paid', 'current_account',
+                'created_at_text'
+            ], 'suppliers');
+        }
+
         $data = $this->getFormCreateUpdateData();
         $this->allowSearch();
         $data['rows'] = $query->paginate();
