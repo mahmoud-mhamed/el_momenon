@@ -14,13 +14,18 @@ class ClientIndexAction extends BaseAction
 {
     protected Abilities $ability = Abilities::M_CLIENT_INDEX;
 
-    public function handle(): \Inertia\Response
+    public function handle()
     {
         $this->useBreadcrumb();
         $query = Client::query()
             ->withCount('bills')
             ->latest('id')
             ->search(['name', 'phone', 'national_id', 'note']);
+
+        if ($this->requestIsExport()) {
+            return $this->exportExcel($query->get(), ['id', 'name', 'phone', 'national_id', 'bills_count', 'created_at_text'], 'clients');
+        }
+
         $this->allowSearch();
         $data = $this->getFormCreateUpdateData();
         $data['rows'] = $query->paginate();

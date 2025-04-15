@@ -64,6 +64,7 @@ return [
     'type' => 'النوع',
     'paid_amount' => 'المبلغ المدفوع',
     'paid_currency_id' => 'عملة الدفع',
+    'bills_count' => 'عدد الفواتير',
     'bill_currency_equal_value' => 'سعر الصرف',
     'bill_currency_equal_total' => 'الإجمالي المساوي (عملة المورد)',
     'payment_date' => 'تاريخ الدفع',
@@ -77,6 +78,7 @@ return [
     'client_rent_amount' => 'المتبقي علي العميل',
     'sum_paid' => 'إجمالي المدفوع',
     'sum_bills_amount' => 'إجمالي الفواتير',
+    'currency.name' => 'العملة',
 
 
 ];
