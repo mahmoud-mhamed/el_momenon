@@ -9,6 +9,7 @@ Route::get('/version', function () {
     return 2.2;
 });
 Route::get('/', function () {
+    return redirect()->route('dashboard.login.view-form');
     return \Inertia\Inertia::render('Soon');
     return view('welcome');
 });
