@@ -20,7 +20,7 @@
                     <p style="margin: 5px 0; color: #777;">
                         مطلوب من السيد /
                         <span style="padding-right: 5px">
-                            {{ el_bill.name }}
+                            {{ el_bill.client?.name }}
                         </span>
                     </p>
                 </div>
