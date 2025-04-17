@@ -51,32 +51,27 @@ trait HelpersModelTrait
         $search_key = trim($search_key ?? request()->get('search'));
         if (!$search_key || !count($columns))
             return $this;
+
+        if (str_starts_with($search_key,'#')){
+            return $this->where('id', substr($search_key,1));
+        }
+
         $this->where(function ($q) use ($search_key, $columns) {
             $model_translatable_array = $this->model?->translatable && is_array($this->model->translatable) ? $this->model->translatable : [];
             //foreach search column
-            foreach ($columns as $loop_key => $loop_option) {
-                $search_key = "%$search_key%";
-                $col_name = is_array($loop_option) ? $loop_key : $loop_option;
-                $option = is_array($loop_option) ? $loop_option : null;
+            foreach ($columns as $col_name) {
+                $search_key2 = "%$search_key%";
 
                 if (in_array($col_name, $model_translatable_array)) {
-                    $option['is_trans'] = true;
+                    $q->orWhere($col_name . '->' . App::getLocale(), 'like', $search_key2);
+                    continue;
                 }
-                if (is_array($option)) {
-                    if (data_get($option, 'is_relation')) {
-                        $relation = explode('.', $col_name);
-                        if (count($relation) === 2)
-                            $q->orWhereHas($relation[0], fn($q) => $q->where($relation[1], 'like', $search_key));
-                    } else if (data_get($option, 'is_trans')) {
-                        if (data_get($option, 'all_lang')) {
-                            $q->orWhere($col_name . '->ar', 'like', $search_key)->orWhere($col_name . '->en', 'like', $search_key);
-                        } else {
-                            $q->orWhere($col_name . '->' . App::getLocale(), 'like', $search_key);
-                        }
-                    }
-                } else {
-                    $q->orWhere($col_name, 'like', $search_key);
+                $relation = explode('.', $col_name);
+                if (count($relation) === 2) {
+                    $q->orWhereHas($relation[0], fn($q) => $q->where($relation[1], 'like', $search_key2));
+                    continue;
                 }
+                $q->orWhere($col_name, 'like', $search_key2);
             }
         });
         return $this;
