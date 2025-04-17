@@ -7,7 +7,7 @@ return [
     'on_update_not_null' => true,
     'on_change_delete_old_file' => true,
     'auto_delete' => true,
-    'default_asset' => true,
+    'default_asset' => null,
 
 
 

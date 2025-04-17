@@ -17,7 +17,11 @@ class BillIndexAction extends BaseAction
     {
         return Bill::query()
             ->filter()
-            ->search(['notes', 'policy_number', 'chassis_number','car_type'])
+            ->search([
+                'notes', 'policy_number', 'chassis_number','car_type',
+                'client.name', 'client.phone','client.national_id',
+                'supplier.name', 'supplier.phone',
+            ])
             ->with('supplier', 'client', 'disabledClient','currency');
     }
     public function handle()
