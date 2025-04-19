@@ -82,6 +82,12 @@ enum Abilities: string
     case M_SALARY_EDIT = 'm_salary_edit';
     case M_SALARY_DELETE = 'm_salary_delete';
 
+    //expense
+    case M_EXPENSE_INDEX = 'm_expense_index';
+    case M_EXPENSE_CREATE = 'm_expense_create';
+    case M_EXPENSE_EDIT = 'm_expense_edit';
+    case M_EXPENSE_DELETE = 'm_expense_delete';
+
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
         ['key' => self::M_USERS_INDEX_EXPORT, 'module' => ModuleNameEnum::USERS],
@@ -148,6 +154,11 @@ enum Abilities: string
         ['key' => self::M_SALARY_CREATE, 'module' => ModuleNameEnum::SALARY],
         ['key' => self::M_SALARY_EDIT, 'module' => ModuleNameEnum::SALARY],
         ['key' => self::M_SALARY_DELETE, 'module' => ModuleNameEnum::SALARY],
+
+        ['key' => self::M_EXPENSE_INDEX, 'module' => ModuleNameEnum::EXPENSE],
+        ['key' => self::M_EXPENSE_CREATE, 'module' => ModuleNameEnum::EXPENSE],
+        ['key' => self::M_EXPENSE_EDIT, 'module' => ModuleNameEnum::EXPENSE],
+        ['key' => self::M_EXPENSE_DELETE, 'module' => ModuleNameEnum::EXPENSE],
 
     ];
 

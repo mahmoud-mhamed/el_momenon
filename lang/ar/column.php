@@ -85,6 +85,7 @@ return [
     'amount' => 'القيمة',
     'month' => 'الشهر',
     'year' => 'العام',
+    'operation_date' => 'تاريخ العملية',
 
 
 ];

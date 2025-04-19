@@ -116,4 +116,12 @@ Route::group([
         Route::delete('/{salary}', \App\Actions\Salary\SalaryDeleteAction::class)->name('delete');
     });
 
+
+    Route::group(['prefix' => 'expense', 'as' => 'expense.'], function () {
+        Route::get('/', \App\Actions\Expense\ExpenseIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Expense\ExpenseStoreAction::class)->name('store');
+        Route::post('/{expense}', \App\Actions\Expense\ExpenseUpdateAction::class)->name('update');
+        Route::delete('/{expense}', \App\Actions\Expense\ExpenseDeleteAction::class)->name('delete');
+    });
+
 });

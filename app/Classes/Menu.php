@@ -60,6 +60,12 @@ class Menu
                 'active' => Str::startsWith($current_route_name, 'dashboard.salary.')
             ];
 
+        if (BouncerService::checkAbility(Abilities::M_EXPENSE_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::EXPENSE->value), 'icon' => 'pi-receipt',
+                'href' => \route('dashboard.expense.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.expense.')
+            ];
+
         return $response;
     }
 

@@ -17,5 +17,6 @@ enum ModuleNameEnum: string
     case BILL_PAYMENT='bill_payment';
     case EMPLOYEE='employee';
     case SALARY='salary';
+    case EXPENSE='expense';
 
 }
