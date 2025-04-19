@@ -54,6 +54,12 @@ class Menu
                 'active' => Str::startsWith($current_route_name, 'dashboard.employee.')
             ];
 
+        if (BouncerService::checkAbility(Abilities::M_SALARY_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::SALARY->value), 'icon' => 'pi-receipt',
+                'href' => \route('dashboard.salary.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.salary.')
+            ];
+
         return $response;
     }
 

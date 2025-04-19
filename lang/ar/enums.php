@@ -13,6 +13,7 @@ return [
         \App\Enums\ModuleNameEnum::BILL->value => 'السيارات (الفواتير)',
         \App\Enums\ModuleNameEnum::BILL_PAYMENT->value => 'دفعات السيارات (الفواتير)',
         \App\Enums\ModuleNameEnum::EMPLOYEE->value => 'الموظفين',
+        \App\Enums\ModuleNameEnum::SALARY->value => 'المرتبات',
     ],
     \App\Enums\BillStatusEnum::getFileName()=>[
         \App\Enums\BillStatusEnum::PENDING->value => 'قيد الإنتظار',
@@ -37,5 +38,23 @@ return [
     \App\Enums\BillPaymentTypeEnum::getFileName()=>[
         \App\Enums\BillPaymentTypeEnum::FROM_CLIENT->value => 'من العميل',
         \App\Enums\BillPaymentTypeEnum::TO_SUPPLIER->value => 'إلي المورد',
+    ],
+    \App\Enums\SalaryTypeEnum::getFileName()=>[
+        \App\Enums\SalaryTypeEnum::ADDITION->value => 'إضافي',
+        \App\Enums\SalaryTypeEnum::SALARY->value => 'المرتب',
+    ],
+    \App\Enums\SalaryMonthEnum::getFileName()=>[
+        \App\Enums\SalaryMonthEnum::JANUARY->value => 'يناير',
+        \App\Enums\SalaryMonthEnum::FEBRUARY->value => 'فبراير',
+        \App\Enums\SalaryMonthEnum::MARCH->value => 'مارس',
+        \App\Enums\SalaryMonthEnum::APRIL->value => 'أبريل',
+        \App\Enums\SalaryMonthEnum::MAY->value => 'مايو',
+        \App\Enums\SalaryMonthEnum::JUNE->value => 'يونيو',
+        \App\Enums\SalaryMonthEnum::JULY->value => 'يوليو',
+        \App\Enums\SalaryMonthEnum::AUGUST->value => 'أغسطس',
+        \App\Enums\SalaryMonthEnum::SEPTEMBER->value => 'سبتمبر',
+        \App\Enums\SalaryMonthEnum::OCTOBER->value => 'أكتوبر',
+        \App\Enums\SalaryMonthEnum::NOVEMBER->value => 'نوفمبر',
+        \App\Enums\SalaryMonthEnum::DECEMBER->value => 'ديسمبر',
     ],
 ];

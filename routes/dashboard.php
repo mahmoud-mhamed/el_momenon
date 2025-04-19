@@ -108,4 +108,12 @@ Route::group([
         Route::post('update/{billPayment}', Actions\BillPayment\BillPaymentUpdateAction::class)->name('update');
 
     });
+
+    Route::group(['prefix' => 'salary', 'as' => 'salary.'], function () {
+        Route::get('/', \App\Actions\Salary\SalaryIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Salary\SalaryStoreAction::class)->name('store');
+        Route::post('/{salary}', \App\Actions\Salary\SalaryUpdateAction::class)->name('update');
+        Route::delete('/{salary}', \App\Actions\Salary\SalaryDeleteAction::class)->name('delete');
+    });
+
 });

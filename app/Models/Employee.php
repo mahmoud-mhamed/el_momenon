@@ -4,10 +4,13 @@ namespace App\Models;
 
 
 use App\Models\Builders\EmployeeBuilder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 /**
  * @property string name
  * @property string phone
  * @property string salary
+ * @property-read Salary[] salaries
 */
 class Employee extends BaseModel
 {
@@ -20,6 +23,10 @@ class Employee extends BaseModel
 
     ];
 
+    public function salaries(): HasMany
+    {
+        return $this->hasMany(Salary::class, 'employee_id');
+    }
     /**
      * @return EmployeeBuilder
      */

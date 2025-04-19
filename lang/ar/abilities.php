@@ -78,4 +78,9 @@ return [
     Abilities::M_EMPLOYEE_CREATE->value => $create,
     Abilities::M_EMPLOYEE_EDIT->value => $update,
     Abilities::M_EMPLOYEE_DELETE->value => $delete,
+
+    Abilities::M_SALARY_INDEX->value => $index,
+    Abilities::M_SALARY_CREATE->value => $create,
+    Abilities::M_SALARY_EDIT->value => $update,
+    Abilities::M_SALARY_DELETE->value => $delete,
 ];
