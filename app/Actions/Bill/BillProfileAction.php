@@ -33,7 +33,7 @@ class BillProfileAction extends BaseAction
         $this->setProfileTab('ArchiveTab', $bill);
         $data['row'] = $bill;
         $data['archives'] = Archive::query()
-            ->with('bill')->with('client', 'disabledClient')
+            ->with('bill')->with('client')
             ->where('bill_id', $bill->id)->get();
         return Inertia::render('Bill/Profile/Index', compact('data'));
     }

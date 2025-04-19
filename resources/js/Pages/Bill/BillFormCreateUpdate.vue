@@ -5,7 +5,7 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <ElFloatingDropdown :form="el_form" name="supplier_id" required :options="form_data.suppliers"/>
                     <ElFloatingInput :form="el_form" name="car_type" required/>
-                    <ElFloatingInput :form="el_form" name="chassis_number" required/>
+                    <ElFloatingInput :form="el_form" name="chassis_number"/>
                     <ElFloatingDatePicker :form="el_form" name="purchase_date" required/>
                     <ElFloatingDropdown :form="el_form" required name="purchase_type"
                                         :options="form_data.purchase_types"/>
@@ -38,9 +38,11 @@
             <ElCardWithTitle
                 v-if="el_form.purchase_type && el_form.purchase_type !== Enum.BillPurchaseTypeEnum.PERSONAL"
                 :title="el_form.purchase_type === Enum.BillPurchaseTypeEnum.DISABILITY_ANSWER?$t('message.disabled_client_data'):$t('message.initiative_data')">
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <ElFloatingDropdown :form="el_form" name="disabled_client_id" :options="form_data.clients"/>
-
+                <div class="grid md:grid-cols-2 gap-4">
+                    <ElFloatingInput :form="el_form" name="disabled_name"/>
+                    <ElFloatingInput :form="el_form" name="disabled_national_id"/>
+                </div>
+                <div class="grid md:grid-cols-3 mt-3 gap-4">
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_national_id_url"
                                    name="disabled_client_national_id"/>
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_envelope_url"
@@ -82,7 +84,8 @@ const el_form = useForm({
     id: props.row?.id,
     supplier_id: props.row?.supplier_id ?? props.form_data?.select_supplier_id,
     client_id: props.row?.client_id ?? props.form_data?.select_client_id,
-    disabled_client_id: props.row?.disabled_client_id,
+    disabled_name: props.row?.disabled_name,
+    disabled_national_id: props.row?.disabled_national_id,
     purchase_price: props.row?.purchase_price,
     purchase_type: props.row?.purchase_type,
     selling_price: props.row?.selling_price,

@@ -15,7 +15,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property int supplier_id
  * @property int client_id
- * @property int disabled_client_id
+ * @property string disabled_name
+ * @property string disabled_national_id
  * @property int currency_id
  * @property string purchase_type
  * @property string purchase_price
@@ -44,7 +45,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Bill extends BaseModel
 {
     protected $fillable = [
-        'supplier_id', 'supplier_paid_amount', 'client_paid_amount', 'client_id', 'disabled_client_id', 'currency_id', 'purchase_price',
+        'supplier_id', 'supplier_paid_amount', 'client_paid_amount', 'client_id',
+        'disabled_name','disabled_national_id',
+        'currency_id', 'purchase_price',
         'purchase_type',
         'selling_price',
         'purchase_date', 'chassis_number', 'car_type', 'shipping_date', 'shipping_type', 'shipping_amount',
@@ -96,11 +99,6 @@ class Bill extends BaseModel
     public function supplier(): BelongsTo
     {
         return $this->belongsTo(Supplier::class);
-    }
-
-    public function disabledClient(): BelongsTo
-    {
-        return $this->belongsTo(Client::class, 'disabled_client_id');
     }
 
     /**

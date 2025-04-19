@@ -41,7 +41,6 @@ class BillPaymentStoreAction extends BaseAction
                 'name' => BillPaymentUpdateAction::make()->getProofArchiveFileName($type),
                 'file' => $validated_data['proof_archive_id'],
                 'client_id' => $bill->client_id,
-                'disabled_client_id' => $bill->disabled_client_id,
                 ...$new_data
             ]);
             $validated_data['proof_archive_id'] = $archive->id;

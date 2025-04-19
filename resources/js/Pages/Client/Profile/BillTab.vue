@@ -23,7 +23,10 @@
             </Column>
             <Column :header="$t('column.disabled_client_id')">
                 <template #body="row">
-                    <ElRouteClientProfile :model="row.data.disabled_client"/>
+                    <ElText :model="row.data.disabled_name"/>
+                    <div v-if="row.data.disabled_national_id">
+                        <ElText :model="row.data.disabled_national_id"/>
+                    </div>
                 </template>
             </Column>
             <Column :header="$t('column.car_type')">
@@ -75,20 +78,13 @@
 
 <script setup>
 import ElContainer from "@/Components/Card/ElContainer.vue";
-import {usePage} from "@inertiajs/vue3";
-import ElLabelValueText from "@/Components/Text/ElLabelValueText.vue";
-import ElModelUpdatedAtValueText from "@/Components/Text/ElModelUpdatedAtValueText.vue";
-import ElLabelImage from "@/Components/Text/ElLabelImage.vue";
 import {Ability} from "@/ability.js";
-import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
 import ElRouteBillProfile from "@/Components/ElRoutes/ElRouteBillProfile.vue";
 import ElText from "@/Components/Text/ElText.vue";
-import ElActionMenuDeleteAction from "@/Components/ActionMenu/ElActionMenuDeleteAction.vue";
 import Column from "primevue/column";
 import ElDataTable from "@/Components/Table/ElDataTable.vue";
 import ElRouteClientProfile from "@/Components/ElRoutes/ElRouteClientProfile.vue";
 import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile.vue";
-import ElActionMenu from "@/Components/ActionMenu/ElActionMenu.vue";
 import ElSecondaryButton from "@/Components/Buttons/ElSecondaryButton.vue";
 import ElPrice from "@/Components/Text/ElPrice.vue";
 

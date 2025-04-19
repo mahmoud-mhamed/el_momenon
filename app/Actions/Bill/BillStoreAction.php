@@ -44,7 +44,6 @@ class BillStoreAction extends BaseAction
                 Archive::create([
                     'file' => $validated_data[$item],
                     'client_id' => $bill->client_id,
-                    'disabled_client_id' => $bill->disabled_client_id,
                     ...$new_data
                 ]);
             }

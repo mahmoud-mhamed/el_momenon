@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string national_id
  * @property string note
  * @property-read Bill[] bills
- * @property-read Bill[] disabledBills
  */
 class Client extends BaseModel
 {
@@ -39,10 +38,6 @@ class Client extends BaseModel
     public function bills(): HasMany
     {
         return $this->hasMany(Bill::class, 'client_id');
-    }
-    public function disabledBills(): HasMany
-    {
-        return $this->hasMany(Bill::class, 'disabled_client_id');
     }
 
     /**

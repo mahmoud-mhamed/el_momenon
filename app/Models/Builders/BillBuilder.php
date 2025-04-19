@@ -20,7 +20,6 @@ class BillBuilder extends BaseBuilder
     {
         return [
             new BillClientFilter(fn($value) => $this->forClient($value)),
-            new BillDisabledClientFilter(fn($value) => $this->forDisabledClient($value)),
             new BillStatusFilter(fn($value) => $this->forStatus($value)),
             new BillPurchaseTypeFilter(fn($value) => $this->forPurchaseType($value)),
             new CreatedAtDateRangeFilter(fn($date) => $this->createdAtRange($date)),
@@ -32,22 +31,6 @@ class BillBuilder extends BaseBuilder
         if (!$client_id)
             return $this;
         return $this->where('client_id', $client_id);
-    }
-
-    public function forClientOrDisabledClient(?int $client_id)
-    {
-        if (!$client_id)
-            return $this;
-        return $this->where(function (Builder $query) use ($client_id) {
-            $query->where('client_id', $client_id)
-                ->orWhere('disabled_client_id', $client_id);
-        });
-    }
-    public function forDisabledClient(?int $client_id)
-    {
-        if (!$client_id)
-            return $this;
-        return $this->where('disabled_client_id', $client_id);
     }
     public function forStatus(?string $value)
     {

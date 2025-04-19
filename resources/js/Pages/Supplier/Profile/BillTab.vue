@@ -18,7 +18,10 @@
             </Column>
             <Column :header="$t('column.disabled_client_id')">
                 <template #body="row">
-                    <ElRouteClientProfile :model="row.data.disabled_client"/>
+                    <ElText :model="row.data.disabled_name"/>
+                    <div v-if="row.data.disabled_national_id">
+                        <ElText :model="row.data.disabled_national_id"/>
+                    </div>
                 </template>
             </Column>
             <Column :header="$t('column.car_type')">

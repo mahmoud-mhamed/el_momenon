@@ -27,7 +27,7 @@ class ClientProfileAction extends BaseAction
         $this->checkAbility(Abilities::M_CLIENT_BILLS);
         $this->setProfileTab('BillTab', $client);
         $data['row'] = $client;
-        $data['bills'] = Bill::query()->with('currency','supplier', 'client', 'disabledClient')->forClient($client->id)->get();
+        $data['bills'] = Bill::query()->with('currency','supplier', 'client')->forClient($client->id)->get();
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
 
@@ -37,8 +37,8 @@ class ClientProfileAction extends BaseAction
         $this->setProfileTab('ArchiveTab', $client);
         $data['row'] = $client;
         $data['archives'] = Archive::query()
-            ->with('bill')->with('client', 'disabledClient')
-            ->forClientOrDisabledClient($client->id)->get()->groupBy('bill_id');
+            ->with('bill')->with('client')
+            ->forClient($client->id)->get()->groupBy('bill_id');
         return Inertia::render('Client/Profile/Index', compact('data'));
     }
 

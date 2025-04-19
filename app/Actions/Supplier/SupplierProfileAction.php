@@ -22,7 +22,7 @@ class SupplierProfileAction extends BaseAction
         $this->setProfileTab('BillTab', $supplier);
         $data['row'] = $supplier;
         $data['bills'] = Bill::query()
-            ->with('supplier', 'client', 'disabledClient', 'currency')
+            ->with('supplier', 'client', 'currency')
             ->where('supplier_id', $supplier->id)
             ->paginate();
         return Inertia::render('Supplier/Profile/Index', compact('data'));

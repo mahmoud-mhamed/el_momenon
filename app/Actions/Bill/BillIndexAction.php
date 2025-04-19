@@ -22,7 +22,7 @@ class BillIndexAction extends BaseAction
                 'client.name', 'client.phone','client.national_id',
                 'supplier.name', 'supplier.phone',
             ])
-            ->with('supplier', 'client', 'disabledClient','currency');
+            ->with('supplier', 'client','currency');
     }
     public function handle()
     {

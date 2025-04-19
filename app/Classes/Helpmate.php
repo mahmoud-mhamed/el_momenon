@@ -3,8 +3,10 @@
 namespace App\Classes;
 
 use Carbon\Carbon;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
 
 class Helpmate
 {
@@ -90,6 +92,33 @@ class Helpmate
             return substr($string, 0, $search_position) . $add_before_search . substr($string, $search_position);
         } else {
             return $string . $add_before_search;
+        }
+    }
+
+    public static function dropColumnIfExist($table, ...$columns): void
+    {
+        foreach ($columns as $column) {
+            if (Schema::hasColumn($table, $column)) {
+                Schema::table($table, function (Blueprint $table) use ($column) {
+                    $table->dropColumn($column);
+                });
+            }
+        }
+    }
+
+    public static function tableContainColumn($table, $column)
+    {
+        return Schema::hasColumn($table, $column);
+    }
+
+    public static function dropConstrainedForeignIdIfExist($table, ...$columns): void
+    {
+        foreach ($columns as $column) {
+            if (Schema::hasColumn($table, $column)) {
+                Schema::table($table, function (Blueprint $table) use ($column) {
+                    $table->dropConstrainedForeignId($column);
+                });
+            }
         }
     }
 }

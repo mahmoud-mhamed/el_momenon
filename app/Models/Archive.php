@@ -15,7 +15,6 @@ use App\Traits\FileUploadTrait;
  * @property string collection_name
  * @property int bill_id
  * @property int client_id
- * @property int disabled_client_id
  * @property string file
  * @property string mimetype
  * @property-read string $collection_name_text
@@ -28,7 +27,7 @@ class Archive extends BaseModel
     use FileUploadTrait;
 
     protected $fillable = [
-        'name', 'collection_name', 'bill_id', 'client_id', 'disabled_client_id', 'file', 'mimetype',
+        'name', 'collection_name', 'bill_id', 'client_id', 'file', 'mimetype',
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
     ];
 
@@ -44,10 +43,6 @@ class Archive extends BaseModel
     protected $appends=[
         'size_text'
     ];
-    public function disabledClient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Client::class, 'disabled_client_id');
-    }
 
 
     /**
