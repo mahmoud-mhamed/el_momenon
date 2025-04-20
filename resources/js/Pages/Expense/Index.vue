@@ -12,7 +12,7 @@ import ElText from "@/Components/Text/ElText.vue";
 import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
 import ElRouteEmployeeProfile from "@/Components/ElRoutes/ElRouteEmployeeProfile.vue";
 import ElEgPrice from "@/Components/Text/ElEgPrice.vue";
-import SalaryFormCreateUpdate from "@/Pages/Salary/SalaryFormCreateUpdate.vue";
+import ExpenseFormCreateUpdate from "@/Pages/Expense/ExpenseFormCreateUpdate.vue";
 
 const props = defineProps({
     data: Object,
@@ -74,7 +74,7 @@ const edit_row = ref();
     <Dialog v-model:visible="showDialogCreateUpdate" :style="{width: '50rem'}"
             :header="edit_row?$t('message.edit'):$t('message.add_new')"
             modal maximizable>
-        <SalaryFormCreateUpdate :form_data="data.form_data" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
+        <ExpenseFormCreateUpdate :form_data="data.form_data" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
     </Dialog>
 </template>
 
