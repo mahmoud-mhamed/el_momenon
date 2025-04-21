@@ -6,7 +6,7 @@ Route::get('/deploy',function (){
     return Artisan::call('app:deploy');
 });
 Route::get('/version', function () {
-    return 2.6;
+    return 2.8;
 });
 Route::get('/', function () {
     return redirect()->route('dashboard.login.view-form');
@@ -16,6 +16,14 @@ Route::get('/', function () {
 Route::get('/command', function () {
     Artisan::call('migrate --force');
     Artisan::call('storage:link');
+    return 'success';
+});
+Route::get('/command2', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
     return 'success';
 });
 Route::get('/fresh', function () {
