@@ -174,6 +174,13 @@ class BaseAction
         ];
     }
 
+    public function appendCurrency($amount=null,$currency=null)
+    {
+        if (!$amount)
+            return $amount;
+        return $amount . '<small class="text-sm"> ' . ($currency??__('message.eg_currency')).'</small>';
+    }
+
     /**
      * Refresh the DOM by setting a session key.
      *

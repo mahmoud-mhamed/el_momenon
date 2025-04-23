@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Enums\SalaryMonthEnum;
-use App\Traits\EnumCastAppendAttributeTrait;
 use App\Enums\SalaryTypeEnum;
 use App\Models\Builders\SalaryBuilder;
+use App\Observers\SalaryObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -20,11 +20,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read string $type_text
  * @property-read string month_year
   * @property-read string $month_text
+  * @property string salary_date
  */
+#[ObservedBy([SalaryObserver::class])]
 class Salary extends BaseModel
 {
     protected $fillable = [
-        'employee_id', 'amount', 'type', 'month', 'year', 'note',
+        'employee_id', 'amount', 'type', 'month', 'year', 'note','salary_date',
         'created_by_id', 'created_by_type', 'updated_by_id', 'updated_by_type', 'deleted_by_id', 'deleted_by_type'
     ];
 

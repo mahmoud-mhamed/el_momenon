@@ -15,6 +15,7 @@ return [
         \App\Enums\ModuleNameEnum::EMPLOYEE->value => 'الموظفين',
         \App\Enums\ModuleNameEnum::SALARY->value => 'المرتبات',
         \App\Enums\ModuleNameEnum::EXPENSE->value => 'المصروفات',
+        \App\Enums\ModuleNameEnum::REPORT->value => 'التقرير',
     ],
     \App\Enums\BillStatusEnum::getFileName()=>[
         \App\Enums\BillStatusEnum::PENDING->value => 'قيد الإنتظار',

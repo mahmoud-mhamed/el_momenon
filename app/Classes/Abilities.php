@@ -88,6 +88,7 @@ enum Abilities: string
     case M_EXPENSE_CREATE = 'm_expense_create';
     case M_EXPENSE_EDIT = 'm_expense_edit';
     case M_EXPENSE_DELETE = 'm_expense_delete';
+    case M_REPORT_INDEX = 'm_report_index';
 
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
@@ -162,6 +163,7 @@ enum Abilities: string
         ['key' => self::M_EXPENSE_EDIT, 'module' => ModuleNameEnum::EXPENSE],
         ['key' => self::M_EXPENSE_DELETE, 'module' => ModuleNameEnum::EXPENSE],
 
+        ['key' => self::M_REPORT_INDEX, 'module' => ModuleNameEnum::REPORT],
     ];
 
     public static function getModulePermission(ModuleNameEnum $moduleNameEnum): \Illuminate\Support\Collection
