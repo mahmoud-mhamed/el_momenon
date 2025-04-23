@@ -9,6 +9,7 @@
                 <label>{{ $t('column.email') }} : </label>
                 <label class="underline ">{{ data.row.email }}</label>
             </div>
+            <hr class="col-span-full">
             <div>
                 <label>{{ $t('column.created_at_text') }} : </label>
                 <label>{{ data.row.created_at_text }}</label>
