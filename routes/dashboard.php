@@ -126,4 +126,8 @@ Route::group([
         Route::delete('/{expense}', \App\Actions\Expense\ExpenseDeleteAction::class)->name('delete');
     });
 
+    Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
+        Route::get('/', \App\Actions\Report\ReportIndexAction::class)->name('index');
+    });
+
 });

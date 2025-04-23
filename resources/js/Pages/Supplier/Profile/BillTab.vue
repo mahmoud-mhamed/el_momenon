@@ -54,6 +54,11 @@
                     <ElPrice :currency="row.data.currency" :value="row.data.selling_price"/>
                 </template>
             </Column>
+            <Column :header="$t('column.profit')">
+                <template #body="row">
+                    <ElPrice :currency="row.data.currency" :value="row.data.profit"/>
+                </template>
+            </Column>
             <Column :header="$t('column.client_paid_amount')">
                 <template #body="row">
                     <ElPrice :currency="row.data.currency" :value="row.data.client_paid_amount"/>

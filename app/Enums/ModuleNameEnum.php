@@ -18,5 +18,6 @@ enum ModuleNameEnum: string
     case EMPLOYEE='employee';
     case SALARY='salary';
     case EXPENSE='expense';
+    case REPORT='report';
 
 }

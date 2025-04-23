@@ -79,4 +79,5 @@ return [
     'print_bill' => 'طباعة الفاتورة',
     'date' => 'التاريخ',
     'price' => 'السعر',
+    'eg_currency' => 'ج م',
 ];

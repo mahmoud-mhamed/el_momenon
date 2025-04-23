@@ -6,16 +6,20 @@
 
             <ElLabelValuePrice :currency="data.row.currency" :value="data.row.selling_price"
                                   :label="$t('column.selling_price')"/>
+            <hr class="col-span-full">
             <ElLabelValueText :value="data.row.status_text" :label="$t('column.status')"/>
             <ElLabelValueText :value="data.row.car_type" :label="$t('column.car_type')"/>
+            <hr class="col-span-full">
             <ElLabelValueText :value="data.row.shipping_date" :label="$t('column.shipping_date')"/>
             <ElLabelValuePrice :currency="data.row.currency" :value="data.row.shipping_amount"
                                :label="$t('column.shipping_amount')"/>
+            <hr class="col-span-full">
 
             <ElLabelValueText :value="data.row.policy_number" :label="$t('column.policy_number')"/>
             <ElLabelValueText :value="data.row.purchase_type_text" :label="$t('column.purchase_type')"/>
 
 
+            <hr class="col-span-full">
             <ElLabelValueText :value="data.row.created_at_text" :label="$t('column.created_at')"/>
             <ElModelUpdatedAtValueText :model="data.row" :label="$t('column.updated_at')"/>
 

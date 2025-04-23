@@ -5,8 +5,10 @@
             <ElLabelValueText :value="data.row.created_at_text" :label="$t('column.created_at')"/>
             <ElModelUpdatedAtValueText :model="data.row" :label="$t('column.updated_at')"/>
 
+            <hr class="col-span-full">
             <ElLabelImage :src="data.row.national_id_img_front_url" :label="$t('column.national_id_img_front')"/>
             <ElLabelImage :src="data.row.national_id_img_back_url" :label="$t('column.national_id_img_back')"/>
+            <hr class="col-span-full">
 
             <ElLabelValueText :value="data.row.note" :label="$t('column.note')"/>
 

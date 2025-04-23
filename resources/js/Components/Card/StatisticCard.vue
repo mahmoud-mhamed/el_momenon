@@ -12,8 +12,8 @@ defineProps({
         <div class="bg-statistic w-full aspect-[28/7] md:aspect-[18/7] rounded-lg text-primary-300">
             <div class="flex w-full h-full justify-around items-center">
                 <div class="flex flex-col items-center justify-center text-2xl">
-                    <div class="font-bold md:text-6xl" v-text="value"/>
-                    <div v-text="title"/>
+                    <div class="font-bold md:text-6xl" v-html="value"/>
+                    <div v-html="title"/>
                 </div>
                 <div>
                     <div

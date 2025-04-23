@@ -39,7 +39,7 @@ trait HelpersModelTrait
 
     public function rangeDateFilter($date_range,$column='created_at'): static
     {
-        $date =Helpmate::getRangeFromRequestPeriod($date_range);
+        $date = Helpmate::getRangeFromRequestPeriod($date_range);
         return $this->when($date !== null,
             fn(Builder $q) => $q->whereDate($column, '>=', Arr::first($date))
                 ->when(Arr::last($date) !== null, fn(Builder $q) => $q->whereDate($column, '<=', Arr::last($date)))

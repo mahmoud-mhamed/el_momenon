@@ -6,7 +6,7 @@ Route::get('/deploy',function (){
     return Artisan::call('app:deploy');
 });
 Route::get('/version', function () {
-    return 2.9;
+    return 3;
 });
 Route::get('/', function () {
     return redirect()->route('dashboard.login.view-form');

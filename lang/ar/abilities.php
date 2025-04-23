@@ -89,4 +89,6 @@ return [
     Abilities::M_EXPENSE_CREATE->value => $create,
     Abilities::M_EXPENSE_EDIT->value => $update,
     Abilities::M_EXPENSE_DELETE->value => $delete,
+
+    Abilities::M_REPORT_INDEX->value => $index,
 ];
