@@ -75,6 +75,7 @@ enum Abilities: string
     case M_EMPLOYEE_CREATE = 'm_employee_create';
     case M_EMPLOYEE_EDIT = 'm_employee_edit';
     case M_EMPLOYEE_DELETE = 'm_employee_delete';
+    case M_EMPLOYEE_SALARY_INDEX = 'm_employee_salary_index';
 
     //salary
     case M_SALARY_INDEX = 'm_salary_index';
@@ -149,6 +150,7 @@ enum Abilities: string
         ['key' => self::M_EMPLOYEE_CREATE, 'module' => ModuleNameEnum::EMPLOYEE],
         ['key' => self::M_EMPLOYEE_EDIT, 'module' => ModuleNameEnum::EMPLOYEE],
         ['key' => self::M_EMPLOYEE_DELETE, 'module' => ModuleNameEnum::EMPLOYEE],
+        ['key' => self::M_EMPLOYEE_SALARY_INDEX, 'module' => ModuleNameEnum::EMPLOYEE],
 
         ['key' => self::M_SALARY_INDEX, 'module' => ModuleNameEnum::SALARY],
         ['key' => self::M_SALARY_CREATE, 'module' => ModuleNameEnum::SALARY],

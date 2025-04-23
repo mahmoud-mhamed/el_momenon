@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-    <StatisticCard v-if="data && data?.title" :title="data.title" :value="data.value" :icon="data.icon"/>
+    <StatisticCard v-if="data && data?.title" :title="data.title" :value="data.value" :href="data.href" :icon="data.icon"/>
 </template>
 
 <style scoped>

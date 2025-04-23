@@ -1,7 +1,8 @@
 <template>
     <form @submit.prevent="submit()">
         <div class="grid md:grid-cols-2 mt-2 gap-3">
-            <el-floating-dropdown :form="el_form" required name="employee_id" :options="form_data.employees"/>
+            <el-floating-dropdown v-if="!employee" :form="el_form" required name="employee_id"
+                                  :options="form_data.employees"/>
             <el-floating-dropdown :form="el_form" required name="type" :options="form_data.types"/>
             <el-floating-dropdown :form="el_form" required name="month" :options="form_data.months"/>
             <el-floating-price-eg :form="el_form" name="amount" required/>
@@ -35,17 +36,21 @@ const props = defineProps({
     form_data: {
         type: Object,
         default: null,
+    },
+    employee: {
+        type: Object,
+        default: null,
     }
 })
 const is_create = !props?.row?.id;
 const el_row = props?.row;
 const el_form = useForm({
     id: el_row?.id,
-    employee_id: el_row?.employee_id,
+    employee_id: el_row?.employee_id ?? props.employee?.id,
     amount: el_row?.amount,
     type: el_row?.type,
-    month: el_row?.month??props.form_data.current_month,
-    year: el_row?.year??props.form_data.current_year,
+    month: el_row?.month ?? props.form_data.current_month,
+    year: el_row?.year ?? props.form_data.current_year,
     note: el_row?.note,
 })
 const submit = () => {
@@ -60,7 +65,7 @@ const setEmplyeeAmount = () => {
     if (el_form.id) {
         return;
     }
-    if (el_form.type!=='salary')
+    if (el_form.type !== 'salary')
         return;
     if (!el_form.employee_id)
         return;

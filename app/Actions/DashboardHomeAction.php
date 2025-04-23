@@ -24,23 +24,27 @@ class DashboardHomeAction extends BaseAction
         $data['users'] = $this->makeStatisticCard(
             ModuleNameEnum::getTrans(ModuleNameEnum::USERS),
             User::query()->count(),
-            'pi-users'
+            'pi-users',
+            route('dashboard.users.index')
         );
         $data['clients'] = $this->makeStatisticCard(
             ModuleNameEnum::getTrans(ModuleNameEnum::CLIENT),
             Client::query()->count(),
-            'pi-users'
+            'pi-users',
+            route('dashboard.client.index')
         );
 
         $data['currencies'] = $this->makeStatisticCard(
             ModuleNameEnum::getTrans(ModuleNameEnum::CURRENCIES),
             Currency::query()->count(),
-            'pi-dollar'
+            'pi-dollar',
+            route('dashboard.currency.index')
         );
         $data['suppliers'] = $this->makeStatisticCard(
             ModuleNameEnum::getTrans(ModuleNameEnum::SUPPLIER),
             Supplier::query()->count(),
-            'pi-users'
+            'pi-users',
+            route('dashboard.supplier.index')
         );
 
         $bills = null;

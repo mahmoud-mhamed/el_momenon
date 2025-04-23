@@ -1,5 +1,5 @@
 <template>
-    <ElRoute v-if="model?.id">
+    <ElRoute v-if="model?.id" :href="route('dashboard.employee.employee-salary',model.id)" :ability="Ability.M_EMPLOYEE_SALARY_INDEX">
         <template #title> {{ model.name }}</template>
     </ElRoute>
     <ElText v-else/>

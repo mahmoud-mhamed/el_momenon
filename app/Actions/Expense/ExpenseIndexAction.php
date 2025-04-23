@@ -28,7 +28,7 @@ class ExpenseIndexAction extends BaseAction
         $data['rows'] = $query->paginate();
         $this->useFilter(Expense::query()->getFilters());
 
-        return Inertia::render('Salary/Index', compact('data'));
+        return Inertia::render('Expense/Index', compact('data'));
     }
 
     public function getFormCreateUpdateData(): array

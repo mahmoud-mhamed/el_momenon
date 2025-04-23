@@ -41,11 +41,6 @@ const edit_row = ref();
                     <ElText :value="row.data.month_year"/>
                 </template>
             </Column>
-            <Column :header="$t('column.employee_id')">
-                <template #body="row">
-                    <ElRouteEmployeeProfile :model="row.data?.employee"/>
-                </template>
-            </Column>
 
             <Column :header="$t('column.amount')">
                 <template #body="row">
@@ -74,7 +69,7 @@ const edit_row = ref();
     <Dialog v-model:visible="showDialogCreateUpdate" :style="{width: '50rem'}"
             :header="edit_row?$t('message.edit'):$t('message.add_new')"
             modal maximizable>
-        <SalaryFormCreateUpdate :form_data="data.form_data" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
+        <SalaryFormCreateUpdate :employee="data.employee"  :form_data="data.form_data" :row="edit_row" @hide="showDialogCreateUpdate=false"/>
     </Dialog>
 </template>
 

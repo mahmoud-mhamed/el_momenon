@@ -156,6 +156,7 @@ class BaseAction
             'filters' => $filters,
         ]);
     }
+
     public function useTransparent($transparent = true): void
     {
         Inertia::share([
@@ -163,12 +164,13 @@ class BaseAction
         ]);
     }
 
-    public function makeStatisticCard($title,$value,$icon): array
+    public function makeStatisticCard($title, $value, $icon, $href = null): array
     {
         return [
             'title' => $title,
             'value' => $value,
             'icon' => $icon,
+            'href' => $href,
         ];
     }
 
