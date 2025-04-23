@@ -83,6 +83,8 @@ Route::group([
         Route::post('/', \App\Actions\Employee\EmployeeStoreAction::class)->name('store');
         Route::post('/{employee}', \App\Actions\Employee\EmployeeUpdateAction::class)->name('update');
         Route::delete('/{employee}', \App\Actions\Employee\EmployeeDeleteAction::class)->name('delete');
+
+        Route::get('/{employee}/salary/index', \App\Actions\Employee\EmployeeSalaryIndexAction::class)->name('employee-salary');
     });
 
     Route::group(['prefix' => 'bill', 'as' => 'bill.'], function () {

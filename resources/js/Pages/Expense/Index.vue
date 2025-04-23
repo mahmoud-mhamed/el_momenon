@@ -10,7 +10,6 @@ import ElActionMenu from "@/Components/ActionMenu/ElActionMenu.vue";
 import ElActionMenuDeleteAction from "@/Components/ActionMenu/ElActionMenuDeleteAction.vue";
 import ElText from "@/Components/Text/ElText.vue";
 import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
-import ElRouteEmployeeProfile from "@/Components/ElRoutes/ElRouteEmployeeProfile.vue";
 import ElEgPrice from "@/Components/Text/ElEgPrice.vue";
 import ExpenseFormCreateUpdate from "@/Pages/Expense/ExpenseFormCreateUpdate.vue";
 
@@ -32,18 +31,16 @@ const edit_row = ref();
                 <template #body="row">
                     #
                     <ElText :value="row.data?.id"/>
-                    -
-                    <ElText :value="row.data.type_text"/>
                 </template>
             </Column>
-            <Column :header="$t('column.month')">
+            <Column :header="$t('column.title')">
                 <template #body="row">
-                    <ElText :value="row.data.month_year"/>
+                    <ElText :value="row.data.title"/>
                 </template>
             </Column>
-            <Column :header="$t('column.employee_id')">
+            <Column :header="$t('column.operation_date')">
                 <template #body="row">
-                    <ElRouteEmployeeProfile :model="row.data?.employee"/>
+                    <ElText :value="row.data?.operation_date"/>
                 </template>
             </Column>
 
@@ -60,12 +57,12 @@ const edit_row = ref();
             <Column :header="$t('message.actions')">
                 <template #body="row">
                     <ElActionMenu>
-                        <ElActionMenuEdit v-ability="Ability.M_SALARY_EDIT"
+                        <ElActionMenuEdit v-ability="Ability.M_EXPENSE_EDIT"
                                           @click="edit_row=row.data;showDialogCreateUpdate=true"/>
-                        <ElActionMenuDeleteAction v-ability="Ability.M_SALARY_DELETE"
+                        <ElActionMenuDeleteAction v-ability="Ability.M_EXPENSE_DELETE"
                                                   :el-id="row.data.id"
-                                                  :dialog-message="row.data.employee?.name+' - '+row.data.month_year+' - '+row.data.type_text"
-                                                  :href="route('dashboard.salary.delete',row.data.id)"/>
+                                                  :dialog-message="row.data.title"
+                                                  :href="route('dashboard.expense.delete',row.data.id)"/>
                     </ElActionMenu>
                 </template>
             </Column>

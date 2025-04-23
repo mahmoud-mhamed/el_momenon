@@ -18,17 +18,22 @@ class SalaryIndexAction extends BaseAction
     public function handle()
     {
         $this->useBreadcrumb();
-        $query = Salary::query()
-            ->with('employee')
-            ->latest('id')
-            ->filter()
-            ->search(['amount','note']);
+        $query = $this->getQuery();
         $this->allowSearch();
         $data = $this->getFormCreateUpdateData();
         $data['rows'] = $query->paginate();
         $this->useFilter(Salary::query()->getFilters());
 
         return Inertia::render('Salary/Index', compact('data'));
+    }
+
+    public function getQuery()
+    {
+        return Salary::query()
+            ->with('employee')
+            ->latest('id')
+            ->filter()
+            ->search(['amount','note']);
     }
 
     public function getFormCreateUpdateData(): array
