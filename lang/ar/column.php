@@ -87,6 +87,7 @@ return [
     'year' => 'العام',
     'operation_date' => 'تاريخ العملية',
     'date_range' => 'الفترة',
+    'profit' => 'الربح',
 
 
 ];

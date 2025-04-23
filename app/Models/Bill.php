@@ -46,7 +46,7 @@ class Bill extends BaseModel
 {
     protected $fillable = [
         'supplier_id', 'supplier_paid_amount', 'client_paid_amount', 'client_id',
-        'disabled_name','disabled_national_id',
+        'disabled_name', 'disabled_national_id',
         'currency_id', 'purchase_price',
         'purchase_type',
         'selling_price',
@@ -61,13 +61,20 @@ class Bill extends BaseModel
     ];
     protected $appends = [
         'name',
-        'client_rent_amount', 'supplier_rent_amount'
+        'client_rent_amount', 'supplier_rent_amount',
+        'profit',
     ];
 
 
     public function getNameAttribute(): string
     {
-        return '#'.$this->id.' - '.$this->chassis_number .' - '.$this->car_type;
+        return '#' . $this->id . ' - ' . $this->chassis_number . ' - ' . $this->car_type;
+    }
+
+    public function getProfitAttribute(): float|int|null
+    {
+        $car_price = ($this->selling_price ?? 0) - ($this->purchase_price ?? 0) - ($this->shipping_amount ?? 0);
+        return $car_price > 0 ? Helpmate::toFixed($car_price) : null;
     }
 
     public function currency(): BelongsTo

@@ -10,6 +10,10 @@
                 <ElLabelValueText :value="usePage().props?.profile_row.chassis_number"
                                   :label="$t('column.chassis_number')"/>
                 <ElLabelValueText :value="usePage().props?.profile_row.status_text" :label="$t('column.status')"/>
+                <ElLabelValuePrice :value="usePage().props?.profile_row.profit"
+                                   class="w-[300px]"
+                                   :currency="usePage().props?.profile_row.currency"
+                                   :label="$t('column.profit')"/>
                 <div class="flex gap-2">
                     <label>{{ $t('column.supplier_id') }} : </label>
                     <ElRouteSupplierProfile :model="usePage().props?.profile_row.supplier"/>
