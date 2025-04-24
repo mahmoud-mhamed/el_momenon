@@ -88,6 +88,7 @@ return [
     'operation_date' => 'تاريخ العملية',
     'date_range' => 'الفترة',
     'profit' => 'الربح',
+    'disability_amount' => 'قيمة الجواب',
 
 
 ];

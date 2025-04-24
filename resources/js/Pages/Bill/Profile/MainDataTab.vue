@@ -13,6 +13,9 @@
             <ElLabelValueText :value="data.row.shipping_date" :label="$t('column.shipping_date')"/>
             <ElLabelValuePrice :currency="data.row.currency" :value="data.row.shipping_amount"
                                :label="$t('column.shipping_amount')"/>
+
+            <ElLabelValuePrice :currency="data.row.currency" :value="data.row.disability_amount"
+                               :label="$t('column.disability_amount')"/>
             <hr class="col-span-full">
 
             <ElLabelValueText :value="data.row.policy_number" :label="$t('column.policy_number')"/>
