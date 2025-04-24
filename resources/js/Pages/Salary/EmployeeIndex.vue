@@ -25,7 +25,7 @@ const edit_row = ref();
     <ElPanel>
         <template #actions>
             <el-primary-button @click="edit_row=null;showDialogCreateUpdate=true" v-ability="Ability.M_SALARY_CREATE"
-                               :text="$t('message.add_new')"/>
+                               :text="$t('message.add_salary')"/>
         </template>
         <ElDataTable :src="props.data.rows">
             <Column :header="$t('column.id')">

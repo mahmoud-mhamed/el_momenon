@@ -80,7 +80,7 @@ return [
     'sum_bills_amount' => 'إجمالي الفواتير',
     'currency.name' => 'العملة',
     'disabled_name' => 'اسم المعاق - صاحب المبادرة',
-    'disabled_national_id' => 'رقم هوية المعاق - صاحب المبادرة',
+    'disabled_national_id' => 'رقم جوال المعاق - صاحب المبادرة',
     'employee_id' => 'الموظف',
     'amount' => 'القيمة',
     'month' => 'الشهر',

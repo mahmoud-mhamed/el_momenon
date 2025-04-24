@@ -80,4 +80,5 @@ return [
     'date' => 'التاريخ',
     'price' => 'السعر',
     'eg_currency' => 'ج م',
+    'add_salary' => 'إضافة مرتب',
 ];
