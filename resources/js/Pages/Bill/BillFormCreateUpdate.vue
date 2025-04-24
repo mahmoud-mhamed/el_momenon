@@ -38,9 +38,10 @@
             <ElCardWithTitle
                 v-if="el_form.purchase_type && el_form.purchase_type !== Enum.BillPurchaseTypeEnum.PERSONAL"
                 :title="el_form.purchase_type === Enum.BillPurchaseTypeEnum.DISABILITY_ANSWER?$t('message.disabled_client_data'):$t('message.initiative_data')">
-                <div class="grid md:grid-cols-2 gap-4">
+                <div class="grid md:grid-cols-3 gap-4">
                     <ElFloatingInput :form="el_form" name="disabled_name"/>
                     <ElFloatingInput :form="el_form" name="disabled_national_id"/>
+                    <ElFloatingPrice :currency="supplier_currency" :form="el_form" name="disability_amount"/>
                 </div>
                 <div class="grid md:grid-cols-3 mt-3 gap-4">
                     <ElAvatarInput :form="el_form" :old-image-preview="props.row?.disabled_client_national_id_url"
@@ -85,6 +86,7 @@ const el_form = useForm({
     supplier_id: props.row?.supplier_id ?? props.form_data?.select_supplier_id,
     client_id: props.row?.client_id ?? props.form_data?.select_client_id,
     disabled_name: props.row?.disabled_name,
+    disability_amount: props.row?.disability_amount,
     disabled_national_id: props.row?.disabled_national_id,
     purchase_price: props.row?.purchase_price,
     purchase_type: props.row?.purchase_type,

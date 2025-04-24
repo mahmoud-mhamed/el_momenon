@@ -32,6 +32,7 @@ class BillRequest extends FormRequest
             'shipping_type' => ['nullable', new SmallTextRule()],
             'shipping_date' => ['nullable', new DateFormatCreatedAtRule()],
             'shipping_amount' => ['nullable',new PriceRule()],
+            'disability_amount' => ['nullable',new PriceRule()],
             'policy_number' => ['nullable',new SmallTextRule()],
             'notes' => ['nullable',new LargeTextRule()],
             'client_national_id' => ['nullable',new AvatarRule()],

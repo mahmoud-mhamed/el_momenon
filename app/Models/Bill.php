@@ -40,13 +40,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read double supplier_rent_amount
  * @property-read double client_rent_amount
  * @property-read string name
+ * @property string disability_amount
  */
 #[ObservedBy([BillObserver::class])]
 class Bill extends BaseModel
 {
     protected $fillable = [
         'supplier_id', 'supplier_paid_amount', 'client_paid_amount', 'client_id',
-        'disabled_name', 'disabled_national_id',
+        'disabled_name', 'disabled_national_id','disability_amount',
         'currency_id', 'purchase_price',
         'purchase_type',
         'selling_price',
@@ -73,7 +74,9 @@ class Bill extends BaseModel
 
     public function getProfitAttribute(): float|int|null
     {
-        $car_price = ($this->selling_price ?? 0) - ($this->purchase_price ?? 0) - ($this->shipping_amount ?? 0);
+        $car_price = ($this->selling_price ?? 0) - ($this->purchase_price ?? 0)
+            - ($this->shipping_amount ?? 0)
+            - ($this->disability_amount ?? 0);
         return $car_price > 0 ? Helpmate::toFixed($car_price) : null;
     }
 
