@@ -23,6 +23,9 @@ class BillStoreAction extends BaseAction
     public function handle(BillRequest $request)
     {
         $validated_data = $request->validated();
+        if (!data_get($validated_data,'disability_amount')){
+           $validated_data['disability_amount']=0;
+        }
         \DB::beginTransaction();
         $bill = Bill::create($validated_data);
         $this->handelFiles($bill, $validated_data);
