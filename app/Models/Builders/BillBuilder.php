@@ -5,11 +5,9 @@ namespace App\Models\Builders;
 use App\Classes\Filter\UseFilter;
 use App\Models\Bill;
 use App\Models\Filters\Bill\BillClientFilter;
-use App\Models\Filters\Bill\BillDisabledClientFilter;
 use App\Models\Filters\Bill\BillPurchaseTypeFilter;
 use App\Models\Filters\Bill\BillStatusFilter;
 use App\Models\Filters\CreatedAtDateRangeFilter;
-use Illuminate\Database\Eloquent\Builder;
 
 /**@mixin Bill */
 class BillBuilder extends BaseBuilder

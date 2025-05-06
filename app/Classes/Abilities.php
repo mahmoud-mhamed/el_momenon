@@ -90,6 +90,12 @@ enum Abilities: string
     case M_EXPENSE_DELETE = 'm_expense_delete';
     case M_REPORT_INDEX = 'm_report_index';
 
+    //notebook
+    case M_NOTEBOOK_INDEX = 'm_notebook_index';
+    case M_NOTEBOOK_STORE = 'm_notebook_store';
+    case M_NOTEBOOK_UPDATE = 'm_notebook_update';
+    case M_NOTEBOOK_DELETE = 'm_notebook_delete';
+
     public const PERMISSIONS = [
         ['key' => self::M_USERS_INDEX, 'module' => ModuleNameEnum::USERS],
         ['key' => self::M_USERS_INDEX_EXPORT, 'module' => ModuleNameEnum::USERS],
@@ -162,6 +168,11 @@ enum Abilities: string
         ['key' => self::M_EXPENSE_CREATE, 'module' => ModuleNameEnum::EXPENSE],
         ['key' => self::M_EXPENSE_EDIT, 'module' => ModuleNameEnum::EXPENSE],
         ['key' => self::M_EXPENSE_DELETE, 'module' => ModuleNameEnum::EXPENSE],
+
+        ['key' => self::M_NOTEBOOK_INDEX, 'module' => ModuleNameEnum::NOTEBOOK],
+        ['key' => self::M_NOTEBOOK_STORE, 'module' => ModuleNameEnum::NOTEBOOK],
+        ['key' => self::M_NOTEBOOK_UPDATE, 'module' => ModuleNameEnum::NOTEBOOK],
+        ['key' => self::M_NOTEBOOK_DELETE, 'module' => ModuleNameEnum::NOTEBOOK],
 
         ['key' => self::M_REPORT_INDEX, 'module' => ModuleNameEnum::REPORT],
     ];

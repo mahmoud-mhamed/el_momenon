@@ -90,5 +90,10 @@ return [
     Abilities::M_EXPENSE_EDIT->value => $update,
     Abilities::M_EXPENSE_DELETE->value => $delete,
 
+    Abilities::M_NOTEBOOK_INDEX->value => $index,
+    Abilities::M_NOTEBOOK_STORE->value => $create,
+    Abilities::M_NOTEBOOK_UPDATE->value => $update,
+    Abilities::M_NOTEBOOK_DELETE->value => $delete,
+
     Abilities::M_REPORT_INDEX->value => $index,
 ];

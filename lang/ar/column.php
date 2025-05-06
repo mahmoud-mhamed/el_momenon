@@ -89,6 +89,12 @@ return [
     'date_range' => 'الفترة',
     'profit' => 'الربح',
     'disability_amount' => 'قيمة الجواب',
+    'statement' => 'بيان',
+    'sender' => 'مرسل',
+    'recipient' => 'مستلم',
+    'eg_currency_amount' => 'القيمة جنية',
+    'currency_amount' => 'القيمة',
+    'date' => 'التاريخ',
 
 
 ];

@@ -16,8 +16,9 @@ return [
         \App\Enums\ModuleNameEnum::SALARY->value => 'المرتبات',
         \App\Enums\ModuleNameEnum::EXPENSE->value => 'المصروفات',
         \App\Enums\ModuleNameEnum::REPORT->value => 'التقرير',
+        \App\Enums\ModuleNameEnum::NOTEBOOK->value => 'الدفتر',
     ],
-    \App\Enums\BillStatusEnum::getFileName()=>[
+    \App\Enums\BillStatusEnum::getFileName() => [
         \App\Enums\BillStatusEnum::PENDING->value => 'قيد الإنتظار',
         \App\Enums\BillStatusEnum::PURCHASED->value => 'تم الشراء',
         \App\Enums\BillStatusEnum::SHIPPED->value => 'تم الشحن',
@@ -25,27 +26,27 @@ return [
         \App\Enums\BillStatusEnum::DELIVERED->value => 'تم التسليم',
         \App\Enums\BillStatusEnum::CANCELED->value => 'تم الإلغاء',
     ],
-    \App\Enums\BillPurchaseTypeEnum::getFileName()=>[
+    \App\Enums\BillPurchaseTypeEnum::getFileName() => [
         BillPurchaseTypeEnum::INITIATIVE->value => 'مبادرة',
         BillPurchaseTypeEnum::DISABILITY_ANSWER->value => 'جواب إعاقة',
         BillPurchaseTypeEnum::PERSONAL->value => 'شخصي',
     ],
-    \App\Enums\ArchiveCollectionNameEnum::getFileName()=>[
+    \App\Enums\ArchiveCollectionNameEnum::getFileName() => [
         ArchiveCollectionNameEnum::DISABLED_CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية للمعاق',
         ArchiveCollectionNameEnum::CLIENT_NATIONAL_ID->value => 'صورة البطاقة الشخصية للعميل',
         ArchiveCollectionNameEnum::SMART_CARD->value => 'الكارت الذكي',
         ArchiveCollectionNameEnum::DISABLED_CLIENT_ENVELOPE->value => 'الجواب',
         ArchiveCollectionNameEnum::PROOF_ARCHIVE_ID->value => 'إثبات دفع',
     ],
-    \App\Enums\BillPaymentTypeEnum::getFileName()=>[
+    \App\Enums\BillPaymentTypeEnum::getFileName() => [
         \App\Enums\BillPaymentTypeEnum::FROM_CLIENT->value => 'من العميل',
         \App\Enums\BillPaymentTypeEnum::TO_SUPPLIER->value => 'إلي المورد',
     ],
-    \App\Enums\SalaryTypeEnum::getFileName()=>[
+    \App\Enums\SalaryTypeEnum::getFileName() => [
         \App\Enums\SalaryTypeEnum::ADDITION->value => 'إضافي',
         \App\Enums\SalaryTypeEnum::SALARY->value => 'المرتب',
     ],
-    \App\Enums\SalaryMonthEnum::getFileName()=>[
+    \App\Enums\SalaryMonthEnum::getFileName() => [
         \App\Enums\SalaryMonthEnum::JANUARY->value => 'يناير',
         \App\Enums\SalaryMonthEnum::FEBRUARY->value => 'فبراير',
         \App\Enums\SalaryMonthEnum::MARCH->value => 'مارس',
@@ -58,5 +59,9 @@ return [
         \App\Enums\SalaryMonthEnum::OCTOBER->value => 'أكتوبر',
         \App\Enums\SalaryMonthEnum::NOVEMBER->value => 'نوفمبر',
         \App\Enums\SalaryMonthEnum::DECEMBER->value => 'ديسمبر',
+    ],
+    \App\Enums\NotebookTypeEnum::getFileName() => [
+        \App\Enums\NotebookTypeEnum::SENDER->value => 'مرسل',
+        \App\Enums\NotebookTypeEnum::RECEIVER->value => 'مستلم',
     ],
 ];

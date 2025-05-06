@@ -65,6 +65,13 @@ class Menu
                 'href' => \route('dashboard.expense.index'),
                 'active' => Str::startsWith($current_route_name, 'dashboard.expense.')
             ];
+
+        if (BouncerService::checkAbility(Abilities::M_NOTEBOOK_INDEX))
+            $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::NOTEBOOK->value), 'icon' => 'pi-receipt',
+                'href' => \route('dashboard.notebook.index'),
+                'active' => Str::startsWith($current_route_name, 'dashboard.notebook.')
+            ];
+
         if (BouncerService::checkAbility(Abilities::M_REPORT_INDEX))
             $response[] = ['label' => ModuleNameEnum::getTrans(ModuleNameEnum::REPORT->value), 'icon' => 'pi-chart-line',
                 'href' => \route('dashboard.report.index'),
