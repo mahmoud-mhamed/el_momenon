@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('sender')->nullable();
             $table->string('recipient')->nullable();
 
-            $table->nullableMorphs('created_by','notebook_created_by');
-            $table->nullableMorphs('updated_by','notebook_updated_by');
-            $table->nullableMorphs('deleted_by','notebook_deleted_by');
+            $table->nullableMorphs('created_by','notebook_created_by',100);
+            $table->nullableMorphs('updated_by','notebook_updated_by',100);
+            $table->nullableMorphs('deleted_by','notebook_deleted_by',100);
             $table->softDeletes();
             $table->timestamps();
         });
