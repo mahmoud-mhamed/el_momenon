@@ -125,6 +125,12 @@ Route::group([
         Route::post('/{expense}', \App\Actions\Expense\ExpenseUpdateAction::class)->name('update');
         Route::delete('/{expense}', \App\Actions\Expense\ExpenseDeleteAction::class)->name('delete');
     });
+    Route::group(['prefix' => 'notebook', 'as' => 'notebook.'], function () {
+        Route::get('/', \App\Actions\Notebook\NotebookIndexAction::class)->name('index');
+        Route::post('/', \App\Actions\Notebook\NotebookStoreAction::class)->name('store');
+        Route::post('/{notebook}', \App\Actions\Notebook\NotebookUpdateAction::class)->name('update');
+        Route::delete('/{notebook}', \App\Actions\Notebook\NotebookDeleteAction::class)->name('delete');
+    });
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('/', \App\Actions\Report\ReportIndexAction::class)->name('index');
