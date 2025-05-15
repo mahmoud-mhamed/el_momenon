@@ -20,7 +20,7 @@ class ClientInCurrentYearBarChart extends BarChart
             ->get()
             ->map(function ($item) {
                 return [
-                    'month_name' => Carbon::create()->month($item->month)->translatedFormat('F'),
+                    'month_name' => Carbon::create()->month((int)$item->month)->translatedFormat('F'),
                     'total' => $item->total,
                 ];
             });
