@@ -9,7 +9,8 @@
 
                 <ElLabelValuePrice :label="$t('column.rent')"
                                    class="flex-grow" v-if="el_form.bill_id"
-                                   :currency="selected_bill?.currency" :value="selected_bill?.[el_form.type==='to_supplier'?'supplier_rent_amount':'client_rent_amount']"/>
+                                   :currency="selected_bill?.currency"
+                                   :value="selected_bill?.[el_form.type==='to_supplier'?'supplier_rent_amount':'client_rent_amount']"/>
             </div>
             <div class="grid md:grid-cols-2 mt-2 gap-3" v-if="selected_bill">
                 <el-floating-dropdown :form="el_form" required name="paid_currency_id" :options="form_data.currencies"/>
@@ -43,7 +44,8 @@
             </div>
 
             <div class="flex flex-row-reverse gap-2 mt-3">
-                <el-secondary-button :text="$t('message.cancel')" @click="showDialogCreateUpdate=false" v-if="!el_form?.id"/>
+                <el-secondary-button :text="$t('message.cancel')" @click="showDialogCreateUpdate=false"
+                                     v-if="!el_form?.id"/>
                 <el-submit-button :text="$t('message.save')" :form="el_form"/>
             </div>
         </form>
@@ -132,8 +134,12 @@ const collect_bills = collect(props.form_data.bills);
 const showDialog = (edit_payment = null, type = null, bill_id = null) => {
     showSelectBill.value = !bill_id;
     el_form.reset();
-    selected_bill.value = null;
-    if (!edit_payment){
+    if (edit_payment) {
+        selected_bill.value = edit_payment?.bill;
+    }else{
+        selected_bill.value = null;
+    }
+    if (!edit_payment) {
         el_form.type = type;
         el_form.bill_id = bill_id;
     }
