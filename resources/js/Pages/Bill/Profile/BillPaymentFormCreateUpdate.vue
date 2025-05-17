@@ -139,6 +139,8 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
     }else{
         selected_bill.value = null;
     }
+    console.log('33');
+    console.log(edit_payment);
     if (!edit_payment) {
         el_form.type = type;
         el_form.bill_id = bill_id;
