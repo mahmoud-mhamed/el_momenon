@@ -13,6 +13,7 @@
                                    :value="selected_bill?.[el_form.type==='to_supplier'?'supplier_rent_amount':'client_rent_amount']"/>
             </div>
             <div class="grid md:grid-cols-2 mt-2 gap-3" v-if="selected_bill">
+                adf
                 <el-floating-dropdown :form="el_form" required name="paid_currency_id" :options="form_data.currencies"/>
 
                 <el-floating-price :form="el_form" required name="paid_amount"
@@ -139,8 +140,6 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
     }else{
         selected_bill.value = null;
     }
-    console.log('22');
-    console.log(selected_bill.value);
     if (!edit_payment) {
         el_form.type = type;
         el_form.bill_id = bill_id;
