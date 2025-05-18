@@ -30,9 +30,7 @@ function checkAbility(abilities) {
         return true;
     if (abilities == null)
         return true;
-    if (auth_user?.is_company_admin || auth_user?.is_department_admin || auth_user?.is_system_admin)
-        return true;
-    if (!auth_user?.abilities)
+    if (!auth_data?.abilities)
         return false;
 
     if (Array.isArray(abilities)) {
