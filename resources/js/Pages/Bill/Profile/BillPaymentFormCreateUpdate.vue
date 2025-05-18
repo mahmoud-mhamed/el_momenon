@@ -2,7 +2,7 @@
     <Dialog v-model:visible="showDialogCreateUpdate" :style="{width: '50rem'}"
             :header="el_form.id?$t('message.edit'):$t('message.add_new')"
             modal maximizable>
-        <form @submit.prevent="submit()" :id="'form_payment_id'+el_form?.id??el_form.bill_id">
+        <form @submit.prevent="submit()">
             <div v-if="!el_form?.id" class="my-3 grid md:grid-cols-2 items-center gap-3">
                 <ElFloatingDropdown :form="el_form" v-if="showSelectBill"
                                     class="flex-grow" name="bill_id" :options="form_data.bills"/>
@@ -124,12 +124,7 @@ const setSelectedBill = () => {
         selected_bill.value = null;
         return;
     }
-    selected_bill.value = collect(props.form_data.bills).where('id', el_form.bill_id).first();
-    console.log('form clled',collect(props.form_data.bills));
-    console.log('form clled where',collect(props.form_data.bills).where('id', el_form.bill_id));
-    console.log('form clled',collect(props.form_data.bills).where('id', el_form.bill_id).first());
-    console.log('form bill id',el_form);
-    console.log('form bill id',el_form.bill_id);
+    selected_bill.value = collect_bills.where('id', el_form.bill_id * 1).first();
 }
 
 watch(() => el_form.bill_id, setSelectedBill, {deep: true});
@@ -141,11 +136,10 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
     el_form.reset();
     if (!edit_payment) {
         el_form.type = type;
-        el_form.bill_id = bill_id;
+        el_form.bill_id = bill_id * 1;
     }
     if (edit_payment) {
         selected_bill.value = edit_payment?.bill;
-        console.log('edit payment bill',edit_payment?.bill);
     }else{
         selected_bill.value = null;
     }
@@ -160,8 +154,6 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
         el_form.proof_archive_id_url = edit_payment?.proof_archive?.file_url;
     }
     el_form.proof_archive_id = null;
-    console.log('selected bill2',selected_bill);
-
     showDialogCreateUpdate.value = true;
 }
 
