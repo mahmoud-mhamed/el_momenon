@@ -124,7 +124,7 @@ const setSelectedBill = () => {
         selected_bill.value = null;
         return;
     }
-    selected_bill.value = collect_bills.where('id', el_form.bill_id).first();
+    selected_bill.value = collect(props.form_data.bills).where('id', el_form.bill_id).first();
 }
 
 watch(() => el_form.bill_id, setSelectedBill, {deep: true});
@@ -143,6 +143,7 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
     }else{
         selected_bill.value = null;
     }
+    console.log('selected bill',selected_bill);
     if (edit_payment) {
         let el_form_keys = Object.keys(el_form)
         for (let i = 0; i < el_form_keys.length; i++) {
@@ -154,6 +155,8 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
         el_form.proof_archive_id_url = edit_payment?.proof_archive?.file_url;
     }
     el_form.proof_archive_id = null;
+    console.log('selected bill2',selected_bill);
+
     showDialogCreateUpdate.value = true;
 }
 
