@@ -12,6 +12,9 @@
                                    :currency="selected_bill?.currency"
                                    :value="selected_bill?.[el_form.type==='to_supplier'?'supplier_rent_amount':'client_rent_amount']"/>
             </div>
+            <pre>
+            {{selected_bill}}
+            </pre>
             <div class="grid md:grid-cols-2 mt-2 gap-3" v-if="selected_bill">
                 <el-floating-dropdown :form="el_form" required name="paid_currency_id" :options="form_data.currencies"/>
 
