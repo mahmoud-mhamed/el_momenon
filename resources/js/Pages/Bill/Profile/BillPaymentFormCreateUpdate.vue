@@ -125,6 +125,7 @@ const setSelectedBill = () => {
         return;
     }
     selected_bill.value = collect(props.form_data.bills).where('id', el_form.bill_id).first();
+    console.log('form clled',collect(props.form_data.bills));
 }
 
 watch(() => el_form.bill_id, setSelectedBill, {deep: true});
@@ -140,10 +141,10 @@ const showDialog = (edit_payment = null, type = null, bill_id = null) => {
     }
     if (edit_payment) {
         selected_bill.value = edit_payment?.bill;
+        console.log('edit payment bill',edit_payment?.bill);
     }else{
         selected_bill.value = null;
     }
-    console.log('selected bill',selected_bill);
     if (edit_payment) {
         let el_form_keys = Object.keys(el_form)
         for (let i = 0; i < el_form_keys.length; i++) {
