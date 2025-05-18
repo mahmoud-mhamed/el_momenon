@@ -126,6 +126,8 @@ const setSelectedBill = () => {
     }
     selected_bill.value = collect(props.form_data.bills).where('id', el_form.bill_id).first();
     console.log('form clled',collect(props.form_data.bills));
+    console.log('form clled where',collect(props.form_data.bills).where('id', el_form.bill_id));
+    console.log('form clled first',collect(props.form_data.bills).where('id', el_form.bill_id).first());
 }
 
 watch(() => el_form.bill_id, setSelectedBill, {deep: true});
