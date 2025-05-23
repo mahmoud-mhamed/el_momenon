@@ -15,7 +15,8 @@ class SupplierService extends BaseService
             return;
         $bills = Bill::query()->where('supplier_id', $supplier->id)->sum('purchase_price');
 
-        $sum_payments=BillPayment::query()->where('type',BillPaymentTypeEnum::TO_SUPPLIER)->sum('bill_currency_equal_total');
+        $sum_payments=BillPayment::query()->where('type',BillPaymentTypeEnum::TO_SUPPLIER)
+            ->whereRelation('bill','supplier_id',$supplier->id)->sum('bill_currency_equal_total');
 
         $supplier->update([
             'current_account' => $bills - $sum_payments,
