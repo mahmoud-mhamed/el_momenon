@@ -12,6 +12,7 @@ use App\Models\Bill;
 use App\Models\BillPayment;
 use App\Models\Client;
 use App\Models\Supplier;
+use App\Services\SupplierService;
 use Inertia\Inertia;
 
 class SupplierProfileAction extends BaseAction
@@ -19,6 +20,7 @@ class SupplierProfileAction extends BaseAction
     public function viewBills(Supplier $supplier): \Inertia\Response
     {
         $this->checkAbility(Abilities::M_SUPPLIER_BILLS);
+        SupplierService::make()->setCurrentAccount($supplier);
         $this->setProfileTab('BillTab', $supplier);
         $data['row'] = $supplier;
         $data['bills'] = Bill::query()
