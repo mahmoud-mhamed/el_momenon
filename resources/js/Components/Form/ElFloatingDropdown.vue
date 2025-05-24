@@ -45,7 +45,6 @@ const props = defineProps({
     },
 })
 
-console.log(props.form[props.name],props.name);
 const hasError = () => props.form && (props.form['errors'] ?? false) ? props.form['errors'][props.name] : false;
 </script>
 
