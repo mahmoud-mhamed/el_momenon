@@ -25,7 +25,10 @@
                     </p>
                 </div>
                 <div style="text-align: right;">
-<!--                    <p style="margin: 5px 0; color: #777;"><strong>العميل:</strong> CUST-{{ el_bill.name }}</p>-->
+                    <div v-if="el_bill.notes" style="margin: 5px 0; color: #777;display: flex ; gap:7px">
+                        <strong> ملاحظة : </strong>
+                        <div v-text="el_bill.notes"/>
+                    </div>
                 </div>
             </div>
 
