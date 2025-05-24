@@ -74,6 +74,7 @@ import collect from "collect.js";
 import ElAvatarInput from "@/Components/Form/ElAvatarInput.vue";
 import {Enum} from "@/enum.js";
 import ElArchiveInput from "@/Components/Form/ElArchiveInput.vue";
+import {convertStringToNumber} from "@/Helpers/Functions.js";
 
 const props = defineProps({
     form_data: Object,
@@ -83,8 +84,8 @@ const is_create = !props?.row?.id;
 const supplier_currency = ref(is_create ? null : props.row.currency);
 const el_form = useForm({
     id: props.row?.id,
-    supplier_id: props.row?.supplier_id ?? props.form_data?.select_supplier_id,
-    client_id: props.row?.client_id ?? props.form_data?.select_client_id,
+    supplier_id: convertStringToNumber(props.row?.supplier_id ?? props.form_data?.select_supplier_id),
+    client_id: convertStringToNumber(props.row?.client_id ?? props.form_data?.select_client_id),
     disabled_name: props.row?.disabled_name,
     disability_amount: props.row?.disability_amount,
     disabled_national_id: props.row?.disabled_national_id,
