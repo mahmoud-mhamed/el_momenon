@@ -107,13 +107,16 @@ const el_form = useForm({
 });
 
 const setSupplierCurrency = () => {
-    if (!el_form.supplier_id) {
+    if (!el_form.supplier_id || !Array.isArray(props.form_data.suppliers)) {
         supplier_currency.value = null;
         return;
     }
+    const supplier = props.form_data.suppliers.find(
+        supplier => supplier.id === el_form.supplier_id
+    );
+    supplier_currency.value = supplier ? supplier.currency : null;
+};
 
-    supplier_currency.value = props.form_data.suppliers.find(supplier => supplier.id === el_form.supplier_id).currency;
-}
 setSupplierCurrency();
 watch(() => el_form.supplier_id, setSupplierCurrency, {deep: true});
 

@@ -75,9 +75,22 @@
                 </template>
             </Column>
             <Column field="updated_at_text" :header="$t('column.updated_at')"/>
+            <Column :header="$t('message.actions')">
+                <template #body="row">
+                    <ElActionMenu>
+                        <ElActionMenuEdit v-ability="Ability.M_BILL_EDIT" :href="route('dashboard.bill.edit',row.data.id)"/>
+                        <ElActionMenuItem @click="rep_print_bill.print(row.data)"
+                                          :text="$t('message.print_bill')"/>
+                        <ElActionMenuDeleteAction v-ability="Ability.M_BILL_DELETE"
+                                                  :dialog-message="'# '+row.data.id"
+                                                  :href="route('dashboard.bill.delete',row.data.id)"/>
+                    </ElActionMenu>
+                </template>
+            </Column>
         </ElDataTable>
     </ElContainer>
 
+    <BillPrint ref="rep_print_bill"/>
 
 </template>
 
@@ -99,6 +112,10 @@ import ElRouteSupplierProfile from "@/Components/ElRoutes/ElRouteSupplierProfile
 import ElActionMenu from "@/Components/ActionMenu/ElActionMenu.vue";
 import ElSecondaryButton from "@/Components/Buttons/ElSecondaryButton.vue";
 import ElPrice from "@/Components/Text/ElPrice.vue";
+import ElActionMenuItem from "@/Components/ActionMenu/ElActionMenuItem.vue";
+import BillPrint from "@/Pages/Bill/BillPrint.vue";
+import {ref} from "vue";
 
 const props = defineProps(['data']);
+const rep_print_bill = ref();
 </script>

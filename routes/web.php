@@ -13,7 +13,7 @@ Route::get('/deploy', function () {
     return Artisan::call('app:deploy');
 });
 Route::get('/version', function () {
-    return 3.42;
+    return 3.43;
 });
 Route::get('/', function () {
     return redirect()->route('dashboard.login.view-form');

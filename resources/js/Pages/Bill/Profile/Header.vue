@@ -4,8 +4,13 @@
             <div class="flex flex-col gap-2">
                 <div class="flex w-full justify-between items-center gap-3">
                     <ElLabelValueText :value="usePage().props?.profile_row.id" :label="$t('column.bill_id')"/>
-                    <ElPrimaryButton @click="rep_print_bill.print(usePage().props?.profile_row)"
-                                     :text="$t('message.print_bill')"/>
+
+                    <div class="flex gap-4">
+                        <ElSecondaryButton v-ability="Ability.M_BILL_EDIT" :text="$t('message.edit')"
+                                           :href="route('dashboard.bill.edit',usePage().props?.profile_row.id)"/>
+                        <ElPrimaryButton @click="rep_print_bill.print(usePage().props?.profile_row)"
+                                         :text="$t('message.print_bill')"/>
+                    </div>
                 </div>
                 <ElLabelValueText :value="usePage().props?.profile_row.chassis_number"
                                   :label="$t('column.chassis_number')"/>
@@ -83,6 +88,7 @@ import ElSecondaryButton from "@/Components/Buttons/ElSecondaryButton.vue";
 import {ref} from "vue";
 import BillPrint from "@/Pages/Bill/BillPrint.vue";
 import ElPrimaryButton from "@/Components/Buttons/ElPrimaryButton.vue";
+import ElActionMenuEdit from "@/Components/ActionMenu/ElActionMenuEdit.vue";
 
 const rep_print_bill=ref();
 
