@@ -97,8 +97,12 @@ const canAcceptSeries = (acceptances = []) => {
     }
     return false;
 }
-
+const convertStringToNumber = (item) => {
+    if (!item)
+        return item;
+    return item * 1;
+}
 export {
     asset, exportExcel, getAlignFrozen, copy, printContent, canAcceptSeries,
-    alertMessage, alertMessageHideElement
+    alertMessage, alertMessageHideElement,convertStringToNumber
 }
