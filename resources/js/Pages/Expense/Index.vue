@@ -51,7 +51,7 @@ const edit_row = ref();
             </Column>
             <Column :header="$t('column.note')">
                 <template #body="row">
-                    <ElText :value="row.data.note"/>
+                    <div v-html="row.data.note" style="white-space: pre-wrap"/>
                 </template>
             </Column>
             <Column :header="$t('message.actions')">

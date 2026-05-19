@@ -6,7 +6,6 @@ namespace App\Models;
 use App\Models\Builders\UserBuilder;
 use App\Traits\EnumCastAppendAttributeTrait;
 use App\Traits\FileUploadTrait;
-use App\Traits\LogsTrait;
 use App\Traits\ModelDateTextTrait;
 use App\Traits\MorphModelTriggerTrait;
 use App\Traits\PaginatableTrait;
@@ -35,7 +34,6 @@ class User extends Authenticatable
     //from base model
     use PaginatableTrait, EnumCastAppendAttributeTrait,
         SoftDeletes, ModelDateTextTrait, MorphModelTriggerTrait;
-    use LogsTrait;
     use FileUploadTrait;
 
     /**

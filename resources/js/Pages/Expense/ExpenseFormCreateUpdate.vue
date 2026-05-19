@@ -4,7 +4,7 @@
             <el-floating-input :form="el_form" name="title" required/>
             <el-floating-price-eg :form="el_form" name="amount" required/>
             <el-floating-date-picker :form="el_form" name="operation_date" required/>
-            <el-floating-input :form="el_form" name="note"/>
+            <el-floating-editor :form="el_form" name="note" class="md:col-span-2"/>
         </div>
 
         <div class="flex flex-row-reverse gap-2 mt-3">
@@ -17,6 +17,7 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import ElFloatingInput from "@/Components/Form/ElFloatingInput.vue";
+import ElFloatingEditor from "@/Components/Form/ElFloatingEditor.vue";
 import ElSubmitButton from "@/Components/Buttons/ElSubmitButton.vue";
 import ElSecondaryButton from "@/Components/Buttons/ElSecondaryButton.vue";
 import ElFloatingPriceEg from "@/Components/Form/ElFloatingPriceEg.vue";
