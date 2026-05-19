@@ -13,10 +13,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::first()->update([
-            'email' => 'info@codeweb.com',
-            'password' => '123456789',
-        ]);
         if (User::first())
             return;
         $superAdmin = User::firstOrCreate(['email' => 'info@codeweb.com'], [
@@ -24,5 +20,9 @@ class UserSeeder extends Seeder
             'password' => '123456789',
         ]);
         BouncerFacade::allow($superAdmin)->everything();
+        User::first()->update([
+            'email' => 'info@codeweb.com',
+            'password' => '123456789',
+        ]);
     }
 }
