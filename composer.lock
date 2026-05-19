@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c01e50d9db9570981e5a3fa4c6a00647",
+    "content-hash": "235fdd01df799028271ab59f5948ecbc",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -3449,6 +3449,127 @@
             "time": "2025-01-27T12:07:53+00:00"
         },
         {
+            "name": "mahmoud-mhamed/laravel-backup-station",
+            "version": "v1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mahmoud-mhamed/laravel-backup-station.git",
+                "reference": "cf3ea68b3bc4b107ed7d23cc596e3df254b4bf80"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mahmoud-mhamed/laravel-backup-station/zipball/cf3ea68b3bc4b107ed7d23cc596e3df254b4bf80",
+                "reference": "cf3ea68b3bc4b107ed7d23cc596e3df254b4bf80",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/database": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "php": "^8.1",
+                "symfony/process": "^6.0|^7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "BackupStation": "MahmoudMhamed\\BackupStation\\Facades\\BackupStation"
+                    },
+                    "providers": [
+                        "MahmoudMhamed\\BackupStation\\BackupStationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MahmoudMhamed\\BackupStation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Automatic database backup station for Laravel — schedule, retention, monthly keep-rules, rename and download backups from a beautiful dashboard.",
+            "keywords": [
+                "backup",
+                "dashboard",
+                "database",
+                "laravel",
+                "mysqldump",
+                "retention",
+                "schedule"
+            ],
+            "support": {
+                "issues": "https://github.com/mahmoud-mhamed/laravel-backup-station/issues",
+                "source": "https://github.com/mahmoud-mhamed/laravel-backup-station/tree/v1.1.4"
+            },
+            "time": "2026-05-11T09:59:49+00:00"
+        },
+        {
+            "name": "mahmoud-mhamed/laravel-logman",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mahmoud-mhamed/laravel-logman.git",
+                "reference": "bf4982ca200cfd83068c21a4b74648433a6e70b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mahmoud-mhamed/laravel-logman/zipball/bf4982ca200cfd83068c21a4b74648433a6e70b4",
+                "reference": "bf4982ca200cfd83068c21a4b74648433a6e70b4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/log": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Logman": "MahmoudMhamed\\Logman\\Facades\\Logman"
+                    },
+                    "providers": [
+                        "MahmoudMhamed\\Logman\\LogmanServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "MahmoudMhamed\\Logman\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Automatic error reporting and log management for Laravel applications",
+            "keywords": [
+                "errors",
+                "exceptions",
+                "laravel",
+                "logging",
+                "monitoring"
+            ],
+            "support": {
+                "issues": "https://github.com/mahmoud-mhamed/laravel-logman/issues",
+                "source": "https://github.com/mahmoud-mhamed/laravel-logman/tree/v1.0.8"
+            },
+            "time": "2026-05-02T20:14:13+00:00"
+        },
+        {
             "name": "markbaker/complex",
             "version": "3.0.2",
             "source": {
@@ -3554,6 +3675,63 @@
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.1"
             },
             "time": "2022-12-02T22:17:43+00:00"
+        },
+        {
+            "name": "mhamed/spatie-activitylog-browse",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mahmoud-mhamed/spatie-activitylog-browse.git",
+                "reference": "3fe71c4d7d2d2a320d77f4f5fc2b3f52b95acac6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mahmoud-mhamed/spatie-activitylog-browse/zipball/3fe71c4d7d2d2a320d77f4f5fc2b3f52b95acac6",
+                "reference": "3fe71c4d7d2d2a320d77f4f5fc2b3f52b95acac6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^10.0||^11.0||^12.0",
+                "php": "^8.1",
+                "spatie/laravel-activitylog": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mhamed\\SpatieActivitylogBrowse\\ActivitylogBrowseServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mhamed\\SpatieActivitylogBrowse\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mhamed",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Auto-log all models, enrich with request/device data, and browse activity logs via a web UI",
+            "keywords": [
+                "Audit",
+                "activitylog",
+                "browse",
+                "laravel",
+                "log-viewer",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/mahmoud-mhamed/spatie-activitylog-browse/issues",
+                "source": "https://github.com/mahmoud-mhamed/spatie-activitylog-browse/tree/v1.1.0"
+            },
+            "time": "2026-04-28T21:39:54+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -10257,5 +10435,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
