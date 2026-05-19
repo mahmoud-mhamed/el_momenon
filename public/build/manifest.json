@@ -1,6 +1,6 @@
 {
   "node_modules/chart.js/auto/auto.js": {
-    "file": "assets/auto-erNU9PS8.js",
+    "file": "assets/auto-BGlA3mrl.js",
     "name": "auto",
     "src": "node_modules/chart.js/auto/auto.js",
     "isDynamicEntry": true,
@@ -35,6 +35,22 @@
     "file": "assets/primeicons-C6QP2o4f.woff2",
     "src": "node_modules/primeicons/fonts/primeicons.woff2"
   },
+  "node_modules/quill/quill.js": {
+    "file": "assets/quill-CW6Gg0Ew.js",
+    "name": "quill",
+    "src": "node_modules/quill/quill.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/app-CqTPoTaC.css"
+    ],
+    "assets": [
+      "assets/bg-statistics-DSeqoFmJ.svg",
+      "assets/bg-chart-statistic-Dbomih6r.svg"
+    ]
+  },
   "resources/css/app.css": {
     "file": "assets/app-CqTPoTaC.css",
     "src": "resources/css/app.css",
@@ -49,15 +65,16 @@
     "src": "resources/css/images/bg-statistics.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-DTyeg6Kt.js",
+    "file": "assets/app-DK7BZepx.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
+      "node_modules/quill/quill.js",
       "node_modules/chart.js/auto/auto.js"
     ],
     "css": [
-      "assets/app-BerPkgyv.css",
+      "assets/app-BnM82aSq.css",
       "assets/app-CqTPoTaC.css"
     ],
     "assets": [

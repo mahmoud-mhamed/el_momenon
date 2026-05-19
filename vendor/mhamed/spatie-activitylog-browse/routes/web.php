@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Mhamed\SpatieActivitylogBrowse\Http\Controllers\ActivityLogController;
+use Mhamed\SpatieActivitylogBrowse\Http\Middleware\RequirePassword;
+use Mhamed\SpatieActivitylogBrowse\Http\Middleware\SetLocale;
+
+$prefix = config('activitylog-browse.browse.prefix', 'activity-log');
+$middleware = config('activitylog-browse.browse.middleware', ['web', 'auth']);
+
+Route::middleware(array_merge($middleware, [SetLocale::class, RequirePassword::class]))
+    ->prefix($prefix)
+    ->group(function () {
+        Route::get('/login', [ActivityLogController::class, 'showLogin'])->name('activitylog-browse.login');
+        Route::post('/login', [ActivityLogController::class, 'authenticate'])->name('activitylog-browse.login.submit');
+        Route::post('/logout', [ActivityLogController::class, 'logout'])->name('activitylog-browse.logout');
+
+        Route::get('/', [ActivityLogController::class, 'index'])->name('activitylog-browse.index');
+        Route::get('/statistics', [ActivityLogController::class, 'statistics'])->name('activitylog-browse.statistics');
+        Route::get('/stats', [ActivityLogController::class, 'stats'])->name('activitylog-browse.stats');
+        Route::get('/filter-options', [ActivityLogController::class, 'filterOptions'])->name('activitylog-browse.filter-options');
+        Route::get('/attributes', [ActivityLogController::class, 'attributes'])->name('activitylog-browse.attributes');
+        Route::get('/model-info', [ActivityLogController::class, 'modelInfo'])->name('activitylog-browse.model-info');
+        Route::get('/causers', [ActivityLogController::class, 'causers'])->name('activitylog-browse.causers');
+        Route::get('/switch-lang/{locale}', [ActivityLogController::class, 'switchLang'])->name('activitylog-browse.switch-lang');
+        Route::get('/about', [ActivityLogController::class, 'about'])->name('activitylog-browse.about');
+        Route::get('/cleanup', [ActivityLogController::class, 'cleanup'])->name('activitylog-browse.cleanup');
+        Route::get('/cleanup/preview', [ActivityLogController::class, 'cleanupPreview'])->name('activitylog-browse.cleanup-preview');
+        Route::delete('/cleanup/delete', [ActivityLogController::class, 'cleanupDelete'])->name('activitylog-browse.cleanup-delete');
+        Route::post('/cleanup/retention/run', [ActivityLogController::class, 'cleanupRunRetention'])->name('activitylog-browse.cleanup-retention');
+        Route::get('/deletion-history', [ActivityLogController::class, 'deletionHistory'])->name('activitylog-browse.deletion-history');
+        Route::delete('/deletion-history', [ActivityLogController::class, 'clearDeletionHistory'])->name('activitylog-browse.clear-deletion-history');
+        Route::get('/{activity}/attributes', [ActivityLogController::class, 'subjectAttributes'])->name('activitylog-browse.subject-attributes');
+        Route::get('/{activity}/causer-attributes', [ActivityLogController::class, 'causerAttributes'])->name('activitylog-browse.causer-attributes');
+        Route::get('/{activity}/related/{relation}', [ActivityLogController::class, 'relatedLogs'])->name('activitylog-browse.related-logs');
+        Route::get('/{activity}', [ActivityLogController::class, 'show'])->name('activitylog-browse.show');
+    });
